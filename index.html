@@ -1,0 +1,2491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Reads Now! - Find Available Books at Your Library</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #fafafa 0%, #f0f0f5 100%);
+            min-height: 100vh;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1d1d1f 0%, #515154 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            font-size: 21px;
+            color: #86868b;
+            font-weight: 400;
+        }
+
+        .header-description {
+            font-size: 16px !important;
+            color: #515154 !important;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.5;
+        }
+
+        .header-description em {
+            color: #34c759;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            background: transparent;
+            color: #86868b;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            background: rgba(0, 0, 0, 0.04);
+            color: #1d1d1f;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: #1d1d1f;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .tab-btn .count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 6px;
+            margin-left: 8px;
+            background: #0071e3;
+            color: white;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Mode Toggle */
+        .mode-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 24px;
+            background: #e8e8ed;
+            border-radius: 12px;
+            padding: 4px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mode-btn {
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: 500;
+            background: transparent;
+            color: #86868b;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mode-btn:hover {
+            color: #1d1d1f;
+        }
+
+        .mode-btn.active {
+            background: white;
+            color: #1d1d1f;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mode-btn .mode-icon {
+            font-size: 18px;
+        }
+
+        .mode-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .coming-soon-badge {
+            font-size: 9px;
+            background: #ff9500;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        /* Selection Panel */
+        .selection-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .selection-row {
+            display: flex;
+            gap: 24px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .selection-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .selection-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 8px;
+        }
+
+        .selection-group select {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 17px;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            background: white;
+            color: #1d1d1f;
+            appearance: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2386868b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .selection-group select:hover {
+            border-color: #0071e3;
+        }
+
+        .selection-group select:focus {
+            outline: none;
+            border-color: #0071e3;
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+        }
+
+        .spin-button {
+            padding: 14px 32px;
+            font-size: 17px;
+            font-weight: 500;
+            background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .spin-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(0, 113, 227, 0.4);
+        }
+
+        .spin-button:active {
+            transform: scale(0.98);
+        }
+
+        .spin-button:disabled {
+            background: #d2d2d7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Status Message */
+        .status-message {
+            text-align: center;
+            padding: 48px;
+            color: #86868b;
+            font-size: 17px;
+        }
+
+        .status-message.loading {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Book Cards */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .book-grid {
+                grid-template-columns: 1fr;
+            }
+            .selection-row {
+                flex-direction: column;
+            }
+            .spin-button {
+                width: 100%;
+            }
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .book-cover-wrapper {
+            position: relative;
+            padding: 32px 32px 0;
+            background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 100%);
+            display: flex;
+            justify-content: center;
+        }
+
+        .book-cover {
+            width: 140px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-content {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .book-author {
+            font-size: 15px;
+            color: #86868b;
+            margin-bottom: 12px;
+        }
+
+        .book-rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .book-rating .stars {
+            color: #ff9500;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .book-rating .rating-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .book-rating .rating-source {
+            font-size: 12px;
+            color: #86868b;
+        }
+
+        .book-availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #e8f5e9;
+            color: #1b5e20;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .book-availability::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #34c759;
+            border-radius: 50%;
+        }
+
+        .book-description {
+            font-size: 14px;
+            color: #515154;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .book-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .book-tag {
+            padding: 4px 10px;
+            background: #f5f5f7;
+            color: #515154;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .book-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+
+        .book-actions a,
+        .book-actions button {
+            flex: 1;
+            padding: 12px 12px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            min-width: 80px;
+        }
+
+        .btn-borrow {
+            background: #1d1d1f;
+            color: white;
+        }
+
+        .btn-borrow:hover {
+            background: #000;
+        }
+
+        .btn-goodreads {
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+
+        .btn-goodreads:hover {
+            background: #e8e8ed;
+        }
+
+        .btn-thrift {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .btn-thrift:hover {
+            background: #1b5e20;
+        }
+
+        .btn-print {
+            background: #e65100;
+            color: white;
+        }
+
+        .btn-print:hover {
+            background: #bf4500;
+        }
+
+        /* Format Badges */
+        .format-badges {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .format-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .format-badge.ebook {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .format-badge.print {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .btn-save {
+            background: linear-gradient(135deg, #ff9500 0%, #ff9f0a 100%);
+            color: white;
+        }
+
+        .btn-save:hover {
+            transform: scale(1.02);
+        }
+
+        .btn-save.saved {
+            background: #34c759;
+        }
+
+        .btn-remove {
+            background: #ff3b30;
+            color: white;
+        }
+
+        .btn-remove:hover {
+            background: #d62d24;
+        }
+
+        .btn-read {
+            background: #5856d6;
+            color: white;
+        }
+
+        .btn-read:hover {
+            background: #4745b5;
+        }
+
+        .btn-read.read {
+            background: #34c759;
+        }
+
+        /* Audiobook specific styles */
+        .audiobook-narrator {
+            color: #5856d6;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .audiobook-placeholder {
+            width: 100%;
+            height: 210px;
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #515154;
+            padding: 16px;
+            border: 1px solid #d2d2d7;
+        }
+
+        .audiobook-icon {
+            font-size: 32px;
+            margin: 12px 0 4px;
+            opacity: 0.6;
+        }
+
+        .audiobook-label {
+            font-size: 12px;
+            opacity: 0.6;
+            font-weight: 400;
+        }
+
+        .audiobook-title-small {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .audiobook-card .book-cover-wrapper {
+            position: relative;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid #d2d2d7;
+            color: #86868b;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #0071e3;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Settings Toggle */
+        .settings-row {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .toggle-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-group label {
+            font-size: 14px;
+            color: #515154;
+            cursor: pointer;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #d2d2d7;
+            transition: 0.3s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: #34c759;
+        }
+
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Recommendation banner */
+        .recommendation-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            display: none;
+        }
+
+        .recommendation-banner.show {
+            display: block;
+        }
+
+        .recommendation-banner h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .recommendation-banner p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .recommendation-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 80px 24px;
+        }
+
+        .empty-state h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: #86868b;
+            font-size: 17px;
+        }
+
+        /* Reading List Panel */
+        .reading-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .reading-list-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .clear-list-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            background: #f5f5f7;
+            color: #ff3b30;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .clear-list-btn:hover {
+            background: #ffe5e5;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1d1d1f;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Availability status bar */
+        .availability-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background: #f5f5f7;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #515154;
+        }
+
+        .availability-status .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #34c759;
+            border-radius: 50%;
+        }
+
+        .availability-status .status-text {
+            flex: 1;
+        }
+
+        .availability-status .refresh-btn {
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            background: white;
+            color: #0071e3;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .availability-status .refresh-btn:hover {
+            background: #0071e3;
+            color: white;
+            border-color: #0071e3;
+        }
+
+        .availability-status .refresh-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .availability-status .refresh-btn.loading {
+            pointer-events: none;
+        }
+
+        /* Chat Styles */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 300px);
+            min-height: 400px;
+            max-height: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chat-message {
+            max-width: 80%;
+            padding: 14px 18px;
+            border-radius: 18px;
+            font-size: 15px;
+            line-height: 1.5;
+            animation: messageSlideIn 0.3s ease;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-message.assistant {
+            align-self: flex-start;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.thinking {
+            align-self: flex-start;
+            background: #f5f5f7;
+            color: #86868b;
+            font-style: italic;
+        }
+
+        .chat-message.thinking::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 12px;
+            padding: 16px 24px;
+            border-top: 1px solid #e8e8ed;
+            background: #fafafa;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 14px 18px;
+            font-size: 15px;
+            border: 1px solid #d2d2d7;
+            border-radius: 24px;
+            background: white;
+            color: #1d1d1f;
+            transition: all 0.2s ease;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #0071e3;
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+        }
+
+        .chat-input::placeholder {
+            color: #86868b;
+        }
+
+        .chat-send-btn {
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .chat-send-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(0, 113, 227, 0.4);
+        }
+
+        .chat-send-btn:disabled {
+            background: #d2d2d7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .chat-error {
+            color: #ff3b30;
+            background: #ffe5e5;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .chat-message a {
+            color: #0071e3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chat-message a:hover {
+            text-decoration: underline;
+        }
+
+        .chat-message.user a {
+            color: #b3d7ff;
+        }
+
+        @media (max-width: 600px) {
+            .chat-container {
+                height: calc(100vh - 250px);
+            }
+            .chat-message {
+                max-width: 90%;
+            }
+            .chat-send-btn {
+                padding: 14px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Great Reads Now!</h1>
+            <p>Discover critically acclaimed books you can borrow today</p>
+            <p class="header-description">
+                Stop waiting weeks for library holds. We show you NPR's "Books We Love"
+                that are available <em>right now</em> at Brooklyn Public Library via Libby/OverDrive.
+            </p>
+        </header>
+
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="discover">Discover</button>
+            <button class="tab-btn" data-tab="reading-list">
+                Reading List
+                <span class="count" id="readingListCount">0</span>
+            </button>
+            <button class="tab-btn" data-tab="chat">
+                Chat
+            </button>
+        </nav>
+
+        <!-- Discover Tab -->
+        <div class="tab-content active" id="discover-tab">
+            <!-- Mode Toggle -->
+            <div class="mode-toggle">
+                <button class="mode-btn active" data-mode="read" id="modeRead">
+                    <span class="mode-icon">📖</span>
+                    Read
+                </button>
+                <button class="mode-btn" data-mode="listen" id="modeListen">
+                    <span class="mode-icon">🎧</span>
+                    Listen
+                </button>
+                <button class="mode-btn" data-mode="surprise" id="modeSurprise">
+                    <span class="mode-icon">✨</span>
+                    Surprise Me
+                </button>
+            </div>
+
+            <div class="selection-panel">
+                <div class="selection-row">
+                    <div class="selection-group">
+                        <label>Year</label>
+                        <select id="yearSelect">
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                        </select>
+                    </div>
+                    <div class="selection-group">
+                        <label>Genre</label>
+                        <select id="genreSelect">
+                            <option value="">All Genres</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="nonfiction">Nonfiction</option>
+                            <option value="biography & memoir">Biography & Memoir</option>
+                            <option value="historical fiction">Historical Fiction</option>
+                            <option value="mysteries & thrillers">Mysteries & Thrillers</option>
+                            <option value="sci fi, fantasy & speculative fiction">Sci-Fi & Fantasy</option>
+                            <option value="love & romance">Romance</option>
+                            <option value="short stories, essays & poetry">Short Stories & Poetry</option>
+                        </select>
+                    </div>
+                    <button class="spin-button" id="spinButton">
+                        ✨ Find Books
+                    </button>
+                </div>
+                <div class="settings-row">
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="seriouslyGreatWriting" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <label for="seriouslyGreatWriting">Seriously Great Writing only</label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="showRatings" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <label for="showRatings">Goodreads ratings</label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="personalizedMode">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <label for="personalizedMode">Personalized</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="availability-status" id="availabilityStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">
+                    <span id="availableCount">0</span> books available • Last checked: <span id="lastChecked">Loading...</span>
+                </span>
+                <button class="refresh-btn" id="refreshBtn" onclick="refreshAvailability()">Refresh</button>
+            </div>
+
+            <div class="recommendation-banner" id="recommendationBanner">
+                <h3>✨ Personalized for you</h3>
+                <p id="recommendationReason">Based on your reading list preferences</p>
+            </div>
+
+            <div id="statusMessage" class="status-message">
+                Select your preferences and click "Find Books" to discover your next great read.
+            </div>
+
+            <div class="book-grid" id="bookGrid"></div>
+        </div>
+
+        <!-- Reading List Tab -->
+        <div class="tab-content" id="reading-list-tab">
+            <!-- Want to Read Section -->
+            <div class="reading-list-header">
+                <h2>Want to Read</h2>
+                <button class="clear-list-btn" id="clearListBtn">Clear All</button>
+            </div>
+            <div class="book-grid" id="readingListGrid"></div>
+            <div id="emptyReadingList" class="empty-state">
+                <h3>Your reading list is empty</h3>
+                <p>Discover books and save them here for later.</p>
+            </div>
+
+            <!-- Already Read Section -->
+            <div class="reading-list-header" id="readBooksHeader" style="margin-top: 48px; display: none;">
+                <h2>Already Read <span class="count" id="readBooksCount">0</span></h2>
+                <p style="color: #86868b; font-size: 14px; margin-top: 4px;">These help personalize your recommendations</p>
+            </div>
+            <div class="book-grid" id="readBooksGrid"></div>
+        </div>
+
+        <!-- Chat Tab -->
+        <div class="tab-content" id="chat-tab">
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be rendered here -->
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." autocomplete="off">
+                    <button id="chatSendBtn" class="chat-send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p><strong>Great Reads Now!</strong> • eBooks from <a href="https://apps.npr.org/best-books/" target="_blank">NPR Books We Love</a> • Audiobooks from <a href="https://www.audiofilemagazine.com/best-audiobooks-2024/" target="_blank">AudioFile Best Audiobooks</a> • Availability via <a href="https://brooklyn.overdrive.com" target="_blank">Brooklyn Public Library</a></p>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const API_BASE = 'https://apps.npr.org/best-books';
+        const GOOGLE_BOOKS_API = 'https://www.googleapis.com/books/v1/volumes';
+        let allBooks = {};
+        let availableBooks = {};
+        let availableAudiobooks = []; // AudioFile Best Audiobooks
+        let availabilityMetadata = {};
+        let enrichedDescriptions = {}; // Cache for Google Books descriptions
+        let readingList = [];
+        let readBooks = []; // Books user has already read
+        let listenedBooks = []; // Audiobooks user has already listened to
+        let isLoading = false;
+        let currentMode = 'read'; // 'read' or 'listen'
+        let showRatings = true;
+        let personalizedMode = false;
+        let seriouslyGreatWriting = true;
+
+        // Load reading list from localStorage
+        function loadReadingList() {
+            try {
+                const saved = localStorage.getItem('bookReadingList');
+                readingList = saved ? JSON.parse(saved) : [];
+            } catch (e) {
+                readingList = [];
+            }
+            updateReadingListCount();
+        }
+
+        // Save reading list to localStorage
+        function saveReadingList() {
+            localStorage.setItem('bookReadingList', JSON.stringify(readingList));
+            updateReadingListCount();
+        }
+
+        // Load read books from localStorage
+        function loadReadBooks() {
+            try {
+                const saved = localStorage.getItem('bookReadBooks');
+                readBooks = saved ? JSON.parse(saved) : [];
+            } catch (e) {
+                readBooks = [];
+            }
+            updateReadBooksCount();
+        }
+
+        // Save read books to localStorage
+        function saveReadBooks() {
+            localStorage.setItem('bookReadBooks', JSON.stringify(readBooks));
+            updateReadBooksCount();
+        }
+
+        // Update read books count badge
+        function updateReadBooksCount() {
+            const el = document.getElementById('readBooksCount');
+            if (el) el.textContent = readBooks.length;
+        }
+
+        // Check if book has been read
+        function hasBeenRead(title, author) {
+            return readBooks.some(b => b.title === title && b.author === author);
+        }
+
+        // Mark book as read
+        function markAsRead(book) {
+            if (!hasBeenRead(book.title, book.author)) {
+                readBooks.push({...book, readAt: new Date().toISOString()});
+                saveReadBooks();
+                showToast(`"${book.title}" marked as read`);
+                // Remove from reading list if it was there
+                if (isInReadingList(book.title, book.author)) {
+                    const index = readingList.findIndex(b => b.title === book.title && b.author === book.author);
+                    if (index > -1) {
+                        readingList.splice(index, 1);
+                        saveReadingList();
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        // Unmark book as read
+        function unmarkAsRead(title, author) {
+            const index = readBooks.findIndex(b => b.title === title && b.author === author);
+            if (index > -1) {
+                const book = readBooks[index];
+                readBooks.splice(index, 1);
+                saveReadBooks();
+                showToast(`"${book.title}" unmarked as read`);
+                renderReadingList();
+                return true;
+            }
+            return false;
+        }
+
+        // Update reading list count badge
+        function updateReadingListCount() {
+            document.getElementById('readingListCount').textContent = readingList.length;
+        }
+
+        // Check if book is in reading list
+        function isInReadingList(title, author) {
+            return readingList.some(b => b.title === title && b.author === author);
+        }
+
+        // Add book to reading list
+        function addToReadingList(book) {
+            if (!isInReadingList(book.title, book.author)) {
+                readingList.push(book);
+                saveReadingList();
+                showToast(`"${book.title}" added to reading list`);
+                return true;
+            }
+            return false;
+        }
+
+        // Remove book from reading list
+        function removeFromReadingList(title, author) {
+            const index = readingList.findIndex(b => b.title === title && b.author === author);
+            if (index > -1) {
+                const book = readingList[index];
+                readingList.splice(index, 1);
+                saveReadingList();
+                showToast(`"${book.title}" removed from reading list`);
+                renderReadingList();
+            }
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Load available books data
+        async function loadAvailableBooks() {
+            try {
+                const [booksResponse, resultsResponse] = await Promise.all([
+                    fetch('available-books.json'),
+                    fetch('availability-results.json')
+                ]);
+                const books = await booksResponse.json();
+                books.forEach(book => {
+                    const key = `${book.title}-${book.author}`.toLowerCase();
+                    availableBooks[key] = book;
+                });
+
+                // Load results for timestamp
+                try {
+                    const results = await resultsResponse.json();
+                    availabilityMetadata = {
+                        checkedAt: results.checkedAt,
+                        availableCount: results.summary?.available || Object.keys(availableBooks).length
+                    };
+                    updateAvailabilityStatus();
+                } catch (e) {
+                    console.log('No results file');
+                    updateAvailabilityStatus();
+                }
+            } catch (e) {
+                console.log('No pre-loaded available books');
+            }
+
+            // Also load audiobooks
+            try {
+                const audiobooksResponse = await fetch('available-audiobooks.json');
+                availableAudiobooks = await audiobooksResponse.json();
+                console.log(`Loaded ${availableAudiobooks.length} available audiobooks`);
+            } catch (e) {
+                console.log('No audiobooks file');
+                availableAudiobooks = [];
+            }
+        }
+
+        // Update availability status display
+        function updateAvailabilityStatus() {
+            const countEl = document.getElementById('availableCount');
+            const lastCheckedEl = document.getElementById('lastChecked');
+
+            countEl.textContent = availabilityMetadata.availableCount || Object.keys(availableBooks).length;
+
+            if (availabilityMetadata.checkedAt) {
+                const date = new Date(availabilityMetadata.checkedAt);
+                const now = new Date();
+                const diffHours = Math.floor((now - date) / (1000 * 60 * 60));
+                const diffDays = Math.floor(diffHours / 24);
+
+                let timeAgo;
+                if (diffDays > 0) {
+                    timeAgo = `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+                } else if (diffHours > 0) {
+                    timeAgo = `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+                } else {
+                    timeAgo = 'just now';
+                }
+                lastCheckedEl.textContent = timeAgo;
+            } else {
+                lastCheckedEl.textContent = 'Unknown';
+            }
+        }
+
+        // Refresh availability (placeholder - in production this would trigger a backend job)
+        function refreshAvailability() {
+            const btn = document.getElementById('refreshBtn');
+            btn.textContent = 'Refreshing...';
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            // Simulate refresh - in production, this would call an API
+            setTimeout(() => {
+                btn.textContent = 'Refresh';
+                btn.classList.remove('loading');
+                btn.disabled = false;
+                showToast('Availability data is current. Run the scraper locally for live updates.');
+            }, 1500);
+        }
+
+        // Fetch description from Google Books API
+        async function fetchGoogleBooksDescription(isbn, title, author) {
+            const cacheKey = isbn || `${title}-${author}`;
+            if (enrichedDescriptions[cacheKey]) {
+                return enrichedDescriptions[cacheKey];
+            }
+
+            try {
+                // Try ISBN first, then title+author
+                let url = isbn
+                    ? `${GOOGLE_BOOKS_API}?q=isbn:${isbn}`
+                    : `${GOOGLE_BOOKS_API}?q=${encodeURIComponent(title + ' ' + author)}`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.items && data.items[0] && data.items[0].volumeInfo) {
+                    const info = data.items[0].volumeInfo;
+                    const description = info.description || '';
+                    enrichedDescriptions[cacheKey] = description;
+                    return description;
+                }
+            } catch (e) {
+                console.log('Google Books API error:', e);
+            }
+            return null;
+        }
+
+        // Analyze reading list to find preference patterns
+        // Include both reading list (want to read) and read books (already read)
+        // Read books get higher weight since they're confirmed preferences
+        function analyzeReadingPreferences() {
+            const allBooks = [...readingList, ...readBooks];
+            if (allBooks.length < 2) return null;
+
+            const tagCounts = {};
+            const authorCounts = {};
+
+            // Process reading list (weight: 1)
+            readingList.forEach(book => {
+                (book.tags || []).forEach(tag => {
+                    const t = tag.toLowerCase();
+                    if (!['seriously great writing', 'rather short', 'rather long'].includes(t)) {
+                        tagCounts[t] = (tagCounts[t] || 0) + 1;
+                    }
+                });
+                if (book.author) {
+                    authorCounts[book.author] = (authorCounts[book.author] || 0) + 1;
+                }
+            });
+
+            // Process read books (weight: 2 - they've actually finished these!)
+            readBooks.forEach(book => {
+                (book.tags || []).forEach(tag => {
+                    const t = tag.toLowerCase();
+                    if (!['seriously great writing', 'rather short', 'rather long'].includes(t)) {
+                        tagCounts[t] = (tagCounts[t] || 0) + 2; // Double weight
+                    }
+                });
+                if (book.author) {
+                    authorCounts[book.author] = (authorCounts[book.author] || 0) + 2; // Double weight
+                }
+            });
+
+            // Find top tags (appearing in at least 2 books or >30% of list)
+            const threshold = Math.max(2, allBooks.length * 0.3);
+            const preferredTags = Object.entries(tagCounts)
+                .filter(([_, count]) => count >= threshold)
+                .sort((a, b) => b[1] - a[1])
+                .map(([tag]) => tag);
+
+            // Find favorite authors (appearing more than once)
+            const favoriteAuthors = Object.entries(authorCounts)
+                .filter(([_, count]) => count > 1)
+                .map(([author]) => author);
+
+            return {
+                preferredTags,
+                favoriteAuthors,
+                totalBooks: allBooks.length,
+                readCount: readBooks.length
+            };
+        }
+
+        // Score a book based on user preferences
+        function scoreBookForUser(book, preferences) {
+            if (!preferences) return 0;
+
+            let score = 0;
+            const bookTags = (book.tags || []).map(t => t.toLowerCase());
+
+            // Higher score for matching preferred tags
+            preferences.preferredTags.forEach((tag, index) => {
+                if (bookTags.includes(tag)) {
+                    score += 10 - index; // Earlier tags (more common) get higher scores
+                }
+            });
+
+            // Bonus for similar authors
+            if (preferences.favoriteAuthors.includes(book.author)) {
+                score += 5;
+            }
+
+            // Slight bonus for highly rated books
+            const key = `${book.title}-${book.author}`.toLowerCase();
+            const availData = availableBooks[key];
+            if (availData && availData.goodreadsRating) {
+                score += (availData.goodreadsRating - 3.5) * 2; // Bonus for ratings above 3.5
+            }
+
+            return score;
+        }
+
+        // Get recommendation reason text
+        function getRecommendationReason(preferences) {
+            if (!preferences || preferences.preferredTags.length === 0) {
+                return "Based on your reading list";
+            }
+
+            const topTags = preferences.preferredTags.slice(0, 2);
+            const tagNames = topTags.map(t => t.split(' ').map(w =>
+                w.charAt(0).toUpperCase() + w.slice(1)
+            ).join(' '));
+
+            if (tagNames.length === 1) {
+                return `You seem to enjoy ${tagNames[0]} - here are similar picks`;
+            } else {
+                return `Based on your love of ${tagNames.join(' and ')}`;
+            }
+        }
+
+        // Fetch books for a year from NPR
+        async function fetchBooksForYear(year) {
+            if (allBooks[year]) return allBooks[year];
+
+            try {
+                const response = await fetch(`${API_BASE}/${year}.json`);
+                const books = await response.json();
+                // Attach year to each book for cover URL
+                books.forEach(book => book.year = year);
+                allBooks[year] = books;
+                return books;
+            } catch (e) {
+                console.error('Error fetching books:', e);
+                return [];
+            }
+        }
+
+        // Filter books by criteria
+        function filterBooks(books, genre) {
+            return books.filter(book => {
+                const tags = (book.tags || []).map(t => t.toLowerCase());
+
+                // Filter by "seriously great writing" if enabled
+                if (seriouslyGreatWriting && !tags.includes('seriously great writing')) return false;
+
+                // Must match genre if specified
+                if (genre && !tags.includes(genre.toLowerCase())) return false;
+
+                // Must be available at BPL
+                const key = `${book.title}-${book.author}`.toLowerCase();
+                if (!availableBooks[key]) return false;
+
+                return true;
+            });
+        }
+
+        // Get random selection (with optional personalization)
+        function getRandomBooks(books, count = 3, personalized = false) {
+            // Filter out books already in reading list AND books already read
+            const notInList = books.filter(book =>
+                !isInReadingList(book.title, book.author) &&
+                !hasBeenRead(book.title, book.author)
+            );
+
+            const allUserBooks = [...readingList, ...readBooks];
+            if (!personalized || allUserBooks.length < 2) {
+                // Pure random selection
+                const shuffled = [...notInList].sort(() => Math.random() - 0.5);
+                return shuffled.slice(0, count);
+            }
+
+            // Personalized selection based on reading preferences
+            const preferences = analyzeReadingPreferences();
+
+            // Score all books
+            const scored = notInList.map(book => ({
+                book,
+                score: scoreBookForUser(book, preferences)
+            }));
+
+            // Sort by score (highest first) with some randomization
+            scored.sort((a, b) => {
+                // Add some randomness to avoid always showing same books
+                const randomFactor = (Math.random() - 0.5) * 3;
+                return (b.score + randomFactor) - (a.score + randomFactor);
+            });
+
+            // Take top scorers
+            return scored.slice(0, count).map(s => s.book);
+        }
+
+        // Render stars
+        function renderStars(rating) {
+            if (!rating) return '';
+            const fullStars = Math.floor(rating);
+            const hasHalf = rating - fullStars >= 0.5;
+            let stars = '★'.repeat(fullStars);
+            if (hasHalf) stars += '½';
+            stars += '☆'.repeat(5 - Math.ceil(rating));
+            return stars;
+        }
+
+        // Get cover URL
+        function getCoverUrl(isbn, year) {
+            return `${API_BASE}/assets/synced/covers/${year}/${isbn}.jpg`;
+        }
+
+        // Generate placeholder cover with book title
+        function getPlaceholderCover(title) {
+            const words = title.split(' ');
+            const lines = [];
+            let currentLine = '';
+
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length <= 16) {
+                    currentLine = (currentLine + ' ' + word).trim();
+                } else {
+                    if (currentLine) lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+            if (currentLine) lines.push(currentLine);
+
+            const displayLines = lines.slice(0, 4);
+            if (lines.length > 4) displayLines[3] += '...';
+
+            const lineHeight = 22;
+            const startY = 105 - (displayLines.length * lineHeight / 2);
+            const textElements = displayLines.map((line, i) =>
+                `<text x="70" y="${startY + i * lineHeight}" text-anchor="middle" fill="%23515154" font-size="12" font-weight="500" font-family="system-ui">${line.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;')}</text>`
+            ).join('');
+
+            return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 210"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23f5f5f7"/><stop offset="100%" stop-color="%23e8e8ed"/></linearGradient></defs><rect fill="url(%23g)" width="140" height="210" rx="4"/><rect x="10" y="10" width="120" height="190" fill="none" stroke="%23d2d2d7" stroke-width="1" rx="2"/>${textElements}</svg>`;
+        }
+
+        // Get borrow URL
+        function getBorrowUrl(title, format = 'ebook') {
+            if (format === 'print') {
+                return `https://discover.bklynlibrary.org/?search=${encodeURIComponent(title)}&catalog=true`;
+            }
+            return `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(title)}`;
+        }
+
+        // Get Thriftbooks search URL
+        function getThriftbooksUrl(title, author) {
+            const query = `${title} by ${author || ''}`.trim();
+            return `https://www.thriftbooks.com/browse/?b.search=${encodeURIComponent(query)}#b.s=mostPopular-desc&b.p=1&b.pp=50&b.oos&b.tile`;
+        }
+
+        // Get Goodreads URL
+        function getGoodreadsUrl(title, author) {
+            return `https://www.goodreads.com/search?q=${encodeURIComponent(title + ' ' + author)}`;
+        }
+
+        // Create book card HTML
+        function createBookCard(book, showRemove = false, isPersonalized = false) {
+            const key = `${book.title}-${book.author}`.toLowerCase();
+            const availableData = availableBooks[key] || {};
+            const copies = availableData.availableCopies
+                ? `${availableData.availableCopies} of ${availableData.ownedCopies} copies`
+                : 'Available';
+
+            // Get description - prefer enriched, fall back to OverDrive, then book data
+            const isbn = book.cover || book.isbn;
+            let description = enrichedDescriptions[isbn] ||
+                              enrichedDescriptions[`${book.title}-${book.author}`] ||
+                              availableData.description ||
+                              book.description || '';
+            description = description.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ');
+
+            const rating = availableData.goodreadsRating || book.goodreadsRating;
+            const displayTags = (book.tags || [])
+                .filter(t => !['seriously great writing', 'fiction', 'nonfiction', 'rather short', 'rather long'].includes(t.toLowerCase()))
+                .slice(0, 3);
+            const inList = isInReadingList(book.title, book.author);
+            const isRead = hasBeenRead(book.title, book.author);
+            const bookId = `${book.title}-${book.author}`.replace(/[^a-z0-9]/gi, '_');
+
+            return `
+                <div class="book-card" id="card-${bookId}" data-isbn="${isbn}">
+                    <div class="book-cover-wrapper">
+                        ${isPersonalized ? '<span class="recommendation-badge">For You</span>' : ''}
+                        <img class="book-cover"
+                            src="${getCoverUrl(book.cover || book.isbn, book.year || '2025')}"
+                            alt="${book.title}"
+                            data-title="${book.title.replace(/"/g, '&quot;')}"
+                            onerror="this.onerror=null; this.src=getPlaceholderCover(this.dataset.title)">
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">by ${book.author}</p>
+                        ${showRatings && rating ? `
+                            <div class="book-rating">
+                                <span class="stars">${renderStars(rating)}</span>
+                                <span class="rating-value">${rating.toFixed(1)}</span>
+                                <span class="rating-source">Goodreads</span>
+                            </div>
+                        ` : ''}
+                        <div class="book-availability">${copies}</div>
+                        <div class="format-badges">
+                            <span class="format-badge ebook">📱 eBook Available</span>
+                        </div>
+                        <p class="book-description" id="desc-${bookId}">${description || 'Loading description...'}</p>
+                        ${displayTags.length > 0 ? `
+                            <div class="book-tags">
+                                ${displayTags.map(t => `<span class="book-tag">${t}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                        <div class="book-actions">
+                            <a href="${getBorrowUrl(book.title, 'ebook')}" target="_blank" class="btn-borrow">📱 eBook</a>
+                            <a href="${getBorrowUrl(book.title, 'print')}" target="_blank" class="btn-print">📖 Paper</a>
+                            <a href="${getThriftbooksUrl(book.title, book.author)}" target="_blank" class="btn-thrift">💚 Buy</a>
+                            <a href="${getGoodreadsUrl(book.title, book.author)}" target="_blank" class="btn-goodreads">Reviews</a>
+                            ${showRemove ? `
+                                <button class="btn-remove" onclick="removeFromReadingList('${book.title.replace(/'/g, "\\'")}', '${book.author.replace(/'/g, "\\'")}')">Remove</button>
+                            ` : `
+                                <button class="btn-save ${inList ? 'saved' : ''}" onclick="handleSaveClick(this, ${JSON.stringify(book).replace(/"/g, '&quot;')})">
+                                    ${inList ? '✓ Saved' : '+ Save'}
+                                </button>
+                            `}
+                            <button class="btn-read ${isRead ? 'read' : ''}" onclick="handleReadClick(this, ${JSON.stringify(book).replace(/"/g, '&quot;')})">
+                                ${isRead ? '✓ Read' : 'Already Read'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Create audiobook card HTML
+        function createAudiobookCard(audiobook) {
+            const title = audiobook.bplTitle || audiobook.title;
+            const author = audiobook.bplAuthor || audiobook.author;
+            const narrator = audiobook.narrator || 'Unknown narrator';
+            const copies = audiobook.availableCopies
+                ? `${audiobook.availableCopies} of ${audiobook.ownedCopies} copies`
+                : 'Available';
+
+            // Description from AudioFile review or BPL
+            let description = audiobook.review || audiobook.bplDescription || '';
+            description = description.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ').substring(0, 300);
+            if (description.length === 300) description += '...';
+
+            const rating = audiobook.starRating;
+            const ratingCount = audiobook.starRatingCount || 0;
+            const genre = audiobook.genre || '';
+            const year = audiobook.year || '';
+            const duration = audiobook.duration ? `${audiobook.duration} hrs` : '';
+            const bookId = `${title}-${author}`.replace(/[^a-z0-9]/gi, '_');
+
+            // Check if already listened
+            const isListened = listenedBooks.some(b => b.title === title && b.author === author);
+
+            // Borrow URL for audiobooks
+            const borrowUrl = `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(title)}`;
+
+            return `
+                <div class="book-card audiobook-card" id="audiobook-${bookId}">
+                    <div class="book-cover-wrapper">
+                        <span class="recommendation-badge" style="background: #5856d6;">🎧 Audiobook</span>
+                        <div class="audiobook-placeholder">
+                            <div class="audiobook-title-small">${title}</div>
+                            <div class="audiobook-icon">🎧</div>
+                            <div class="audiobook-label">(Audiobook)</div>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">${title}</h3>
+                        <p class="book-author">by ${author}</p>
+                        <p class="audiobook-narrator">Narrated by ${narrator}</p>
+                        ${rating ? `
+                            <div class="book-rating">
+                                <span class="stars">${renderStars(rating)}</span>
+                                <span class="rating-value">${rating.toFixed(1)}</span>
+                                <span class="rating-source">OverDrive (${ratingCount})</span>
+                            </div>
+                        ` : ''}
+                        <div class="book-availability">${copies}${duration ? ` • ${duration}` : ''}</div>
+                        <p class="book-description">${description || 'Award-winning audiobook narration.'}</p>
+                        ${genre ? `
+                            <div class="book-tags">
+                                <span class="book-tag">${genre}</span>
+                                ${year ? `<span class="book-tag">${year}</span>` : ''}
+                            </div>
+                        ` : ''}
+                        <div class="book-actions">
+                            <a href="${borrowUrl}" target="_blank" class="btn-borrow">🎧 Listen</a>
+                            <a href="${getThriftbooksUrl(title, author)}" target="_blank" class="btn-thrift">💚 Buy</a>
+                            <a href="${audiobook.url || '#'}" target="_blank" class="btn-goodreads">AudioFile</a>
+                            <button class="btn-read ${isListened ? 'read' : ''}" onclick="handleListenedClick(this, ${JSON.stringify({title, author, narrator, genre, year}).replace(/"/g, '&quot;')})">
+                                ${isListened ? '✓ Heard' : 'Heard It'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Handle "Heard It" button for audiobooks
+        function handleListenedClick(btn, audiobook) {
+            const isListened = listenedBooks.some(b => b.title === audiobook.title && b.author === audiobook.author);
+            if (isListened) {
+                // Remove from listened
+                const index = listenedBooks.findIndex(b => b.title === audiobook.title && b.author === audiobook.author);
+                if (index > -1) {
+                    listenedBooks.splice(index, 1);
+                    saveListenedBooks();
+                    showToast(`"${audiobook.title}" unmarked as heard`);
+                    btn.textContent = 'Heard It';
+                    btn.classList.remove('read');
+                }
+            } else {
+                // Add to listened
+                listenedBooks.push({...audiobook, listenedAt: new Date().toISOString()});
+                saveListenedBooks();
+                showToast(`"${audiobook.title}" marked as heard`);
+                btn.textContent = '✓ Heard';
+                btn.classList.add('read');
+            }
+        }
+
+        // Save/load listened audiobooks
+        function loadListenedBooks() {
+            try {
+                const saved = localStorage.getItem('bookListenedBooks');
+                listenedBooks = saved ? JSON.parse(saved) : [];
+            } catch (e) {
+                listenedBooks = [];
+            }
+        }
+
+        function saveListenedBooks() {
+            localStorage.setItem('bookListenedBooks', JSON.stringify(listenedBooks));
+        }
+
+        // Enrich book descriptions with Google Books API (async, updates UI when ready)
+        async function enrichBookDescriptions(books) {
+            for (const book of books) {
+                const isbn = book.cover || book.isbn;
+                const key = `${book.title}-${book.author}`.toLowerCase();
+                const availableData = availableBooks[key] || {};
+
+                // Skip if we already have a good description (> 200 chars)
+                const existingDesc = enrichedDescriptions[isbn] ||
+                                     enrichedDescriptions[`${book.title}-${book.author}`] ||
+                                     availableData.description || '';
+                if (existingDesc.replace(/<[^>]*>/g, '').length > 200) continue;
+
+                // Fetch from Google Books
+                const googleDesc = await fetchGoogleBooksDescription(isbn, book.title, book.author);
+                if (googleDesc && googleDesc.length > existingDesc.length) {
+                    // Update the UI
+                    const bookId = `${book.title}-${book.author}`.replace(/[^a-z0-9]/gi, '_');
+                    const descEl = document.getElementById(`desc-${bookId}`);
+                    if (descEl) {
+                        descEl.textContent = googleDesc.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ');
+                    }
+                }
+            }
+        }
+
+        // Handle save button click
+        function handleSaveClick(btn, book) {
+            if (addToReadingList(book)) {
+                btn.textContent = '✓ Saved';
+                btn.classList.add('saved');
+            }
+        }
+
+        // Handle read button click
+        function handleReadClick(btn, book) {
+            if (hasBeenRead(book.title, book.author)) {
+                // Already read - unmark it
+                unmarkAsRead(book.title, book.author);
+                btn.textContent = 'Already Read';
+                btn.classList.remove('read');
+            } else {
+                // Mark as read
+                if (markAsRead(book)) {
+                    btn.textContent = '✓ Read';
+                    btn.classList.add('read');
+                    // Also update save button if visible
+                    const card = btn.closest('.book-card');
+                    const saveBtn = card?.querySelector('.btn-save');
+                    if (saveBtn && saveBtn.classList.contains('saved')) {
+                        saveBtn.textContent = '+ Save';
+                        saveBtn.classList.remove('saved');
+                    }
+                }
+            }
+        }
+
+        // Render book cards
+        function renderBooks(books, isPersonalized = false) {
+            const grid = document.getElementById('bookGrid');
+            const status = document.getElementById('statusMessage');
+            const banner = document.getElementById('recommendationBanner');
+            const bannerReason = document.getElementById('recommendationReason');
+
+            if (books.length === 0) {
+                grid.innerHTML = '';
+                banner.classList.remove('show');
+                status.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No books found</h3>
+                        <p>Try a different year or genre combination.</p>
+                    </div>
+                `;
+                status.style.display = 'block';
+                return;
+            }
+
+            // Show/hide recommendation banner
+            if (isPersonalized && (readingList.length + readBooks.length) >= 2) {
+                const preferences = analyzeReadingPreferences();
+                bannerReason.textContent = getRecommendationReason(preferences);
+                banner.classList.add('show');
+            } else {
+                banner.classList.remove('show');
+            }
+
+            status.style.display = 'none';
+            grid.innerHTML = books.map(book => createBookCard(book, false, isPersonalized)).join('');
+
+            // Enrich descriptions in background
+            enrichBookDescriptions(books);
+        }
+
+        // Render reading list (includes both want-to-read and already-read)
+        function renderReadingList() {
+            const grid = document.getElementById('readingListGrid');
+            const empty = document.getElementById('emptyReadingList');
+            const readGrid = document.getElementById('readBooksGrid');
+            const readHeader = document.getElementById('readBooksHeader');
+
+            // Render want-to-read list
+            if (readingList.length === 0) {
+                grid.innerHTML = '';
+                empty.style.display = 'block';
+            } else {
+                empty.style.display = 'none';
+                grid.innerHTML = readingList.map(book => createBookCard(book, true)).join('');
+            }
+
+            // Render already-read list
+            if (readBooks.length === 0) {
+                readGrid.innerHTML = '';
+                readHeader.style.display = 'none';
+            } else {
+                readHeader.style.display = 'block';
+                readGrid.innerHTML = readBooks.map(book => createReadBookCard(book)).join('');
+            }
+            updateReadBooksCount();
+        }
+
+        // Create card for already-read book
+        function createReadBookCard(book) {
+            const key = `${book.title}-${book.author}`.toLowerCase();
+            const availableData = availableBooks[key] || {};
+            const rating = availableData.goodreadsRating || book.goodreadsRating;
+            const displayTags = (book.tags || [])
+                .filter(t => !['seriously great writing', 'fiction', 'nonfiction', 'rather short', 'rather long'].includes(t.toLowerCase()))
+                .slice(0, 3);
+            const bookId = `${book.title}-${book.author}`.replace(/[^a-z0-9]/gi, '_');
+
+            return `
+                <div class="book-card" id="read-card-${bookId}">
+                    <div class="book-cover-wrapper">
+                        <span class="recommendation-badge" style="background: #34c759;">✓ Read</span>
+                        <img class="book-cover"
+                            src="${getCoverUrl(book.cover || book.isbn, book.year || '2025')}"
+                            alt="${book.title}"
+                            data-title="${book.title.replace(/"/g, '&quot;')}"
+                            onerror="this.onerror=null; this.src=getPlaceholderCover(this.dataset.title)">
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">by ${book.author}</p>
+                        ${showRatings && rating ? `
+                            <div class="book-rating">
+                                <span class="stars">${renderStars(rating)}</span>
+                                <span class="rating-value">${rating.toFixed(1)}</span>
+                            </div>
+                        ` : ''}
+                        ${displayTags.length > 0 ? `
+                            <div class="book-tags">
+                                ${displayTags.map(t => `<span class="book-tag">${t}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                        <div class="book-actions">
+                            <a href="${getGoodreadsUrl(book.title, book.author)}" target="_blank" class="btn-goodreads">Reviews</a>
+                            <button class="btn-remove" onclick="unmarkAsRead('${book.title.replace(/'/g, "\\'")}', '${book.author.replace(/'/g, "\\'")}')">Unmark</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Main spin function
+        async function spin() {
+            const button = document.getElementById('spinButton');
+            const status = document.getElementById('statusMessage');
+            const year = document.getElementById('yearSelect').value;
+            const genre = document.getElementById('genreSelect').value;
+            const isPersonalized = personalizedMode && (readingList.length + readBooks.length) >= 2;
+
+            if (isLoading) return;
+            isLoading = true;
+
+            button.disabled = true;
+            button.textContent = 'Finding...';
+
+            // Handle audiobook mode
+            if (currentMode === 'listen') {
+                status.textContent = 'Finding award-winning audiobooks...';
+                status.className = 'status-message loading';
+                status.style.display = 'block';
+                document.getElementById('bookGrid').innerHTML = '';
+                document.getElementById('recommendationBanner').classList.remove('show');
+
+                try {
+                    // Filter audiobooks by year and genre
+                    let filtered = availableAudiobooks.filter(book => {
+                        // Filter by year
+                        if (year && year !== 'all' && book.year != year) return false;
+                        // Filter by genre
+                        if (genre && book.genre !== genre) return false;
+                        // Exclude already listened
+                        if (listenedBooks.some(b => b.title === (book.bplTitle || book.title) && b.author === (book.bplAuthor || book.author))) return false;
+                        return true;
+                    });
+
+                    // Shuffle and take 3
+                    const shuffled = [...filtered].sort(() => Math.random() - 0.5);
+                    const selection = shuffled.slice(0, 3);
+
+                    // Small delay for effect
+                    await new Promise(r => setTimeout(r, 500));
+
+                    // Render audiobooks
+                    renderAudiobooks(selection);
+
+                    button.textContent = '🔄 Spin Again';
+                } catch (e) {
+                    status.textContent = 'Something went wrong. Please try again.';
+                    status.className = 'status-message';
+                    button.textContent = '🎧 Find Audiobooks';
+                }
+
+                button.disabled = false;
+                isLoading = false;
+                return;
+            }
+
+            // Regular book mode
+            status.textContent = isPersonalized
+                ? 'Finding personalized picks for you...'
+                : 'Searching for your perfect books...';
+            status.className = 'status-message loading';
+            status.style.display = 'block';
+            document.getElementById('bookGrid').innerHTML = '';
+            document.getElementById('recommendationBanner').classList.remove('show');
+
+            try {
+                const books = await fetchBooksForYear(year);
+                const filtered = filterBooks(books, genre);
+                const selection = getRandomBooks(filtered, 3, isPersonalized);
+
+                // Small delay for effect
+                await new Promise(r => setTimeout(r, 500));
+
+                renderBooks(selection, isPersonalized);
+
+                button.textContent = '🔄 Spin Again';
+            } catch (e) {
+                status.textContent = 'Something went wrong. Please try again.';
+                status.className = 'status-message';
+                button.textContent = '✨ Find Books';
+            }
+
+            button.disabled = false;
+            isLoading = false;
+        }
+
+        // Render audiobook cards
+        function renderAudiobooks(audiobooks) {
+            const grid = document.getElementById('bookGrid');
+            const status = document.getElementById('statusMessage');
+
+            if (audiobooks.length === 0) {
+                grid.innerHTML = '';
+                status.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No audiobooks found</h3>
+                        <p>Try a different year or genre combination.</p>
+                    </div>
+                `;
+                status.style.display = 'block';
+                return;
+            }
+
+            status.style.display = 'none';
+            grid.innerHTML = audiobooks.map(book => createAudiobookCard(book)).join('');
+        }
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                btn.classList.add('active');
+                document.getElementById(`${btn.dataset.tab}-tab`).classList.add('active');
+
+                if (btn.dataset.tab === 'reading-list') {
+                    renderReadingList();
+                } else if (btn.dataset.tab === 'chat') {
+                    initializeChat();
+                }
+            });
+        });
+
+        // Clear reading list
+        document.getElementById('clearListBtn').addEventListener('click', () => {
+            if (readingList.length > 0 && confirm('Clear your entire reading list?')) {
+                readingList = [];
+                saveReadingList();
+                renderReadingList();
+                showToast('Reading list cleared');
+            }
+        });
+
+        // Load settings from localStorage
+        function loadSettings() {
+            try {
+                const savedShowRatings = localStorage.getItem('showRatings');
+                const savedPersonalized = localStorage.getItem('personalizedMode');
+                const savedSGW = localStorage.getItem('seriouslyGreatWriting');
+
+                showRatings = savedShowRatings !== 'false'; // default true
+                personalizedMode = savedPersonalized === 'true'; // default false
+                seriouslyGreatWriting = savedSGW !== 'false'; // default true
+
+                document.getElementById('showRatings').checked = showRatings;
+                document.getElementById('personalizedMode').checked = personalizedMode;
+                document.getElementById('seriouslyGreatWriting').checked = seriouslyGreatWriting;
+            } catch (e) {
+                console.log('Error loading settings');
+            }
+        }
+
+        // Save settings to localStorage
+        function saveSettings() {
+            localStorage.setItem('showRatings', showRatings);
+            localStorage.setItem('personalizedMode', personalizedMode);
+            localStorage.setItem('seriouslyGreatWriting', seriouslyGreatWriting);
+        }
+
+        // Toggle event listeners
+        document.getElementById('seriouslyGreatWriting').addEventListener('change', function() {
+            seriouslyGreatWriting = this.checked;
+            saveSettings();
+        });
+
+        document.getElementById('showRatings').addEventListener('change', function() {
+            showRatings = this.checked;
+            saveSettings();
+            // Re-render current books if any are displayed
+            const grid = document.getElementById('bookGrid');
+            if (grid.children.length > 0) {
+                spin();
+            }
+        });
+
+        document.getElementById('personalizedMode').addEventListener('change', function() {
+            personalizedMode = this.checked;
+            saveSettings();
+
+            const totalUserBooks = readingList.length + readBooks.length;
+            if (personalizedMode && totalUserBooks < 2) {
+                showToast('Save or mark at least 2 books to enable personalized picks');
+                this.checked = false;
+                personalizedMode = false;
+                saveSettings();
+            }
+        });
+
+        // Mode toggle handlers
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const mode = btn.dataset.mode;
+
+                if (btn.classList.contains('disabled')) {
+                    showToast('Coming soon! We\'re working on it.');
+                    return;
+                }
+
+                // Switch modes
+                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentMode = mode;
+
+                // Update UI for mode
+                updateModeUI();
+
+                // Clear current results
+                document.getElementById('bookGrid').innerHTML = '';
+                document.getElementById('statusMessage').textContent = mode === 'listen'
+                    ? 'Click "Find Audiobooks" to discover award-winning listens!'
+                    : 'Select your preferences and click "Find Books" to discover your next great read.';
+                document.getElementById('statusMessage').style.display = 'block';
+                document.getElementById('recommendationBanner').classList.remove('show');
+            });
+        });
+
+        // Update UI based on current mode
+        function updateModeUI() {
+            const spinBtn = document.getElementById('spinButton');
+            const selectionPanel = document.querySelector('.selection-panel');
+            const yearSelect = document.getElementById('yearSelect');
+            const genreSelect = document.getElementById('genreSelect');
+            const seriouslyGreatToggle = document.getElementById('seriouslyGreatWriting');
+            const personalizedToggle = document.getElementById('personalizedMode');
+
+            if (currentMode === 'listen') {
+                spinBtn.textContent = '🎧 Find Audiobooks';
+                // Hide book-specific controls for audiobooks
+                if (seriouslyGreatToggle) seriouslyGreatToggle.closest('.toggle-group')?.style.setProperty('display', 'none');
+                // Update genre options for audiobooks
+                genreSelect.innerHTML = `
+                    <option value="">All Genres</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Biography & Memoir">Biography & Memoir</option>
+                    <option value="Mystery & Suspense">Mystery & Suspense</option>
+                    <option value="Science Fiction & Fantasy">Sci-Fi & Fantasy</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Young Adult">Young Adult</option>
+                    <option value="Children & Family">Children</option>
+                    <option value="Nonfiction & Culture">Nonfiction</option>
+                `;
+                // Update year options for audiobooks (2022-2024)
+                yearSelect.innerHTML = `
+                    <option value="all">All Years</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                `;
+            } else {
+                spinBtn.textContent = '✨ Find Books';
+                // Show book-specific controls
+                if (seriouslyGreatToggle) seriouslyGreatToggle.closest('.toggle-group')?.style.setProperty('display', 'flex');
+                // Restore genre options for books
+                genreSelect.innerHTML = `
+                    <option value="">All Genres</option>
+                    <option value="memoir">Memoir</option>
+                    <option value="essays">Essays</option>
+                    <option value="true crime">True Crime</option>
+                    <option value="biography">Biography</option>
+                    <option value="thrillers">Thrillers</option>
+                    <option value="historical fiction">Historical Fiction</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="sci-fi + fantasy">Sci-Fi & Fantasy</option>
+                    <option value="romance + erotica">Romance</option>
+                    <option value="poetry">Poetry</option>
+                    <option value="science + health">Science</option>
+                    <option value="short stories">Short Stories</option>
+                `;
+                // Restore year options for books
+                yearSelect.innerHTML = `
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                `;
+            }
+        }
+
+        // ==================== Chat Functionality ====================
+        let chatMessages = [];
+        let chatInitialized = false;
+        let isChatLoading = false;
+
+        // Get available books for chat context
+        function getAvailableBooksForChat() {
+            // Combine available books with reading list data for richer recommendations
+            const books = Object.values(availableBooks).map(book => ({
+                title: book.title,
+                author: book.author,
+                tags: book.tags || [],
+                goodreadsRating: book.goodreadsRating,
+                description: book.description,
+                borrowUrl: `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(book.title)}`
+            }));
+            return books;
+        }
+
+        // Convert markdown to HTML for chat messages
+        function formatChatMessage(content) {
+            return content
+                // Bold: **text**
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                // Italic: *text*
+                .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                // Links: [text](url)
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+                // Line breaks
+                .replace(/\n/g, '<br>');
+        }
+
+        // Render chat messages
+        function renderChatMessages() {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = chatMessages.map(msg => `
+                <div class="chat-message ${msg.role}">
+                    ${msg.role === 'assistant' ? formatChatMessage(msg.content) : msg.content}
+                </div>
+            `).join('');
+
+            // Scroll to bottom
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Add thinking indicator
+        function showThinking() {
+            const container = document.getElementById('chatMessages');
+            const thinkingDiv = document.createElement('div');
+            thinkingDiv.className = 'chat-message thinking';
+            thinkingDiv.id = 'thinkingIndicator';
+            thinkingDiv.textContent = 'Thinking';
+            container.appendChild(thinkingDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Remove thinking indicator
+        function hideThinking() {
+            const thinkingEl = document.getElementById('thinkingIndicator');
+            if (thinkingEl) {
+                thinkingEl.remove();
+            }
+        }
+
+        // Send message to chat API
+        async function sendChatMessage(userMessage) {
+            if (isChatLoading || !userMessage.trim()) return;
+
+            isChatLoading = true;
+            const sendBtn = document.getElementById('chatSendBtn');
+            const input = document.getElementById('chatInput');
+            sendBtn.disabled = true;
+            input.disabled = true;
+
+            // Add user message
+            chatMessages.push({ role: 'user', content: userMessage });
+            renderChatMessages();
+            input.value = '';
+
+            showThinking();
+
+            try {
+                // Prepare messages for API (Claude format)
+                const apiMessages = chatMessages.map(msg => ({
+                    role: msg.role,
+                    content: msg.content
+                }));
+
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        messages: apiMessages,
+                        availableBooks: getAvailableBooksForChat()
+                    })
+                });
+
+                hideThinking();
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to get response');
+                }
+
+                // Add assistant response
+                chatMessages.push({ role: 'assistant', content: data.message });
+                renderChatMessages();
+
+            } catch (error) {
+                hideThinking();
+                console.error('Chat error:', error);
+
+                // Show error message
+                chatMessages.push({
+                    role: 'assistant',
+                    content: `Sorry, I encountered an error: ${error.message}. Please make sure the server is running with a valid ANTHROPIC_API_KEY.`
+                });
+                renderChatMessages();
+            }
+
+            isChatLoading = false;
+            sendBtn.disabled = false;
+            input.disabled = false;
+            input.focus();
+        }
+
+        // Initialize chat with greeting
+        async function initializeChat() {
+            if (chatInitialized) return;
+
+            chatMessages = [];
+            isChatLoading = true;
+            const sendBtn = document.getElementById('chatSendBtn');
+            const input = document.getElementById('chatInput');
+            sendBtn.disabled = true;
+            input.disabled = true;
+
+            showThinking();
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        messages: [{ role: 'user', content: 'Hello! I\'m looking for book recommendations.' }],
+                        availableBooks: getAvailableBooksForChat()
+                    })
+                });
+
+                hideThinking();
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to connect');
+                }
+
+                // Add initial exchange to history
+                chatMessages.push({ role: 'user', content: 'Hello! I\'m looking for book recommendations.' });
+                chatMessages.push({ role: 'assistant', content: data.message });
+                renderChatMessages();
+
+                chatInitialized = true;
+
+            } catch (error) {
+                hideThinking();
+                console.error('Chat init error:', error);
+
+                chatMessages.push({
+                    role: 'assistant',
+                    content: `Hi! I'd love to help you find your next great read, but I'm having trouble connecting. Please make sure:\n\n1. The server is running (npm run serve)\n2. ANTHROPIC_API_KEY is set in your environment\n\nError: ${error.message}`
+                });
+                renderChatMessages();
+            }
+
+            isChatLoading = false;
+            sendBtn.disabled = false;
+            input.disabled = false;
+            input.focus();
+        }
+
+        // Chat event listeners
+        document.getElementById('chatSendBtn').addEventListener('click', () => {
+            const input = document.getElementById('chatInput');
+            sendChatMessage(input.value);
+        });
+
+        document.getElementById('chatInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                const input = document.getElementById('chatInput');
+                sendChatMessage(input.value);
+            }
+        });
+
+        // Initialize
+        document.getElementById('spinButton').addEventListener('click', spin);
+        loadReadingList();
+        loadReadBooks();
+        loadListenedBooks();
+        loadSettings();
+        loadAvailableBooks();
+    </script>
+</body>
+</html>

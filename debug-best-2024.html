@@ -1,0 +1,1862 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"NRJS-fa7739ac117287c8f48","applicationID":"1612339735","transactionName":"NlxSZEIFXxVXVkNaDQ8WfWZzS3MDRUF4VSEOV0RCXwhdA0Qafl0GBEE=","queueTime":0,"applicationTime":23,"agent":"","atts":""}</script><script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},ajax:{deny_list:["bam.nr-data.net"]},feature_flags:["soft_nav"],distributed_tracing:{enabled:true}};(window.NREUM||(NREUM={})).loader_config={agentID:"1612493557",accountID:"2839053",trustKey:"2839053",xpid:"Vg4EWFZWCxABUlBQBAIOUVcE",licenseKey:"NRJS-fa7739ac117287c8f48",applicationID:"1612339735",browserID:"1612493557"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(31),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(32),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError";if(!c.disabled){var l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(14),t(13),"addEventListener"in window&&t(7),c.xhrWrappable&&t(15),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(){U++,L=g.hash,this[u]=y.now()}function o(){U--,g.hash!==L&&i(0,!0);var t=y.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+g,e])}function a(t,e){t.on(e,function(){this[e]=y.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,g=w.location,y=t("loader");if(w[v]&&y.xhrWrappable&&!y.disabled){var x=t(11),b=t(12),E=t(9),R=t(7),O=t(14),T=t(8),S=t(15),P=t(10),M=t("ee"),C=M.get("tracer"),N=t(23);t(17),y.features.spa=!0;var L,U=0;M.on(u,r),b.on(p,r),P.on(p,r),M.on(d,o),b.on(l,o),P.on(l,o),M.buffer([u,d,"xhr-resolved"]),R.buffer([u]),O.buffer(["setTimeout"+c,"clearTimeout"+s,u]),S.buffer([u,"new-xhr","send-xhr"+s]),T.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),x.buffer([u]),b.buffer(["propagate",p,l,"executor-err","resolve"+s]),C.buffer([u,"no-"+u]),P.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,m+s),a(T,m+"-done"),a(P,"new-jsonp"),a(P,"jsonp-end"),a(P,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,N(!0)),w[v]("load",i,N(!0)),w[v]("popstate",function(){i(0,U>1)},N(!0))}},{}],5:[function(t,e,n){function r(){var t=new PerformanceObserver(function(t,e){var n=t.getEntries();s(v,[n])});try{t.observe({entryTypes:["resource"]})}catch(e){}}function o(t){if(s(v,[window.performance.getEntriesByType(w)]),window.performance["c"+p])try{window.performance[h](m,o,!1)}catch(t){}else try{window.performance[h]("webkit"+m,o,!1)}catch(t){}}function i(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var a=t("ee"),s=t("handle"),c=t(14),f=t(13),u=t(6),d=t(23),p="learResourceTimings",l="addEventListener",h="removeEventListener",m="resourcetimingbufferfull",v="bstResource",w="resource",g="-start",y="-end",x="fn"+g,b="fn"+y,E="bstTimer",R="pushState",O=t("loader");if(!O.disabled){O.features.stn=!0,t(9),"addEventListener"in window&&t(7);var T=NREUM.o.EV;a.on(x,function(t,e){var n=t[0];n instanceof T&&(this.bstStart=O.now())}),a.on(b,function(t,e){var n=t[0];n instanceof T&&s("bst",[n,e,this.bstStart,O.now()])}),c.on(x,function(t,e,n){this.bstStart=O.now(),this.bstType=n}),c.on(b,function(t,e){s(E,[e,this.bstStart,O.now(),this.bstType])}),f.on(x,function(){this.bstStart=O.now()}),f.on(b,function(t,e){s(E,[e,this.bstStart,O.now(),"requestAnimationFrame"])}),a.on(R+g,function(t){this.time=O.now(),this.startPath=location.pathname+location.hash}),a.on(R+y,function(t){s("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),u()?(s(v,[window.performance.getEntriesByType("resource")]),r()):l in window.performance&&(window.performance["c"+p]?window.performance[l](m,o,d(!1)):window.performance[l]("webkit"+m,o,d(!1))),document[l]("scroll",i,d(!1)),document[l]("keypress",i,d(!1)),document[l]("click",i,d(!1))}}},{}],6:[function(t,e,n){e.exports=function(){return"PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver}},{}],7:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1];if(null!==n&&("function"==typeof n||"object"==typeof n)){var r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],8:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=i(arguments),e={};o.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return o.emit(n+"start",[t,a],s),s.then(function(t){return o.emit(n+"end",[null,t],s),t},function(t){throw o.emit(n+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(32),a=t(31);e.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,p=s.Response,l=s.fetch,h="prototype",m="nr@context";d&&p&&l&&(a(u,function(t,e){r(d[h],e,f),r(p[h],e,f)}),r(s,"fetch",c),o.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(c+"done",[null,e],n)}else o.emit(c+"done",[t],n)}))},{}],9:[function(t,e,n){var r=t("ee").get("history"),o=t("wrap-function")(r);e.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],10:[function(t,e,n){function r(t){function e(){f.emit("jsonp-end",[],l),t.removeEventListener("load",e,c(!1)),t.removeEventListener("error",n,c(!1))}function n(){f.emit("jsonp-error",[],l),f.emit("jsonp-end",[],l),t.removeEventListener("load",e,c(!1)),t.removeEventListener("error",n,c(!1))}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var d=s(a),p="function"==typeof d.parent[d.key];if(p){var l={};u.inPlace(d.parent,[d.key],"cb-",l),t.addEventListener("load",e,c(!1)),t.addEventListener("error",n,c(!1)),f.emit("new-jsonp",[t.src],l)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(d);return e?e[1]:null}function a(t,e){var n=t.match(l),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(p);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t(23),f=t("ee").get("jsonp"),u=t("wrap-function")(f);if(e.exports=f,o()){var d=/[?&](?:callback|cb)=([^&#]+)/,p=/(.*)\.([^.]+)/,l=/^(\w+)(\.|$)(.*)$/,h=["appendChild","insertBefore","replaceChild"];Node&&Node.prototype&&Node.prototype.appendChild?u.inPlace(Node.prototype,h,"dom-"):(u.inPlace(HTMLElement.prototype,h,"dom-"),u.inPlace(HTMLHeadElement.prototype,h,"dom-"),u.inPlace(HTMLBodyElement.prototype,h,"dom-")),f.on("dom-start",function(t){r(t[0])})}},{}],11:[function(t,e,n){var r=t("ee").get("mutation"),o=t("wrap-function")(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],12:[function(t,e,n){function r(t){var e=i.context(),n=s(t,"executor-",e,null,!1),r=new f(n);return i.context(r).getCtx=function(){return e},r}var o=t("wrap-function"),i=t("ee").get("promise"),a=t("ee").getOrSetContext,s=o(i),c=t(31),f=NREUM.o.PR;e.exports=i,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){i.emit("propagate",[null,!o],a,!1,!1),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var a=e.apply(f,arguments),s=f.resolve(a);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&i.emit("propagate",[t,!0],n,!1,!1),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),o.wrapInPlace(f.prototype,"then",function(t){return function(){var e=this,n=o.argsToArray.apply(this,arguments),r=a(e);r.promise=e,n[0]=s(n[0],"cb-",r,null,!1),n[1]=s(n[1],"cb-",r,null,!1);var c=t.apply(this,n);return r.nextPromise=c,i.emit("propagate",[e,!0],c,!1,!1),c}}),i.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this,null,!1),t[1]=s(t[1],"resolve-",this,null,!1)}),i.on("executor-err",function(t,e,n){t[1](n)}),i.on("cb-end",function(t,e,n){i.emit("propagate",[n,!0],this.nextPromise,!1,!1)}),i.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=i.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],13:[function(t,e,n){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],14:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],15:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){x.push(t),m&&(E?E.then(a):w?w(a):(R=-R,O.data=R))}function a(){for(var t=0;t<x.length;t++)r([],x[t]);x.length&&(x=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(7);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),p=t(23),l=NREUM.o,h=l.XHR,m=l.MO,v=l.PR,w=l.SI,g="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],x=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,o,p(!1))}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(h,b),b.prototype=h.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),m){var E=v&&v.resolve();if(!w&&!v){var R=1,O=document.createTextNode(R);new m(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],16:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=l.generateSpanId(),m=l.generateTraceId(),v=Date.now(),w={spanId:h,traceId:m,timestamp:v};return(t.sameOrigin||c(t)&&p())&&(w.traceContextParentHeader=o(h,m),w.traceContextStateHeader=i(h,v,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(w.newrelicHeader=a(h,m,v,n,r,f)),w}function o(t,e){return"00-"+e+"-"+t+"-01"}function i(t,e,n,r,o){var i=0,a="",s=1,c="",f="";return o+"@nr="+i+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:e,ti:n}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var o=h(n.allowed_origins[r]);if(t.hostname===o.hostname&&t.protocol===o.protocol&&t.port===o.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function p(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var l=t(28),h=t(18);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],17:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(d[r],this.listener,!1);return e.protocol&&"data"===e.protocol?void g("Ajax/DataUrl/Excluded"):void(e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):i(this,t),n.cbTime=this.cbTime,s("xhr",[e,n,this.startTime,this.endTime,"xhr"],this)))}}function o(t,e){var n=c(e),r=t.params;r.hostname=n.hostname,r.port=n.port,r.protocol=n.protocol,r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function i(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(18),f=t(16).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],p=d.length,l=t("id"),h=t(24),m=t(22),v=t(19),w=t(23),g=t(25).recordSupportability,y=NREUM.o.REQ,x=window.XMLHttpRequest;a.features.xhr=!0,t(15),t(8),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){i(e,t)},w(!1)),h&&(h>34||h<10)||t.addEventListener("progress",function(t){e.lastSize=t.loaded},w(!1))}),u.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=m(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<p;s++)e.addEventListener(d[s],this.listener,w(!1))}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("xhr-resolved",function(){this.endTime=a.now()}),u.on("addEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof x&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var o=f(this.parsedOrigin);if(o&&(o.newrelicHeader||o.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var i={};for(var a in r)i[a]=r[a];i.headers=new Headers(r.headers||{}),e(i.headers,o)&&(this.dt=o),t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&e(t[0].headers,o)&&(this.dt=o)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),this.dt=e,t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},i=this.target;if("string"==typeof i?n=i:"object"==typeof i&&i instanceof y?n=i.url:window.URL&&"object"==typeof i&&i instanceof URL&&(n=i.href),o(this,n),"data"!==this.params.protocol){var s=(""+(i&&i instanceof y&&i.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}}),u.on("fetch-done",function(t,e){if(this.endTime=a.now(),this.params||(this.params={}),"data"===this.params.protocol)return void g("Ajax/DataUrl/Excluded");this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime,this.endTime,"fetch"],this)})}},{}],18:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];if(0===(t||"").indexOf("data:"))return{protocol:"data"};var e=document.createElement("a"),n=window.location,o={};e.href=t,o.port=e.port;var i=e.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=e.hostname||n.hostname,o.pathname=e.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return o.sameOrigin=a&&(!e.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],19:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?o(t.response):"text"===n||""===n||void 0===n?o(t.responseText):void 0}var o=t(22);e.exports=r},{}],20:[function(t,e,n){function r(){}function o(t,e,n,r){return function(){return u.recordSupportability("API/"+e+"/called"),i(t+e,[f.now()].concat(s(arguments)),n?null:this,r),n?void 0:this}}var i=t("handle"),a=t(31),s=t(32),c=t("ee").get("tracer"),f=t("loader"),u=t(25),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",h=l+"ixn-";a(p,function(t,e){d[e]=o(l,e,!0,"api")}),d.addPageAction=o(l,"addPageAction",!0),d.setCurrentRouteName=o(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(h+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=o(h,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),u.recordSupportability("API/noticeError/called"),i("err",[t,f.now(),!1,e])}},{}],21:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],22:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],23:[function(t,e,n){var r=!1;try{var o=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,o),window.removeEventListener("testPassive",null,o)}catch(i){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],24:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],25:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return i("storeMetric",n,null,"api"),n}function o(t,e){var n=[s,t,{name:t},e];return i("storeEventMetrics",n,null,"api"),n}var i=t("handle"),a="sm",s="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:s},recordSupportability:r,recordCustom:o}},{}],26:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(i=Math.max((new Date).getTime(),i))-a}function o(){return i}var i=(new Date).getTime(),a=i,s=t(33);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=o},{}],27:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function o(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(f&&f<r.startTime)return;var o=[r],i=a({});i&&o.push(i),l("lcp",o)}}function i(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function s(t){if(t instanceof w&&!y){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=h.now()?n.fid=h.now()-e:e>h.offset&&e<=Date.now()?(e-=h.offset,n.fid=h.now()-e):e=h.now(),y=!0,l("timing",["fi",e,n])}}function c(t){"hidden"===t&&(f=h.now(),l("pageHide",[f]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,d,p,l=t("handle"),h=t("loader"),m=t(30),v=t(23),w=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){u=new PerformanceObserver(r);try{u.observe({entryTypes:["paint"]})}catch(g){}d=new PerformanceObserver(o);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(g){}p=new PerformanceObserver(i);try{p.observe({type:"layout-shift",buffered:!0})}catch(g){}}if("addEventListener"in document){var y=!1,x=["click","keydown","mousedown","pointerdown","touchstart"];x.forEach(function(t){document.addEventListener(t,s,v(!1))})}m(c)}},{}],28:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){return a(16)}function i(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,o=window.crypto||window.msCrypto;o&&o.getRandomValues&&Uint8Array&&(n=o.getRandomValues(new Uint8Array(t)));for(var i=[],a=0;a<t;a++)i.push(e().toString(16));return i.join("")}e.exports={generateUuid:r,generateSpanId:o,generateTraceId:i}},{}],29:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],30:[function(t,e,n){function r(t){function e(){t(s&&document[s]?document[s]:document[i]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,o(!1))}var o=t(23);e.exports=r;var i,a,s;"undefined"!=typeof document.hidden?(i="hidden",a="visibilitychange",s="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",a="webkitvisibilitychange",s="webkitVisibilityState")},{}],31:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],32:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],33:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,o,i,a){if(a!==!1&&(a=!0),!l.aborted||i){t&&a&&t(n,r,o);for(var s=e(o),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var p=d[y[n]];return p&&p.push([x,n,r,s]),s}}function i(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return p[t]=p[t]||o(n)}function w(t,e){l.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:i,addEventListener:i,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:s,aborted:!1};return x}function i(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",f=t("gos"),u=t(31),d={},p={},l=e.exports=o();e.exports.getOrSetContext=i,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!T++){var t=O.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+O.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function o(){"complete"===m.readyState&&i()}function i(){s("mark",["domContent",a()+O.offset],null,"api")}var a=t(26),s=t("handle"),c=t(31),f=t("ee"),u=t(29),d=t(21),p=t(23),l=d.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,v="addEventListener",w="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!1;NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1216.min.js"},R=g&&y&&y[v]&&!/CriOS/.test(navigator.userAgent),O=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(20),t(27),m[v]?(m[v]("DOMContentLoaded",i,p(!1)),h[v]("load",r,p(!1))):(m[w]("onreadystatechange",o),h[w]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var T=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var i,a,u,p;try{a=this,i=d(arguments),u="function"==typeof r?r(i,a):r||{}}catch(l){o([l,"",[i,a,c],u],t)}s(n+"start",[i,a,c],u,f);try{return p=e.apply(a,i)}catch(h){throw s(n+"err",[i,a,h],u,f),h}finally{s(n+"end",[i,a,p],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,i(e,nrWrapper,t),nrWrapper)}function r(t,e,r,o,i){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,o,c,i))}function s(n,r,i,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,i,e,a)}catch(c){o([c,n,r,i],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=p,n}function o(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function i(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(i){o([i],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function s(t,e){var n=e(t);return n[p]=t,i(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(32),p="nr@original",l=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,17,5,3,4]);</script><![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<!--[if lt IE 9]>
+<script src="/Scripts/html5.js"></script>
+<![endif]-->
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# profile: http://ogp.me/ns/profile#">
+
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    
+    
+
+    
+
+
+
+    
+    <link rel="shortcut icon" href="//www.audiofilemagazine.com/favicon.ico" />
+
+    
+
+
+
+    
+
+    <meta name="description" content="Explore great audio book listening with AudioFile recommendations and reviews. We help you find your next great audiobook.">
+    <meta name="distribution" content="global" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="AudioFile, Discover the World of Audiobooks" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://www.audiofilemagazine.com/content/Bestof-textonly-badge-480x480-no-year.jpg" />
+    <meta property="og:description" content="Explore great audio book listening with AudioFile recommendations and reviews. We help you find your next great audiobook. Independent reviews help you discover the best narrators, great listening, and spoken word programs worth your listening time. We talk all audiobooks, all the time." />
+    <meta property="og:url" content="https://www.audiofilemagazine.com/best-audiobooks-2024/" />
+
+    
+    <meta property="og:site_name" content="AudioFile Magazine" />
+
+        <meta property="article:tag" content="AudioFile, Discover the World of Audiobooks" />
+        <meta property="article:tag" content="" />
+        <meta property="article:tag" content="" />
+        <meta property="article:tag" content="audiobook" />
+        <meta property="article:tag" content="" />
+
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="google-site-verification" content="NUg5tvEa89wKGjqVQEyJxycXjMj7oJ_CLsJz4UmnFps" />
+
+
+    
+        <link rel="canonical" href="https://www.audiofilemagazine.com/best-audiobooks-2024/" />
+
+
+    
+
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300italic,500,700' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
+    
+
+    <!-- Important Owl stylesheet -->
+    
+
+    <!-- Default Theme -->
+    
+
+    <title>AudioFile Magazine - Best Of 2024</title>
+
+
+    <link rel="stylesheet" type="text/css" href="/CSS/combined1_270E247FC3AB6705E4D36A445B194C17.css" />
+
+    
+
+    
+    
+
+    
+
+    <style>
+        .people-feature-cover > a > img {
+            width: 100%;
+        }
+
+        .people-header-alpha label {
+            color: #545454;
+        }
+    </style>
+
+    
+    <script src="/Scripts/modernizr-2.6.2.min.js" type="text/javascript"></script>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X in site admin to be your site's ID. -->
+    
+<script>
+    var _gaq = [['_setAccount', 'UA-41734034-1'], ['_trackPageview']];
+
+    (function (d, t) {
+        var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s);
+    }(document, 'script'));
+
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-41734034-1', 'auto');
+
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3WK5NQHW9E"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3WK5NQHW9E');
+</script>
+
+
+
+<!-- Google tag (gtag.js) -->
+
+
+</head>
+
+<body class=" ">
+
+
+    <div id="body">
+
+        <div id="outer-wrapper">
+
+
+
+            <!--[if lt IE 8]>
+                <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+            <![endif]-->
+
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+</script>
+            <!-- Header and Nav -->
+
+            <header>
+    <a name="top"></a>
+    <style>
+        header:after {
+            content: none;
+        }
+
+        @media (max-width: 767px) {
+            header .navigation .mobile-toggle .mobile-logo img {
+                width: 237px;
+            }
+        }
+    </style>
+    <div class="row logoContainer">
+        <div class="six columns">
+            
+            <a href="https://www.kirkus.com/"><img style="" src="/content/themes/base/images/kirkus-logo.png" alt="Kirkus - Find your next great audiobook" /></a>
+        </div>
+        <div class="six columns">
+
+
+        </div>
+    </div>
+    <div class="row navContainer">
+        <div class="ten columns navigation">
+            <div class="mobile-toggle"><a href="#"><i class="fa fa-bars"></i></a> <div class="mobile-logo"><a href="https://www.kirkus.com/"><img src="/content/themes/base/images/kirkus-logo-m.png" /></a></div></div>
+<ul class="primaryNav">
+<div>
+<li class="mobile-search">
+<div class="searchDropdown" style="background-color: #666;">
+<form name="reviewssearchnav" id="reviewsearchnav" action="/reviews/listing/" method="get">
+<div class="row collapse">
+<div class="nine columns"><input type="text" name="Title" id="SearchType" placeholder="Search Reviews" /></div>
+<div class="one columns end"><input class="button" type="submit" value="Search" /></div>
+<div class="twelve columns byField">
+<div>
+<span><input type="radio" name="by" id="by-title" value="Title" checked="checked" /> <label for="by-title">by Title</a></span>
+<span><input type="radio" name="by" id="by-author" value="Author" /> <label for="by-author">by Author</label></span>
+<span><input type="radio" name="by" id="by-narrator" value="Narrator" /> <label for="by-narrator">by Narrator</label></span>
+</div>
+<div class="favorites">
+<!-- <a href="/reviews/favorites/"><i class="fa fa-star"></i> VIEW FAVORITES</a>-->
+</div>
+</div>
+</div>
+</form>
+</div>
+</li>
+<li>
+<a href="" onclick="return false;">Reviews</a>
+<ul>
+<li><a href="/new-reviews/"><span class="title">New Reviews</span><span class="description">Audiobook reviews by category.</span></a></li>
+<li><a href="/reviews/"><span class="title">Search Reviews</span><span class="description">Find a pick by author, narrator or title.</span></a></li>
+<li><a href="/reviews/earphones/"><span class="title">Earphones Awards</span><span class="description">Search our favorite listens with these award winners.</span></a></li>
+<li><a href="/lists/"><span class="title">Curated Lists</span><span class="description">Editors' Picks on special topics.</span></a></li>
+</ul>
+</li>
+<li>
+<a href="" onclick="return false;">Narrators</a>
+<ul>
+<li><a href="/golden-voice/"><span class="title">Golden Voices</span><span class="description">Explore & listen to the "Best of the Best" narrators</span></a></li>
+<li><a href="/narrators/"><span class="title">Editors' Spotlight</span><span class="description">Features on narrators</span></a></li>
+<li><a href="/referenceguide/"><span class="title">Talent Guide</span><span class="description">Voices To Know</span></a></li>
+</ul>
+</li>
+<li>
+<a href="" onclick="return false;">Features</a>
+<ul>
+<li><a href="/best-audiobooks-2025/"><span class="title">Best Audiobooks</span><span class="description">2025 Best Audiobooks</span></a></li>
+<li><a href="/narrators/"><span class="title">Narrators</span><span class="description">Spotlight on popular narrators</span></a></li>
+<li><a href="/authors/"><span class="title">Authors</span><span class="description">Authors talking about their audiobooks</span></a></li>
+<li><a href="http://www.audiofilemagazine.com/kids-teens/" target="_blank"><span class="title">Kids and Teens</span><span class="description">Listening selections for kids & teens with age levels</span></a></li>
+<li><a href="/audie-awards/"><span class="title">Audie Awards</span><span class="description"> 2025 Audie Awards</span></a></li>
+</ul>
+</li>
+<li>
+<a href="" onclick="return false;">About</a>
+<ul>
+<li><a href="/contact/"><span class="title">About Us</span><span class="description">Updated contact information</span></a></li>
+<li><a href="/ad-resources/"><span class="title">Advertise</span><span class="description">Let us help you reach audiobook listeners</span></a></l>
+</ul>
+</li>
+<!--
+<li><a href="" onclick="return false;">Talent &amp; Industry Guide</a>
+<ul>
+<li><a href="/referenceguide/"><span class="title">Search</span><span class="description">The audiobook industry's #1 directory</span></a></li>
+<li><a href="/referenceguide/order/"><span class="title">New guide listing</span><span class="description">Audiobook professionals, get listed in our Talent &amp; Industry Guide</span></a></li>
+<li><a href="/referenceguide/order/renew/"><span class="title">Renew listing</span><span class="description">Renew your Talent &amp; Industry Guide listing</span></a></li>
+<li><a href="/guide-listing/"><span class="title">About Listings </span><span class="description">Details about professional listings</span></a></li>
+</ul>
+</li>
+-->
+<li>
+<a href="" onclick="return false;">Articles</a>
+<ul>
+<li><a href="/blog/"><span class="title">Articles</span><span class="description">Checkout the latest features</span></a></li>
+</ul>
+</li>
+</div>
+</ul>
+
+        </div>
+        <div class="two columns search">
+            <a href="" class="searchButton">
+                <i class="fa fa-search"></i>
+                Search
+            </a>
+            <div class="searchDropdown">
+                <form name="reviewssearchnav" id="reviewsearchnav" action="/reviews/search/" method="get">
+                    <div class="row collapse">
+                        <div class="nine columns">
+                            <div class="afm-search">
+                                
+                                <div class="afm-search_type">
+                                    <label for="searchtype" class="afm-search_label">Search: </label>
+                                    <select id="searchtype" class="afm-search_select">
+                                        <option value="reviews">Reviews</option>
+                                        <option value="articles">Articles</option>
+                                    </select>
+                                </div>
+
+                                <input type="text" name="q" id="SearchBarInput" placeholder="Search term" autocomplete="off">
+
+                                <div class="auto-complete-results">
+                                    <ul id="auto-complete-results-bar-ul"></ul>
+                                </div>
+
+                                <div class="autocomplete-loading"></div>
+                            </div>
+                        </div>
+                        <div class="one columns end"><input class="button" type="submit" value="Search" /></div>
+                        <div class="twelve columns byField">
+                            <div>
+                                <span><input type="radio" name="by" value="Title" checked="checked" /> by Title</span>
+                                <span><input type="radio" name="by" value="Author" /> by Author</span>
+                                <span><input type="radio" name="by" value="Narrator" /> by Narrator</span>
+                                <span><input type="radio" name="by" value="Subject" /> by Subject</span>
+                            </div>
+                            <div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+            <!-- Body Content -->
+            <section id="Main" class="">
+                
+
+
+<div class="contentPage">
+    <div class="row">
+        <div class="twelve columns userContent af-bestOf">
+
+            <h1>AudioFile's Best Audiobooks of 2024</h1>
+
+            <p>The universe of audiobooks is a vast one, and at AudioFile, we take our mission of evaluating and recommending them seriously. That's why we're especially glad every December to celebrate the year's truly stellar performances and share them with our readers. Below you'll find AudioFile's picks for the Best Audiobooks of 2024 in nine categories. Kudos and appreciation to all of the authors, narrators, producers, and publishers who work so hard to make these outstanding listening experiences possible. Download a PDF version of the list <a href="/content/uploaded/media/audiofile-best-2024-audiobooks.pdf">here</a>.</p>
+<br>
+
+                <label>Categories : </label>
+                <ul class="filter af-bestof_filters">
+                    <li class="selected"><a data-filter="*" href="/best-audiobooks-2024">All Categories</a></li>
+                        <li class="">
+                            <a data-filter="fiction" href="/best-audiobooks-2024/fiction/">
+                                Fiction
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-filter="non-fiction" href="/best-audiobooks-2024/non-fiction/">
+                                Nonfiction &amp; Culture
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-filter="memoir" href="/best-audiobooks-2024/memoir/">
+                                Biography &amp; Memoir
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-filter="mystery" href="/best-audiobooks-2024/mystery/">
+                                Mystery &amp; Suspense
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-filter="scifi" href="/best-audiobooks-2024/scifi/">
+                                Science Fiction and Fantasy
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-filter="children" href="/best-audiobooks-2024/children/">
+                                Children &amp; Family Listening
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-filter="ya" href="/best-audiobooks-2024/ya/">
+                                Young Adult
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-filter="romance" href="/best-audiobooks-2024/romance/">
+                                Romance
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-filter="multi" href="/best-audiobooks-2024/multi/">
+                                Multi-Voice
+                            </a>
+                        </li>
+                </ul>
+
+
+
+            <p></p>
+
+<div class='dynamicCodeInsert sortableModule bestOfShortcode' data-name='best_of year="2024"' data-tag='best_of year="2024"'>
+
+<ul class="listing af-bestof_listing">
+            <li class="romance" data-filter="romance" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/256221.jpg" alt="AVENGING ANGEL" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">AVENGING ANGEL by Kristen Ashley, read by Stella Bloom</p>
+
+<p>
+Narrator Stella Bloom faithfully re-creates the joy, peril, and humor in Kristen Ashley’s series opener. Raye investigates potential crimes in Phoenix, and Bloom deftly balances Raye’s sense of humor with the dark events that push her to fight injustice. Ashley’s story has several emotional peaks, and Bloom hits them all with sensitivity and solid pacing. 
+</p>    
+
+<a href="/reviews/read/256221/">Read the full review</a></div>
+            </li>
+            <li class="children" data-filter="children" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/258633.jpg" alt="THE BEAUTIFUL GAME" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE BEAUTIFUL GAME by Yamile Saied Méndez, read by Maria Liatis</p>
+
+<p>
+Maria Liatis delivers a heartwarming performance as a 13-year-old with a passion for fútbol and her family. Valeria is a star player on the boys’ soccer team, coached by her gruff abuelo. Liatis’s sensitive, understated narration showcases the book’s rich themes of family, resilience, and perseverance.
+</p>    
+
+<a href="/reviews/read/258633/">Read the full review</a></div>
+            </li>
+            <li class="memoir" data-filter="memoir" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/243016.jpg" alt="BITS AND PIECES" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">BITS AND PIECES by Whoopi Goldberg, read by Whoopi Goldberg</p>
+
+<p>
+Entertainer Whoopi Goldberg’s raspy timbre and amused tone make her the only person appropriate to narrate her memoir. As listeners hear just a trace of a New York City inflection at the ends of some sentences, the story of Goldberg’s career is skillfully woven into anecdotes featuring her exceptional mother, Emma Johnson, and her unique older brother, Clyde. 
+</p>    
+
+<a href="/reviews/read/243016/">Read the full review</a>
+
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/articles/actor-and-author-whoopi-goldberg-on-her-memoir-bits-and-pieces/">Watch a video interview with Whoopi Goldberg</a></div>
+            </li>
+            <li class="memoir" data-filter="memoir" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/243545.jpg" alt="BITTER CROP" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">BITTER CROP by Paul Alexander, read by Maya Days</p>
+
+<p>
+Performing this revealing look at the complexities of the revered jazz pioneer Billie Holiday, actress Maya Days connects with every ounce of the brilliance and tragedy of the singer’s life. Her heartfelt resonance with Holiday’s difficult life makes the author’s evocative writing riveting. 
+</p>    
+
+<a href="/reviews/read/243545/">Read the full review</a></div>
+            </li>
+            <li class="scifi" data-filter="scifi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/256305.jpg" alt="BLOOD OVER BRIGHT HAVEN" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">BLOOD OVER BRIGHT HAVEN by M.L. Wang, read by Moira Quirk</p>
+
+<p>
+Narrator Moira Quirk shines in this dark academic fantasy, which explores the ripple effects of colonization. Quirk delivers a stand-out performance, bringing immersive emotion to every scene. This is a story about how revolutions arise, and Quirk is the perfect leader. 
+</p>    
+
+<a href="/reviews/read/256305/">Read the full review</a>
+
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/podcast/a83c0e8c-b5a3-11ee-91b7-4f40a377579d/">Listen to an interview with narrator Moira Quirk</a>
+
+<br><br>
+<a href="https://www.audiofilemagazine.com/articles/narrator-moira-quirk-on-blood-over-bright-haven//">Watch a video with narrator Moira Quirk</a></div>
+            </li>
+            <li class="romance" data-filter="romance" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/252393.jpg" alt="THE BREAK-UP PACT" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE BREAK-UP PACT by Emma Lord, read by Natalie Naudus</p>
+
+<p>
+Natalie Naudus narrates this delightful romantic comedy with confidence. Naudus navigates the emotional and comedic narrative with impeccable timing, skillfully capturing the essence of each character without disrupting the seamless pacing. Her ability to convey the perfect tones through her intonation enhances the charm of the story
+</p>    
+
+<a href="/reviews/read/252393/">Read the full review</a></div>
+            </li>
+            <li class="mystery" data-filter="mystery" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/252201.jpg" alt="THE BRIAR CLUB" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE BRIAR CLUB by Kate Quinn, read by Saskia Maarleveld</p>
+
+<p>
+Narrator Saskia Maarleveld enlivens the characters in this masterfully crafted window onto the 1950s. While there are murders and other crimes, the focus is the individual stories of the women boarders of Briarwood House in Washington, DC. Maarleveld’s talent for accents coupled with Quinn’s vivid writing makes this audiobook a compelling and informative listening experience.  
+</p>    
+
+<a href="/reviews/read/252201/">Read the full review</a></div>
+            </li>
+            <li class="children" data-filter="children" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/253216.jpg" alt="BRIDGES INSTEAD OF WALLS" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">BRIDGES INSTEAD OF WALLS by Mavis Staples, Carole Boston Weatherford, read by Mavis Staples, Adenrele Ojo</p>
+
+<p>
+Singer and activist Mavis Staples brings her iconic, resonant voice to the narration of this audiobook, giving young listeners an unforgettable glimpse of her remarkable musical life. In a voice ringing with warmth, humor, and conviction, Staples describes her musical roots. Adenrele Ojo capably narrates the supplemental materials, including a timeline and suggestions for further study.
+</p>    
+
+<a href="/reviews/read/253216/">Read the full review</a></div>
+            </li>
+            <li class="ya" data-filter="ya" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/247779.jpg" alt="CANTO CONTIGO" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">CANTO CONTIGO by Jonny Garza Villa, read by Alejandro Antonio Ruiz</p>
+
+<p>
+Alejandro Antonio Ruiz embodies all of the roiling emotions in this compelling queer teen love story. Rafie learned his love of mariachi from his abuelo. He’s devastated when his abuelo dies yet is determined to bring home another first-place trophy from the Mariachi Extravaganza. Ruiz yells, cries, whispers, laughs, and sings, revealing all the many layers to the story.
+</p>    
+
+<a href="/reviews/read/247779/">Read the full review</a>
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/podcast/a647e150-b5a3-11ee-91b7-23f16e227b87/">Listen to an interview with narrator Alejandro Antonio Ruiz</a></div>
+            </li>
+            <li class="fiction" data-filter="fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246803.jpg" alt="THE CEMETERY OF UNTOLD STORIES" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE CEMETERY OF UNTOLD STORIES by Julia Alvarez, read by Alma Cuervo</p>
+
+<p>
+Alma Cuervo’s warm, rich timbre and measured style suit this captivating audiobook. Her delivery works perfectly as she emulates the author’s empathetic tone and wit. This is a vividly imagined story of a novelist whose nom de plume is Scheherazade. She leaves Vermont and returns to her native Dominican Republic to bury her untold (unfinished) works. 
+</p>    
+
+<a href="/reviews/read/246803/">Read the full review</a></div>
+            </li>
+            <li class="fiction" data-filter="fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/243571.jpg" alt="COME AND GET IT" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">COME AND GET IT by Kiley Reid, read by Nicole Lewis</p>
+
+<p>
+Millie Cousins is a senior resident assistant at the University of Arkansas. When a visiting professor and journalist offers her money in exchange for the opportunity to eavesdrop on the dorm’s residents, Millie decides to take the risk and accept. Lewis’s performance makes the vivid dialogue sing. She creates unique voices for all of the major characters, complete with the perfect accents and delivery of expressions. 
+</p>    
+
+<a href="/reviews/read/243571/">Read the full review</a></div>
+            </li>
+            <li class="ya" data-filter="ya" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246436.jpg" alt="A CRANE AMONG WOLVES" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">A CRANE AMONG WOLVES by June Hur, read by Greg Chun, Michelle H. Lee</p>
+
+<p>
+Greg Chun and Michelle Lee portray the alliance and the attraction between the two main characters whose alternating chapters tell this historical mystery set in 1506 Korea. Lee’s narration is suffused with 17-year-old Isuel’s desire to free her older sister from cruel King Yeonsan. Chun’s portrayal shows Daehyu, the king’s wise half brother, yielding regretfully to the increasing demands of the king while slyly plotting treason. 
+</p>    
+
+<a href="/reviews/read/246436/">Read the full review</a></div>
+            </li>
+            <li class="scifi" data-filter="scifi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/244647.jpg" alt="THE CRONE OF MIDNIGHT EMBERS" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE CRONE OF MIDNIGHT EMBERS by Iris Beaglehole, read by Bethan Dixon Bate</p>
+
+<p>
+Bizarre things keep happening to 60-ish Delia Spark. She travels to remote Myrtlewood, where she meets a strange group of older women. Witches? A magical mafia? Delia’s adventures are fast and outrageous, some psychedelic and some painfully real, and Bethan Dixon Bate makes this delightful audiobook choice listening.
+</p>    
+
+<a href="/reviews/read/244647/">Read the full review</a></div>
+            </li>
+            <li class="non-fiction" data-filter="non-fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/253246.jpg" alt="CUE THE SUN!" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">CUE THE SUN! by Emily Nussbaum, read by Gabra Zackman</p>
+
+<p>
+Gabra Zackman's narration fully embodies a balance of deep insight and affability—a perfect fit here. Nussbaum's approach to the topic of reality television transcends the usual narrative history as it captures key social commentary of programs unique to their time and place. Zackman's voice is gently entertaining and always engaging, guiding listeners through this fascinating history of modern pop culture.  
+</p>    
+
+<a href="/reviews/read/253246/">Read the full review</a>
+
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/podcast/a610af96-b5a3-11ee-91b7-5befaf217f09/">Listen to an interview with narrator Gabra Zackman</a></div>
+            </li>
+            <li class="multi" data-filter="multi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246655.jpg" alt="DANGEROUS VISIONS" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">DANGEROUS VISIONS by Harlan Ellison [Ed.], read by Mara Wilson, Jim Meskimen, Simon Vance, Steven Jay Cohen, Johnny Heller, Edoardo Ballerini, Ramiz Monsef, Neil Hellegers, JD Jackson, P.J. Ochlan, Dion Graham, Natalie Naudus, Vikas Adam, Scott Aiello, Grover Gardner, Joe Hempel, Steve West, Robert Fass, James Patrick Cronin, Joel Froomkin, Neil Shah, John Pirhalla, Heath Miller, Scott Brick, Shiromi Arserio, Thom Rivera, Bradford Hastings, Feodor Chin, Stefan Rudnicki, Bronson Pinchot, Mark Sanderlin, Suzanne Toren</p>
+
+<p>
+Thirty-three stories from thirty-two legends in the sci-fi genre are narrated by a selection of talented narrators. Each narrator also wraps up their short story with a compelling performance of the story’s afterword. The collection is half fantastic science fiction and half commentary of the sci-fi industry with insightful thoughts from Ellison and all the authors in the collection. </p>    
+
+<a href="/reviews/read/246655/">Read the full review</a>
+</div>
+            </li>
+            <li class="children" data-filter="children" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246680.jpg" alt="FREE PERIOD" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">FREE PERIOD by Ali Terese, read by Josephine Huang, Cassandra Morris</p>
+
+<p>
+Josephine Huang and Cassandra Morris join forces to deliver the captivating story of best friends in this exceptional middle-grade audiobook. Helen and Gracie are known for their mischievous antics. Their latest escapade leads them to join the Community Action Club, currently dedicated to promoting period equity. 
+</p>    
+
+<a href="/reviews/read/246680/">Read the full review</a></div>
+            </li>
+            <li class="multi" data-filter="multi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/251022.jpg" alt="GEORGE ORWELL&#39;S 1984" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">GEORGE ORWELL'S 1984 by George Orwell, Joe White [Adapt.], read by Andrew Garfield, Cynthia Erivo, Andrew Scott, Tom Hardy, Chukwudi Iwuji, Romesh Ranganathan, Natasia Demetriou, Francesca Mills, Alex Lawther, Katie Leung</p>
+
+<p>
+Narrators Andrew Garfield and Cynthia Erivo lead a crew of inspired English actors in creating a full-cast, filmlike 21st-century reimagining of one of the twentieth century's most important novels. The production is peppered with eerie urban soundscapes and a haunting musical score. 1984—sounding more dystopian than ever.  
+</p>    
+
+<a href="/reviews/read/251022/">Read the full review</a>
+</div>
+            </li>
+            <li class="mystery" data-filter="mystery" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246529.jpg" alt="THE GREY WOLF" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE GREY WOLF by Louise Penny, read by Jean Brassard</p>
+
+<p>
+Jean Brassard, Louise Penny’s choice to narrate her 19th Armand Gamache/Three Pines novel, proves an inspired selection. From his portrayals of familiar Three Pines residents to his introduction of new characters, Brassard, a native Quebecois and award-winning actor, gets it right. Brassard’s accents—whether French Canadian, Italian, or continental French—create indelible characters. 
+</p>    
+
+<a href="/reviews/read/246529/">Read the full review</a>
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/podcast/a728f1d6-b5a3-11ee-91b7-2f3c76fb18da/">Listen to an interview with narrator Jean Brassard</a></div>
+            </li>
+            <li class="fiction" data-filter="fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/251158.jpg" alt="HERE ONE MOMENT" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">HERE ONE MOMENT by Liane Moriarty, read by Caroline Lee, Geraldine Hakewill</p>
+
+<p>
+Narrators Caroline Lee and Geraldine Hakewill weave the threads of this tense exploration of free will. Lee voices a nondescript woman on a delayed flight across Australia who suddenly stands and begins pointing to fellow passengers and stating how they will die and when. Hakewill’s narration creates the sense that the other travelers are united in fear and hope.  
+</p>    
+
+<a href="/reviews/read/251158/">Read the full review</a>
+</div>
+            </li>
+            <li class="ya" data-filter="ya" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246560.jpg" alt="HOW THE BOOGEYMAN BECAME A POET" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">HOW THE BOOGEYMAN BECAME A POET by Tony Keith, Jr., read by Tony Keith, Jr.</p>
+
+<p>
+Hip-hop artist Tony Keith, Jr., narrates his free-verse coming-of-age memoir. His pacing and tone allow listeners to feel the power of his words and imagine his world. His skill as a narrator is evident as he delivers lyrical imagery mixed with dialect. Sound effects illuminate the poems’ themes: Drums aid listeners in picturing the richness of African imagery in one poem; in another listeners hear the murmurs of a cafeteria. 
+</p>    
+
+<a href="/reviews/read/246560/">Read the full review</a></div>
+            </li>
+            <li class="multi" data-filter="multi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/261162.jpg" alt="HOW WOMEN MADE MUSIC" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">HOW WOMEN MADE MUSIC by Alison Fensterstock [Ed.], Ann Powers [Intro.], National Public Radio, read by Alison Fensterstock, Ann Powers, et al.</p>
+
+<p>
+Alison Fensterstock and Ann Powers deliver an ambitious, sprawling project recentering women in the history of music. Often, performers’ own voices are present, providing their perspectives directly. It's exhilarating to hear Dolly Parton, Nina Simone, and Queen Latifah in the mix, giving listeners this mosaic of music history. The impact is undeniable.  
+</p>    
+
+<a href="/reviews/read/261162/">Read the full review</a></div>
+            </li>
+            <li class="children" data-filter="children" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/255148.jpg" alt="IMPOSSIBLE CREATURES" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">IMPOSSIBLE CREATURES by Katherine Rundell, read by Samuel West</p>
+
+<p>
+If Christopher weren’t holding a baby griffin, he never would have come to believe his grandfather about the hidden archipelago where magical creatures live. Samuel West’s presentation shines as he provides voices appropriate for the magical world’s denizens, depth for several emotional moments, and increasing emphasis as the journey becomes more dangerous.
+</p>    
+
+<a href="/reviews/read/255148/">Read the full review</a></div>
+            </li>
+            <li class="fiction" data-filter="fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246458.jpg" alt="JAMES" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">JAMES by Percival Everett, read by Dominic Hoffman</p>
+
+<p>
+Dominic Hoffman narrates this reimagining of ADVENTURES OF HUCKLEBERRY FINN, but this time Jim tells his own story. Hoffman’s performance captures the varying tone of Jim’s dialogue, highlighting the shifts in his vocabulary and rhythm. With its subtlety and attention to detail, Hoffman’s narration reinforces Jim’s character and narrative arcs as Jim takes back his agency in life.  </p>    
+
+<a href="/reviews/read/246458/">Read the full review</a>
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/articles/interview-with-dominic-hoffman-2024-golden-voice-narrator/">Listen to an interview with narrator Dominic Hoffman</a></div>
+            </li>
+            <li class="memoir" data-filter="memoir" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/256375.jpg" alt="JOHN LEWIS" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">JOHN LEWIS by David Greenberg, read by David Sadzin</p>
+
+<p>
+John Lewis has been described as a quiet revolutionary and the conscience of Congress. This sums up the two halves of this biography, which covers his early years as a frontline civil rights campaigner and his later years as a driving force on Capitol Hill. David Sadzin’s smooth narration adds to the compelling nature of the text. </p>    
+
+<a href="/reviews/read/256375/">Read the full review</a></div>
+            </li>
+            <li class="multi" data-filter="multi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/251385.jpg" alt="JOURNEY&#39;S END" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">JOURNEY'S END by R.C. Sherriff, read by James Callis, Josh Cole, Jack Cutmore-Scott, Tobias Echeverria, Adam Godley, Ian Ogilvy, Darren Richardson, Simon Templeman, Matthew Wolf</p>
+
+<p>
+By the waning months of WWI, English troops remained dug in 100 yards from the enemy. Waiting. In this superb audio adaptation of this 1928 classic drama, the naturalistic dialogue is what will draw the listener into the trenches—it’s that realistic and affecting. The production features a cast of top-tier English character actors. Tense, all too human, and devastating—like war itself.
+</p>    
+
+<a href="/reviews/read/251385/">Read the full review</a>
+</div>
+            </li>
+            <li class="ya" data-filter="ya" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/256426.jpg" alt="JUPITER RISING" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">JUPITER RISING by Gary D. Schmidt, read by Christopher Gebauer</p>
+
+<p>
+Christopher Gebauer narrated the tragic novel ORBITING JUPITER and now delivers its companion; both stories are told in the voice of an eighth-grader named Jack. Listening to these novels in order will allow fans to appreciate Gebauer’s portrayal of Jack’s astounding growth. Gebauer’s portrayals of adults are fully realized, particularly Jack’s caustic but caring coach and his domineering grandfather, who has a broken heart. 
+</p>    
+
+<a href="/reviews/read/256426/">Read the full review</a></div>
+            </li>
+            <li class="romance" data-filter="romance" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/247511.jpg" alt="JUST FOR THE SUMMER" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">JUST FOR THE SUMMER by Abby Jimenez, read by Christine Lakin, Zachary Webber</p>
+
+<p>
+Fans of the author will welcome back familiar narrators Christine Lakin and Zachary Webber in this stand-alone rom-com. Every woman Justin dates finds her soulmate immediately after they break up. Emma is similarly cursed. The two decide to “fake date” in the hope that their curses will cancel each other out. 
+</p>    
+
+<a href="/reviews/read/247511/">Read the full review</a></div>
+            </li>
+            <li class="fiction" data-filter="fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246752.jpg" alt="THE LIMITS" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE LIMITS by Nell Freudenberger, read by Rebecca Lowman</p>
+
+<p>
+Set in New York City and French Polynesia in the early days of the COVID-19 pandemic, this mesmerizing audiobook is flawlessly narrated by Rebecca Lowman. Lowman's flexible, emotive delivery and steady pace settle listeners into this contemplative story exploring medicine, environmental devastation, colonialism, family dynamics, and the impact of privilege during the pandemic. 
+</p>    
+
+<a href="/reviews/read/246752/">Read the full review</a></div>
+            </li>
+            <li class="romance" data-filter="romance" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/248109.jpg" alt="LOVE AT FIRST BOOK" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">LOVE AT FIRST BOOK by Jenn McKinlay, read by Brittany Pressley</p>
+
+<p>
+Brittany Pressley's narration is exceptional in this heartwarming Irish story. Pressley's Irish accent is outstanding; she smoothly transitions between accents and male and female voices, along with giving each character a distinct timbre and cadence that matches their personality. Pressley also intensifies and softens her tone with perfect timing. 
+</p>    
+
+<a href="/reviews/read/248109/">Read the full review</a></div>
+            </li>
+            <li class="scifi" data-filter="scifi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/253759.jpg" alt="THE MERCY OF GODS" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE MERCY OF GODS by James S.A. Corey, read by Jefferson Mays</p>
+
+<p>
+Stellar narrator Jefferson Mays and bestselling author James S.A. Corey are in warp drive as they launch the first book of a planned trilogy set in the far future. The narration matches the action; conversations are realistic; personalities are vibrant and distinct. Add Mays’s crystalline enunciation and agreeable timbre—and this is a winner.  
+</p>    
+
+<a href="/reviews/read/253759/">Read the full review</a></div>
+            </li>
+            <li class="non-fiction" data-filter="non-fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/258174.jpg" alt="THE MESSAGE" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE MESSAGE by Ta-Nehisi Coates, read by Ta-Nehisi Coates</p>
+
+<p>
+Author Ta-Nehisi Coates narrates this must-listen, a powerful and thought-provoking collection of essays. Coates frequently addresses listeners in the second person, a technique that creates an intimate connection to his words. This audiobook is a haunting, timely examination of global affairs and the importance of truth and inclusivity in our culture.  
+</p>    
+
+<a href="/reviews/read/258174/">Read the full review</a></div>
+            </li>
+            <li class="multi" data-filter="multi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/251989.jpg" alt="MOON CALLED" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">MOON CALLED by Patricia Briggs, read by Khaya Fraites, Gregory Linington, Christopher McLinden, Rayner Gabriel, Chris Stinson, Renee Dorian, and a Full Cast</p>
+
+<p>
+A full cast of creatures—including a shape-shifting coyote, werewolves, vampires, fae, the local witch, and humans—are depicted by a talented cast of voice actors. Most impressive is Khaya Fraites, who takes on the role of first-person narrator Mercy Thompson, a plucky 20-something mechanic and shape-shifter. Joyous yips, howls, and growls create a clever soundscape that also includes clicking claws and ethereal music. 
+</p>    
+
+<a href="/reviews/read/251989/">Read the full review</a></div>
+            </li>
+            <li class="mystery" data-filter="mystery" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/250481.jpg" alt="A NEST OF VIPERS" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">A NEST OF VIPERS by Harini Nagendra, read by Soneela Nankani</p>
+
+<p>
+AudioFile Golden Voice Soneela Nankani immerses listeners in 1920s India on the eve of a visit from Edward, Prince of Wales. This third installment in the Bangalore Detectives Club series is rife with intrigue, politics, and the fight for autonomy—for women, for the lower classes, and for India itself. Nankani’s brisk, distinctly voiced performance is riveting as she expertly distinguishes among the large cast of characters.
+</p>    
+
+<a href="/reviews/read/250481/">Read the full review</a></div>
+            </li>
+            <li class="children" data-filter="children" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246541.jpg" alt="OLIVETTI by Allie Millington, read by Christopher Gebauer, Simon Vance" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">OLIVETTI by Allie Millington, read by Christopher Gebauer, Simon Vance</p>
+
+<p>
+A charming story and two narrators exuding energy and warmth knock it out of the park. Simon Vance is Olivetti, a typewriter who breaks the “typewriterly” code of silence to spill his tapestry of tales in order to find his missing owner. Twelve-year-old Ernest, portrayed expertly by Christopher Gebauer with an appealing mix of anxiety, heart, and wry humor, prefers dictionaries and solitude, but he must trust a sentient typewriter and make a friend to find his mother. 
+</p>    
+
+<a href="/reviews/read/246541/">Read the full review</a></div>
+            </li>
+            <li class="romance" data-filter="romance" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/253445.jpg" alt="THE ORNITHOLOGIST&#39;S FIELD GUIDE TO LOVE" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE ORNITHOLOGIST'S FIELD GUIDE TO LOVE by India Holton, read by Elizabeth Knowelden</p>
+
+<p>
+Elizabeth Knowelden will capture listeners’ hearts with her charming performance. Rival ornithologists are on the hunt for the death whistler bird, one of the rare jewels in birding. Knowelden’s performance is so charismatic and detailed that listeners will laugh at every scoff and playful jab. With its winning romantic payoff, this performance is a crown jewel.  
+</p>    
+
+<a href="/reviews/read/253445/">Read the full review</a>
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/podcast/a9f8e830-b5a3-11ee-91b7-c3e1c3779d8e/">Listen to an interview with narrator Elizabeth Knowelden</a></div>
+            </li>
+            <li class="non-fiction" data-filter="non-fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/242838.jpg" alt="OUR HIDDEN CONVERSATIONS" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">OUR HIDDEN CONVERSATIONS by Michele Norris, read by Michele Norris and a Full Cast</p>
+
+<p>
+Peabody Award-winning journalist Michele Norris and a full cast deliver a must-listen performance of Norris’s riveting examination of race in America. Based on 12 years of submissions to Norris’s Race Card Project—six words about race from over half-a-million people—the audiobook shifts between Norris’s clear, warm, thoughtful commentary and participants’ contributions, all delivered by a talented group of narrators. 
+</p>    
+
+<a href="/reviews/read/242838/">Read the full review</a></div>
+            </li>
+            <li class="romance" data-filter="romance" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246648.jpg" alt="THE PAIRING" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE PAIRING by Casey McQuiston, read by Emma Galvin, Max Meyers</p>
+
+<p>
+This tour de force of accents and vocal work is a testament to narrators Emma Galvin and Max Meyers’s skills. Any scene can require a half dozen international accents belonging to characters with varying moods and personalities. A true feast of vocal work and culinary descriptions!  
+</p>    
+
+<a href="/reviews/read/246648/">Read the full review</a></div>
+            </li>
+            <li class="non-fiction" data-filter="non-fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246774.jpg" alt="A POETRY HANDBOOK" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">A POETRY HANDBOOK by Mary Oliver, read by Kimberly Farr</p>
+
+<p>
+The best poets get that way because they have given a great deal of thought to questions such as: “What is poetry?” “How does it get that way?” Mary Oliver was one of those best poets, and in this audio version of her classic work about how to write and read poetry she offers some answers, both detailed and expansive, to John Ciardi’s classic question: “How does a poem mean?” Kimberly Farr’s performance is wonderful, as witty and wise as the text. 
+</p>    
+
+<a href="/reviews/read/246774/">Read the full review</a></div>
+            </li>
+            <li class="memoir" data-filter="memoir" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/248201.jpg" alt="PROFILES IN MENTAL HEALTH COURAGE" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">PROFILES IN MENTAL HEALTH COURAGE by Patrick J. Kennedy, Stephen Fried, read by Johnny Heller, Patrick J. Kennedy</p>
+
+<p>
+Johnny Heller’s moving performance of this excellent audiobook is never out of sync with the shifting moods and overall poignant content offered by the articulate congressman and his cowriter. The authors recount the stories of 12 prominent people with psychiatric disorders as they struggled to manage their symptoms, seek help, and integrate their conditions with their work and personal relationships. 
+</p>    
+
+<a href="/reviews/read/248201/">Read the full review</a></div>
+            </li>
+            <li class="mystery" data-filter="mystery" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/256438.jpg" alt="THE SEQUEL" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE SEQUEL by Jean Hanff Korelitz, read by Julia Whelan</p>
+
+<p>
+Fans of THE PLOT, and they were legion, will rejoice at this sequel, performed with mesmerizing skill by the wonderful Julia Whelan. It’s no small feat to make a lethally dislikable character irresistible on the page, let alone in the ear, but Korelitz and Whelan have done it. Anna is a monster of ego, incapable of sympathy for anyone but herself. Whelan’s achievement here seems like a little miracle, relentlessly compelling and wonderfully satisfying.
+</p>    
+
+<a href="/reviews/read/256438/">Read the full review</a></div>
+            </li>
+            <li class="mystery" data-filter="mystery" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/251222.jpg" alt="SHANGHAI" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">SHANGHAI by Joseph Kanon, read by Jonathan Davis</p>
+
+<p>
+Jonathan Davis digs deep into his narration toolbox in this atmospheric audiobook set in 1939. As the world prepares for war, displaced European Jews attempt a departure to parts unknown. When the disparate citizens gather on a last-chance trip to Shanghai, Davis modulates the tempo and emotion throughout the remainder of the audiobook, ratcheting up the excitement for the final confrontation.
+</p>    
+
+<a href="/reviews/read/251222/">Read the full review</a></div>
+            </li>
+            <li class="scifi" data-filter="scifi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/251097.jpg" alt="THE STARS TOO FONDLY" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE STARS TOO FONDLY by Emily Hamilton, read by Vico Ortiz</p>
+
+<p>
+Vico Ortiz narrates a raucous space adventure rom-com with infectious energy. It’s 2061, and Cleo and her three best friends—all scientists—sneak aboard to explore a neglected rocket. Ortiz’s considerable acting talents bring each character—human and otherwise—to life. They bounce between each voice with skill, especially shining in scenes packed with banter. 
+</p>    
+
+<a href="/reviews/read/251097/">Read the full review</a></div>
+            </li>
+            <li class="non-fiction" data-filter="non-fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246684.jpg" alt="THERE&#39;S ALWAYS THIS YEAR" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THERE'S ALWAYS THIS YEAR by Hanif Abdurraqib, read by Hanif Abdurraqib</p>
+
+<p>
+Hanif Abdurraqib’s latest book is a transcendent feat of poetry, memoir, and—well, magic. His narration is as breathless and beautiful as his prose; this book is epic in every sense of the word. It’s an ode to his hometown of Columbus, Ohio; a love letter to basketball; a meditation on home and belonging; and an exploration of faith, Blackness, music, and place. 
+</p>    
+
+<a href="/reviews/read/246684/">Read the full review</a></div>
+            </li>
+            <li class="memoir" data-filter="memoir" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/244365.jpg" alt="3 SHADES OF BLUE" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">3 SHADES OF BLUE by James Kaplan, read by Dion Graham</p>
+
+<p>
+This absorbing audiobook looks at the lives of three jazz greats—Miles Davis, John Coltrane, and Bill Evans. Their lives were challenging and full of pathos, which narrator Dion Graham captures with the empathy and vocal talent he’s known for. Pauses, pitch patterns, and finely modulated intensity make his performance sing but never upstage the drama. 
+</p>    
+
+<a href="/reviews/read/244365/">Read the full review</a>
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/podcast/a9c02c5c-b5a3-11ee-91b7-2b7da46f5070/">Listen to an interview with narrator Dion Graham</a></div>
+            </li>
+            <li class="children" data-filter="children" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/251030.jpg" alt="TREE. TABLE. BOOK." />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">TREE. TABLE. BOOK. by Lois Lowry, read by Hope Newhouse</p>
+
+<p>
+This humble and wonderful performance by Hope Newhouse will engage a wide audience. Two Sophies are best friends; one is an elementary school student, and the other is an aging woman who is beginning her struggle with memory loss. Newhouse’s ability to transform her narration to highlight both the stark age difference and the friendship between both characters is a cornerstone of the performance. 
+</p>    
+
+<a href="/reviews/read/251030/">Read the full review</a>
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/podcast/a75f8372-b5a3-11ee-91b7-8b6616452047/">Listen to an interview with narrator Hope Newhouse</a></div>
+            </li>
+            <li class="ya" data-filter="ya" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/251029.jpg" alt="TWENTY-FOUR SECONDS FROM NOW..." />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">TWENTY-FOUR SECONDS FROM NOW... by Jason Reynolds, read by Guy Lockard</p>
+
+<p>
+Guy Lockard narrates this fresh and funny novel from Jason Reynolds. Told from the perspective of 17-year-old Neon, the novel moves backward over Neon’s past 24 months. As he prepares to celebrate his anniversary with his girlfriend, he reflects on everything that has happened since they first met. Lockard’s deep, resonant voice is expressive and full of humor that fits Neon’s youth and the bright banter between Neon and his friends. 
+</p>    
+
+<a href="/reviews/read/251029/">Read the full review</a></div>
+            </li>
+            <li class="scifi" data-filter="scifi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/243828.jpg" alt="THE WARM HANDS OF GHOSTS" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE WARM HANDS OF GHOSTS by Katherine Arden, read by Michael Crouch, January LaVoy, Katherine Arden</p>
+
+<p>
+January LaVoy and Michael Crouch perform this historical novel with a supernatural twist. Laura is a nurse who has recently returned from a WWI battlefield to her home in Halifax, Nova Scotia; her brother, Freddie, has gone missing in the cold, wet trenches of Belgium. LaVoy’s and Crouch’s deeply moving and captivating performances work together to create a must-listen audiobook.  
+</p>    
+
+<a href="/reviews/read/243828/">Read the full review</a></div>
+            </li>
+            <li class="memoir" data-filter="memoir" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/256300.jpg" alt="WHAT I ATE IN ONE YEAR" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">WHAT I ATE IN ONE YEAR by Stanley Tucci, read by Stanley Tucci</p>
+
+<p>
+A nuanced narrator who plays with tone and tempo like a jazz musician, Stanley Tucci knows how to be ironic, self-effacing, witty, and charming, yet his performance is most satisfying because of his restraint. Tucci is a creative gourmand who is mischievous (he whispers his preparation of pigeon breasts) and masterfully ends each section with suggestions, recipes, appreciations, and observations. 
+</p>    
+
+<a href="/reviews/read/256300/">Read the full review</a></div>
+            </li>
+            <li class="non-fiction" data-filter="non-fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/255098.jpg" alt="WHAT&#39;S NEXT IS NOW" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">WHAT'S NEXT IS NOW by Frederik G. Pferdt, read by Sean Pratt</p>
+
+<p>
+Narrating this cutting-edge guide to personal growth and initiative, Sean Pratt captures every bit of the author’s enthusiasm for the lessons he learned while leading an innovation team at Google. Pratt’s tone and intensity sync perfectly with the author’s stories and insights. 
+</p>    
+
+<a href="/reviews/read/255098/">Read the full review</a></div>
+            </li>
+            <li class="scifi" data-filter="scifi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246646.jpg" alt="WHEN AMONG CROWS" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">WHEN AMONG CROWS by Veronica Roth, read by Helen Laser, James Fouhey, Tim Campbell</p>
+
+<p>
+Helen Laser, James Fouhey, and Tim Campbell bring depth to their performances of a trio seeking an audience with the legendary witch Baba Jaga. The world-building, based on Polish folklore, in modern Chicago is epic. This explosively addictive dark fairy tale examining cultural heritage makes for an engaging listening experience.  
+</p>    
+
+<a href="/reviews/read/246646/">Read the full review</a></div>
+            </li>
+            <li class="multi" data-filter="multi" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/251335.jpg" alt="WHEN THE SEA CAME ALIVE" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">WHEN THE SEA CAME ALIVE by Garrett M. Graff [Ed.], read by Edoardo Ballerini, Garrett M. Graff [Note], and a Full Cast</p>
+
+<p>
+This excellent full-cast production uses the recollections of those who participated in D-Day—its planning, training, and actual combat—to tell the story of the largest amphibious assault in history. The author, Edoardo Ballerini, and nearly 25 other narrators portray the 700 roles in this book. This moving history, which makes it seem like one is hearing from the actual participants, is difficult to pause. 
+</p>    
+
+<a href="/reviews/read/251335/">Read the full review</a>
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/podcast/a9161f5a-b5a3-11ee-91b7-0fe1e7d04f51/">Listen to an interview with narrator Edoardo Ballerini</a></div>
+            </li>
+            <li class="ya" data-filter="ya" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/251094.jpg" alt="WHEN THE WORLD TIPS OVER" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">WHEN THE WORLD TIPS OVER by Jandy Nelson, read by Michael Crouch, Alex McKenna, Briggon Snow, Caitlin Kinnunen, Julia Whelan</p>
+
+<p>
+This performance by a five-narrator cast is truly special. Every perspective offers an individual personality and a spectrum of emotions. It genuinely feels like each character is a complete story on their own, but when blended together, they create a symphony of mystery, challenges, and compelling world-building.  
+</p>    
+
+<a href="/reviews/read/251094/">Read the full review</a></div>
+            </li>
+            <li class="fiction" data-filter="fiction" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/246527.jpg" alt="THE WOMEN" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">THE WOMEN by Kristin Hannah, read by Julia Whelan, Kristin Hannah</p>
+
+<p>
+The sure touch of Golden Voice narrator Julia Whelan transforms Kristin Hannah’s absorbing novel about Vietnam War combat nurses into an addictive listen. As the novel interweaves historical research with the characters’ Vietnam and postwar lives, Whelan’s intensity and warmth help listeners empathize with the personal and understand the big picture.  
+</p>    
+
+<a href="/reviews/read/246527/">Read the full review</a>
+<br><br>
+
+<a href="https://www.audiofilemagazine.com/podcast/a8df6dfc-b5a3-11ee-91b7-c7a229b14bde/">Listen to an interview with narrator Julia Whelan</a></div>
+            </li>
+            <li class="mystery" data-filter="mystery" data-year="2024" style="position:relative;">
+                <a class="af-bestof_wrapper" href="javascript:void();">
+                    <div class="af-bestof">
+                        <div class="af-snipe ">
+                            <div class="af-snipe_copy">
+                                AudioFile <br />Best Audiobook 2024
+                            </div>
+                        </div>
+                        <img src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/255104.jpg" alt="YOU&#39;LL NEVER FIND ME" />
+                    </div>
+                </a>
+
+                <div class="inner-content"><p class="lead">YOU'LL NEVER FIND ME by Allison Brennan, read by Hillary Huber</p>
+
+<p>
+Hillary Huber has found the perfect voice for PI Margo Angelhart, portraying her as confident, righteous, and brave. Margo's chapters, told in the first person, let listeners experience her thoughts and emotions as she protects an abused woman and uncovers her own client’s deceptions. Listeners hear the points of view of several other characters who have their own chapters, all masterfully differentiated by Huber. 
+</p>    
+
+<a href="/reviews/read/255104/">Read the full review</a></div>
+            </li>
+
+</ul>
+
+<div id="ListingModal" class="reveal-modal expand">
+    <h2>BOOK TITLE</h2>
+
+    <div class="modal-info">
+        <div class="af-bestof">
+            <div class="af-snipe ">
+                <div class="af-snipe_copy">
+                    AudioFile <br />Best Audiobook <span id="bestofyear"></span>
+                </div>
+            </div>
+            <img id="ModalImg" src="https://www.audiofilemagazine.com/images/480x480/content/uploaded/images/covers/138354.jpg" alt="Cover Image Alt Text Here" />
+        </div>
+
+        <div class="inner-content">
+            <p class="lead">Book Title review, written by Author, read by Narrator.</p>
+            <p>Book title, read by Narrator. Author Madeline Miller and narrator Perdita Weeks transform the ancient Greek drama of Circe, witch of Aeaea and daughter of Helios, into a fresh and vibrant tale for contemporary listeners. </p>
+
+            <a href="https://www.audiofilemagazine.com/reviews/read/138354/circe-by-madeline-miller-read-by-weeks/">Read the Full Review</a>
+        </div>
+
+    </div>
+
+    <a class="close-reveal-modal">&#215;</a>
+</div></div>
+            <br>
+<p class="p1"><span class="s1">Thank you to our premiere partner <a href="https://www.publishersweekly.com/">Publishers Weekly</a> and to our partners:
+<a href="http://www.thebigthrill.org/">The Big Thrill</a>,
+<a href="https://booktrib.com/">Book Trib</a>,
+<a href="https://www.thechildrensbookreview.com/">The Children's Book Review</a>,
+<a href="http://file770.com/">File 770</a>,
+<a href="https://fivebooks.com/">Five Books</a>,
+<a href="https://lithub.com/">LitHub</a>,
+<a href="https://www.novelsuspects.com/">Novel Suspects</a>,
+<a href="https://smartbitchestrashybooks.com/">Smart Bitches, Trashy Books</a>
+<br /></span></p>
+<a href="https://www.audiofilemagazine.com/best-audiobooks-2023/">Browse AudioFile's Best Audiobooks of 2023</a>
+
+                <p></p>
+                <div class="af-post_side-section">
+                    <div class="af-post_side-section_title">Share This</div>
+                    <div class="af-post_side-section_content">
+                        <div class="af-socialIcons">
+                            <a target="_blank" href="https://www.facebook.com/sharer.php?u=https://www.audiofilemagazine.com/best-audiobooks-2024&t=AudioFile Magazine - Best Of 2024" class="af-socialIcon_wrapper"><svg class="af-socialIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 19.76 38.22">
+  <title>Facebook Icon</title>
+  <defs>
+    <style>.cls-1{fill:none;}.cls-2{}.cls-3{fill:#939598;}</style>
+    <clipPath id="clip-path" transform="translate(0 0)">
+      <rect class="cls-1" width="19.76" height="38.22" />
+    </clipPath>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g class="cls-2">
+        <path class="cls-3" d="M19.76,6.28V.06L13,0C10.09,0,6,3.27,6,7v6.66H0V20.7H5.88V38.22h7V20.62H19l.79-6.9H12.91V8.65A2.35,2.35,0,0,1,15.2,6.24l4.56,0" transform="translate(0 0)" />
+      </g>
+    </g>
+  </g>
+</svg></a>
+                            <a target="_blank" href="http://twitter.com/share?text=AudioFile Magazine - Best Of 2024&url=https://www.audiofilemagazine.com/best-audiobooks-2024" class="af-socialIcon_wrapper"><svg class="af-socialIcon" xmlns="http://www.w3.org/2000/svg" width="1200" height="1227" viewBox="0 0 1200 1227" fill="none">
+  <title>Twitter Icon</title>
+  <style>.cls-1{fill:none;}.cls-2{}.cls-3{fill:#939598;}</style>
+  <path class="cls-3" d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="white" />
+</svg></a>
+                            <a target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.audiofilemagazine.com/best-audiobooks-2024&media=https://www.audiofilemagazine.com/content/Bestof-textonly-badge-480x480-no-year.jpg&description=" class="af-socialIcon_wrapper"><svg class="af-socialIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64" fill="none">
+  <title>LinkedIn Icon</title>
+  <style>.cls-2{}.cls-3{fill:#939598;}</style>
+  <path class="cls-3" d="M29.63.001H2.362C1.06.001 0 1.034 0 2.306V29.69C0 30.965 1.06 32 2.362 32h27.27C30.937 32 32 30.965 32 29.69V2.306C32 1.034 30.937.001 29.63.001z" />
+  <path style="fill: white !important;" d="M4.745 11.997H9.5v15.27H4.745zm2.374-7.6c1.517 0 2.75 1.233 2.75 2.75S8.636 9.9 7.12 9.9a2.76 2.76 0 0 1-2.754-2.753 2.75 2.75 0 0 1 2.753-2.75m5.35 7.6h4.552v2.087h.063c.634-1.2 2.182-2.466 4.5-2.466 4.806 0 5.693 3.163 5.693 7.274v8.376h-4.743V19.84c0-1.77-.032-4.05-2.466-4.05-2.47 0-2.85 1.93-2.85 3.92v7.554h-4.742v-15.27z" />
+</svg></a>
+                            <a target="_blank" href="/cdn-cgi/l/email-protection#e1de9294838b848295dca09485888ea7888d84c1ac8086809b888f84c1ccc1a3849295c1ae87c1d3d1d3d5c7808c91da838e8598dca28984828ac18e9495c18995959192dbcece969696cf809485888e87888d848c8086809b888f84cf828e8cce83849295cc809485888e838e8e8a92ccd3d1d3d5" title="AudioFileMagazine - Share by Email" class="af-socialIcon_wrapper"><svg class="af-socialIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.75 25.54">
+  <title>Email Icon</title>
+  <defs>
+    <style>.cls-1{fill:none;}.cls-2{fill:#939598;}.cls-3{}</style>
+    <clipPath id="clip-path" transform="translate(0 0)">
+      <rect class="cls-1" width="36.75" height="25.54" />
+    </clipPath>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <polygon class="cls-2" points="24.22 12.6 36.75 23.98 36.75 1.68 24.22 12.6" />
+      <g class="cls-3">
+        <path class="cls-2" d="M0,1.22s0,0,0,0V23.81L12.52,12.45Z" transform="translate(0 0)" />
+        <path class="cls-2" d="M20.66,13,35.58,0l-.09,0H1.67L16.14,13a3.41,3.41,0,0,0,4.52,0" transform="translate(0 0)" />
+        <path class="cls-2" d="M22,14.54a5.43,5.43,0,0,1-7.2,0L14,13.81,1.13,25.52l.13,0H35.47L22.68,13.94Z" transform="translate(0 0)" />
+      </g>
+    </g>
+  </g>
+</svg></a>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+            </section>
+
+
+
+
+
+
+
+            <!-- Footer -->
+            
+<footer class="site-footer full-width connectWrapper" role="contentinfo">
+    <div class="row footerContent">
+
+         <div class="one columns links">
+&nbsp;
+</div>
+<div class="two columns links">
+<strong>Reviews</strong>
+<ul>
+<li><a href="/best-audiobooks-2025/">2025 Best Audiobooks</a></li>
+<li><a href="/new-reviews/">New Reviews</a></li>
+<li><a href="/reviews/">Search Reviews</a></li>
+<li><a href="/new-reviews/">Categories</a></li>
+<li><a href="/reviews/earphones/">Earphones Awards</a></li>
+</ul>
+</div>
+<div class="two columns links">
+<strong>Features</strong>
+<ul>
+<li><a href="/blog/">Articles</a></li>
+<li><a href="/narrators/">Narrators</a></li>
+<li><a href="/authors/">Authors</a></li>
+<li><a href="/kids-teens/">Kids on the Go</a></li>
+<li><a href="/audie-awards/">Audie Awards</a></li>
+</ul>
+</div>
+<div class="two columns links">
+<strong>About</strong>
+<ul>
+<li><a href="/contact/">Contact</a></li>
+<li><a href="/ad-resources/">Advertise</a></li>
+<li><a href="/privacy/">Privacy</a></li>
+<li><a href="/sitemap/">Sitemap</a></li>
+</ul>
+</div>
+<div class="two columns links">
+<strong>Narrators</strong>
+<ul>
+<li><a href="/narrators/">Featured</a></li>
+<li><a href="/golden-voice/">Golden Voices</a></li>
+<li><a href="/reviews/#narrator">Search by Narrator</a></li>
+</ul>
+</div>
+<div class="three columns links socialLinks">
+<strong>Social Media</strong>
+<div class="socialMediaIcons af-footer_social">
+<a class="facebook" title="Facebook" href="https://facebook.com/audiofilemagazine/" target="_blank" rel="noopener">Facebook</a>
+<a class="podcast" title="Podcast" href="https://www.audiofilemagazine.com/podcast/" target="_blank" rel="noopener">Podcast</a>
+<a class="youtube af-footer_icon" title="YouTube" href="https://www.youtube.com/channel/UCboJfo0zlxj93dyRwQHCZPw/videos" target="_blank" rel="noopener">
+<svg class="af-socialIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.86 38.22">
+<title>YouTube Icon</title>
+<defs>
+<style>.cls-1{fill:#939598;}</style>
+</defs>
+<g id="Layer_2" data-name="Layer 2">
+<g id="Layer_1-2" data-name="Layer 1">
+<path class="cls-1" d="M44.9,0H10A10,10,0,0,0,0,10V28.25a10,10,0,0,0,10,10H44.9a10,10,0,0,0,10-10V10A10,10,0,0,0,44.9,0ZM29,24.52l-8.51,5.26V8.72L29,14l8.51,5.26Z"/>
+</g>
+</g>
+</svg>
+</a>
+<a class="instagram af-footer_icon" title="Instagram" href="https://www.instagram.com/audiofilemagazine/" target="_blank" rel="noopener">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333333 333333" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"><defs><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="250181" y1="308196" x2="83152.4" y2="25137"><stop offset="0" stop-color="#f58529"/><stop offset=".169" stop-color="#feda77"/><stop offset=".478" stop-color="#dd2a7b"/><stop offset=".78" stop-color="#8134af"/><stop offset="1" stop-color="#515bd4"/></linearGradient></defs><path d="M166667 0c92048 0 166667 74619 166667 166667s-74619 166667-166667 166667S0 258715 0 166667 74619 0 166667 0zm-40642 71361h81288c30526 0 55489 24654 55489 54772v81069c0 30125-24963 54771-55488 54771l-81289-1c-30526 0-55492-24646-55492-54771v-81069c0-30117 24966-54771 55492-54771zm40125 43843c29663 0 53734 24072 53734 53735 0 29667-24071 53735-53734 53735-29672 0-53739-24068-53739-53735 0-29663 24068-53735 53739-53735zm0 18150c19643 0 35586 15939 35586 35585 0 19647-15943 35589-35586 35589-19650 0-35590-15943-35590-35589s15940-35585 35590-35585zm51986-25598c4819 0 8726 3907 8726 8721 0 4819-3907 8726-8726 8726-4815 0-8721-3907-8721-8726 0-4815 3907-8721 8721-8721zm-85468-20825h68009c25537 0 46422 20782 46422 46178v68350c0 25395-20885 46174-46422 46174l-68009 1c-25537 0-46426-20778-46426-46174v-68352c0-25395 20889-46177 46426-46177z" fill="url(#a)"/></svg>
+</a>
+</div>
+</div>
+        
+    </div>
+<div id="consent-popup" class="li-popup li-popup_hide">
+    <div class="li-popup_inner">
+        <div class="li-popup_copy">
+            This website uses cookies to enhance user experience and to analyze performance and traffic on our website.
+            <a href="/privacy/" class="li-popup_link" target="_blank">Learn More</a>.
+        </div>
+        <button id="consent-ack" type="button" class="li-popup_button">I Consent</button>
+    </div>
+</div></footer>
+
+            
+
+<div class="copyright ">
+    
+    <div class="row">
+        <div class="twelve columns">
+            <div class="logo hide"><img src="/content/themes/base/images/kirkus-logo-m.png" alt="Kirkus - Find your next great audiobook" /></div>
+            
+        <div>
+            
+            &copy; Copyright 2026 Kirkus Media LLC. All Rights Reserved.
+        </div>
+        </div>
+        
+    </div>
+    
+</div>
+
+
+
+<style>
+    #NewsletterModal {
+        border-radius: 5px;
+    }
+
+        #NewsletterModal h3, #NewsletterModal p {
+            color: #6d6e71;
+        }
+
+    #NewsletterSubmitButton {
+        background-color: #c7362a;
+        padding: 10px 0;
+        width: 100%;
+        border: none;
+        height: 34px;
+    }
+
+    .newsletteremail {
+        padding: 7px 0 6px 10px;
+        width: 100%;
+        height: 34px;
+    }
+
+    #Envelope {
+        margin-top: 12px;
+        opacity: 1;
+    }
+</style>
+
+<div id="NewsletterModal" class="reveal-modal">
+    <div class="row collapse">
+        <div class="four medium columns">
+            <img style="opacity: 1; padding: 1rem; margin-left: 1rem;" src="/Content/themes/base/images/kirkus2-logo.png" alt="kirkus logo" />
+        </div>
+        <div class="eight medium columns">
+            <h3>We're now Kirkus Audiobook Reviews!</h3>
+            <p>
+                
+<p>You can continue enjoying all of our audiobook reviews right here while we prepare our new home on <a href="https://kirkusreviews.com">KirkusReviews.com</a></p>
+
+<p>In the meantime, visit Kirkus Reviews for the latest book reviews, author news, and more.</p>
+
+                
+            </p>
+        </div>
+    </div>
+    
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+
+<div id="NewsletterModalThankYou" class="reveal-modal">
+    <h3>Thank you for signing up.</h3><a class="close-reveal-modal">&#215;</a>
+</div>
+
+            
+            
+            
+            
+
+            
+            
+
+
+            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="/Scripts/jquery/jquery-1.8.2.min.js"><\/script>')</script>
+
+
+            <script type="text/javascript" src="/Scripts/review_form.js"></script>
+            <link rel="stylesheet" type="text/css" href="/Areas/Admin/Content/themes/base/CSS/jquery.dataTables.css" />
+
+
+            <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery.ui.autocomplete.css" />
+
+
+            <script src="/Scripts/jquery/plugins/jquery.dataTables.min.js"></script>
+            <script src="https://static.sekandocdn.net/static/feednami/feednami-client-v1.1.js"></script>
+
+            <script type="text/javascript" src="/scripts/js.cookie.min.js"></script>
+            <script type="text/javascript" src="/scripts/popup.js"></script>
+
+            <script type="text/javascript" src="/scripts/combined1_7ED27653A59CB7B9294F66FF86C07813.js"></script>
+
+
+
+
+            
+            <script>
+                jQuery(document).ready(function ($) {
+                    $('audio').on('play', function (e) {
+                        var src = e.target.currentSrc.replace('https://www.audiofilemagazine.com', '').replace('https://audiofilemagazine.com', '');
+                        var data = {
+                            'event': 'audio',
+                            'audioPlayerAction': 'play',
+                            'playedFromPage': e.target.baseURI,
+                            'audioTitle': '',
+                            'fileLocation': src
+                        };
+                        dataLayer.push(data);
+                        console.log('playing', data, e, dataLayer);
+
+                        ga('send', {
+                            'hitType': 'pageview',
+                            'page': src
+                        });
+                    });
+
+                    $(".royalSlider").royalSlider({
+                        autoScaleSlider: true,
+                        keyboardNavEnabled: true,
+                        controlNavigation: 'bullets',
+                        addActiveClass: true
+                    });
+                    $(".featuredAudioReview:last").addClass("last");
+
+
+
+                    $("table.kidsresults").dataTable({
+                        "iDisplayLength": 10,
+                        "aaSorting": [[1, "asc"]],
+
+                        "oLanguage": {
+                            "sProcessing": "Loading..."
+                        },
+                        "fnDrawCallback": function (oSettings) {
+                            $('audio').mediaelementplayer();
+                            $('.dataTables_wrapper .top, .dataTables_wrapper .bottom').show();
+                            //var is_safari = navigator.userAgent.indexOf("Mac") > -1;
+                            //if (is_safari) {
+
+                            //    $(".mejs-button.mejs-volume-button.mejs-mute").hide();
+                            //    $(".mejs-horizontal-volume-slider.mejs-mute").hide();
+                            //}
+                        },
+
+                        "aoColumnDefs": [{
+                            "bSortable": false, "aTargets": ["results"]
+
+                        }],
+                        "bFilter": false,
+                        "sDom": '<"top"lip<"clear">>rt<"bottom"lip<"clear">>',
+                        "sPaginationType": "full_numbers"
+
+                    });
+
+
+                });
+            </script>
+
+        </div>
+    </div>
+</body>
+</html>

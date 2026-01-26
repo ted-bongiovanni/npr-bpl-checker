@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Reads Now! - Mockup with Audiobooks</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #fafafa 0%, #f0f0f5 100%);
+            min-height: 100vh;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* Mockup Banner */
+        .mockup-banner {
+            background: linear-gradient(135deg, #ff9500 0%, #ff9f0a 100%);
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 14px;
+            margin: -60px -24px 40px;
+            width: calc(100% + 48px);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1d1d1f 0%, #515154 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            font-size: 21px;
+            color: #86868b;
+            font-weight: 400;
+        }
+
+        .header-description {
+            font-size: 16px !important;
+            color: #515154 !important;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.5;
+        }
+
+        .header-description em {
+            color: #34c759;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            background: transparent;
+            color: #86868b;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            background: rgba(0, 0, 0, 0.04);
+            color: #1d1d1f;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: #1d1d1f;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .tab-btn .count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 6px;
+            margin-left: 8px;
+            background: #0071e3;
+            color: white;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Mode Toggle - NEW */
+        .mode-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 24px;
+            background: #e8e8ed;
+            border-radius: 12px;
+            padding: 4px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mode-btn {
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: 500;
+            background: transparent;
+            color: #86868b;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mode-btn:hover {
+            color: #1d1d1f;
+        }
+
+        .mode-btn.active {
+            background: white;
+            color: #1d1d1f;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mode-btn .mode-icon {
+            font-size: 18px;
+        }
+
+        /* Selection Panel */
+        .selection-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .selection-row {
+            display: flex;
+            gap: 24px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .selection-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .selection-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 8px;
+        }
+
+        .selection-group select {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 17px;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            background: white;
+            color: #1d1d1f;
+            appearance: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2386868b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .selection-group select:hover {
+            border-color: #0071e3;
+        }
+
+        .selection-group select:focus {
+            outline: none;
+            border-color: #0071e3;
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+        }
+
+        .spin-button {
+            padding: 14px 32px;
+            font-size: 17px;
+            font-weight: 500;
+            background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .spin-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(0, 113, 227, 0.4);
+        }
+
+        /* Settings Toggle */
+        .settings-row {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            flex-wrap: wrap;
+        }
+
+        .toggle-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-group label {
+            font-size: 14px;
+            color: #515154;
+            cursor: pointer;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #d2d2d7;
+            transition: 0.3s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: #34c759;
+        }
+
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Availability status bar */
+        .availability-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background: #f5f5f7;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #515154;
+        }
+
+        .availability-status .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #34c759;
+            border-radius: 50%;
+        }
+
+        .availability-status .status-text {
+            flex: 1;
+        }
+
+        .availability-status .refresh-btn {
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            background: white;
+            color: #0071e3;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .availability-status .refresh-btn:hover {
+            background: #0071e3;
+            color: white;
+            border-color: #0071e3;
+        }
+
+        /* Book Cards */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .book-grid {
+                grid-template-columns: 1fr;
+            }
+            .selection-row {
+                flex-direction: column;
+            }
+            .spin-button {
+                width: 100%;
+            }
+            .header h1 {
+                font-size: 32px;
+            }
+            .mode-toggle {
+                flex-direction: column;
+                width: 100%;
+            }
+            .mode-btn {
+                justify-content: center;
+            }
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .book-cover-wrapper {
+            position: relative;
+            padding: 32px 32px 0;
+            background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 100%);
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Audiobook cover styling */
+        .book-cover-wrapper.audiobook {
+            background: linear-gradient(180deg, #1d1d1f 0%, #2d2d2f 100%);
+        }
+
+        .book-cover {
+            width: 140px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Format badge */
+        .format-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .format-badge.ebook {
+            background: #0071e3;
+            color: white;
+        }
+
+        .format-badge.audiobook {
+            background: linear-gradient(135deg, #ff9500 0%, #ff9f0a 100%);
+            color: white;
+        }
+
+        /* Award badge */
+        .award-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(255, 165, 0, 0.4);
+        }
+
+        .book-content {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .book-author {
+            font-size: 15px;
+            color: #86868b;
+            margin-bottom: 8px;
+        }
+
+        /* Narrator line for audiobooks */
+        .book-narrator {
+            font-size: 14px;
+            color: #ff9500;
+            font-weight: 500;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .book-rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .book-rating .stars {
+            color: #ff9500;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .book-rating .rating-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .book-rating .rating-source {
+            font-size: 12px;
+            color: #86868b;
+        }
+
+        .book-availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #e8f5e9;
+            color: #1b5e20;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .book-availability::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #34c759;
+            border-radius: 50%;
+        }
+
+        .book-availability.unavailable {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .book-availability.unavailable::before {
+            background: #ff9500;
+        }
+
+        .book-description {
+            font-size: 14px;
+            color: #515154;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Narrator review for audiobooks */
+        .narrator-review {
+            font-size: 13px;
+            color: #86868b;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: #f5f5f7;
+            border-radius: 8px;
+            font-style: italic;
+            border-left: 3px solid #ff9500;
+        }
+
+        .book-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .book-tag {
+            padding: 4px 10px;
+            background: #f5f5f7;
+            color: #515154;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .book-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+
+        .book-actions a,
+        .book-actions button {
+            flex: 1;
+            padding: 12px 12px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            min-width: 80px;
+        }
+
+        .btn-borrow {
+            background: #1d1d1f;
+            color: white;
+        }
+
+        .btn-borrow:hover {
+            background: #000;
+        }
+
+        .btn-goodreads {
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+
+        .btn-goodreads:hover {
+            background: #e8e8ed;
+        }
+
+        .btn-save {
+            background: linear-gradient(135deg, #ff9500 0%, #ff9f0a 100%);
+            color: white;
+        }
+
+        .btn-save:hover {
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid #d2d2d7;
+            color: #86868b;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #0071e3;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Design Notes */
+        .design-notes {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: 48px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .design-notes h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+        }
+
+        .design-notes h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+        }
+
+        .design-notes ul {
+            margin-left: 20px;
+            color: #515154;
+            line-height: 1.8;
+        }
+
+        .design-notes code {
+            background: #f5f5f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+
+        .design-notes .note-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            color: #1b5e20;
+        }
+
+        .design-notes .note-box.warning {
+            background: #fff3e0;
+            color: #e65100;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Mockup Banner -->
+        <div class="mockup-banner">
+            MOCKUP - This is a design preview for the audiobook feature
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <h1>Great Reads Now!</h1>
+            <p>Discover critically acclaimed books you can borrow today</p>
+            <p class="header-description">
+                Stop waiting weeks for library holds. We show you award-winning books
+                that are available <em>right now</em> at Brooklyn Public Library via Libby/OverDrive.
+            </p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="discover">Discover</button>
+            <button class="tab-btn" data-tab="reading-list">
+                Reading List
+                <span class="count">3</span>
+            </button>
+        </nav>
+
+        <!-- NEW: Mode Toggle -->
+        <div class="mode-toggle">
+            <button class="mode-btn" data-mode="read">
+                <span class="mode-icon">📖</span>
+                Read
+            </button>
+            <button class="mode-btn" data-mode="listen">
+                <span class="mode-icon">🎧</span>
+                Listen
+            </button>
+            <button class="mode-btn active" data-mode="surprise">
+                <span class="mode-icon">✨</span>
+                Surprise Me
+            </button>
+        </div>
+
+        <!-- Selection Panel -->
+        <div class="selection-panel">
+            <div class="selection-row">
+                <div class="selection-group">
+                    <label>Year</label>
+                    <select>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                </div>
+                <div class="selection-group">
+                    <label>Genre</label>
+                    <select>
+                        <option value="">All Genres</option>
+                        <option value="fiction">Fiction</option>
+                        <option value="nonfiction">Nonfiction</option>
+                        <option value="biography">Biography & Memoir</option>
+                        <option value="historical">Historical Fiction</option>
+                        <option value="mystery">Mysteries & Thrillers</option>
+                        <option value="scifi">Sci-Fi & Fantasy</option>
+                    </select>
+                </div>
+                <button class="spin-button">
+                    ✨ Surprise Me
+                </button>
+            </div>
+            <div class="settings-row">
+                <div class="toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <label>Award Winners only</label>
+                </div>
+                <div class="toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <label>Show ratings</label>
+                </div>
+                <div class="toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <label>Personalized</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Availability Status -->
+        <div class="availability-status">
+            <span class="status-dot"></span>
+            <span class="status-text">
+                <strong>223</strong> ebooks + <strong>47</strong> audiobooks available • Last checked: 2 hours ago
+            </span>
+            <button class="refresh-btn">Refresh</button>
+        </div>
+
+        <!-- Book Grid - Surprise Me Mode (1 ebook + 1 audiobook) -->
+        <div class="book-grid" style="grid-template-columns: repeat(2, 1fr);">
+            <!-- Ebook Card -->
+            <div class="book-card">
+                <div class="book-cover-wrapper">
+                    <span class="format-badge ebook">eBook</span>
+                    <img class="book-cover"
+                        src="https://apps.npr.org/best-books/assets/synced/covers/2024/9780385550369.jpg"
+                        alt="James"
+                        onerror="this.style.background='#e8e8ed'">
+                </div>
+                <div class="book-content">
+                    <h3 class="book-title">James</h3>
+                    <p class="book-author">by Percival Everett</p>
+                    <div class="book-rating">
+                        <span class="stars">★★★★½</span>
+                        <span class="rating-value">4.5</span>
+                        <span class="rating-source">Goodreads</span>
+                    </div>
+                    <div class="book-availability">Available Now</div>
+                    <p class="book-description">
+                        A brilliant, action-packed reimagining of The Adventures of Huckleberry Finn,
+                        both a great American novel and a moving exploration of a nation's fraught history
+                        with race. When the meaning and consequence of slavery are so profound, these
+                        contradictions create a tension that will not allow them peace.
+                    </p>
+                    <div class="book-tags">
+                        <span class="book-tag">Literary Fiction</span>
+                        <span class="book-tag">Historical</span>
+                    </div>
+                    <div class="book-actions">
+                        <a href="#" class="btn-borrow">Borrow</a>
+                        <a href="#" class="btn-goodreads">Reviews</a>
+                        <button class="btn-save">+ Save</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audiobook Card -->
+            <div class="book-card">
+                <div class="book-cover-wrapper audiobook">
+                    <span class="format-badge audiobook">Audiobook</span>
+                    <span class="award-badge">🏆</span>
+                    <img class="book-cover"
+                        src="https://apps.npr.org/best-books/assets/synced/covers/2024/9780593243732.jpg"
+                        alt="The Women"
+                        onerror="this.style.background='#2d2d2f'">
+                </div>
+                <div class="book-content">
+                    <h3 class="book-title">The Women</h3>
+                    <p class="book-author">by Kristin Hannah</p>
+                    <p class="book-narrator">🎙️ Narrated by Julia Whelan</p>
+                    <div class="book-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-value">4.7</span>
+                        <span class="rating-source">Goodreads</span>
+                    </div>
+                    <div class="book-availability">Available Now</div>
+                    <div class="narrator-review">
+                        "Whelan delivers an emotionally devastating performance that carries the weight
+                        of war and the struggle for recognition with remarkable authenticity."
+                        <br>— AudioFile Magazine
+                    </div>
+                    <div class="book-tags">
+                        <span class="book-tag">Historical Fiction</span>
+                        <span class="book-tag">Earphones Award</span>
+                    </div>
+                    <div class="book-actions">
+                        <a href="#" class="btn-borrow">Borrow</a>
+                        <a href="#" class="btn-goodreads">Reviews</a>
+                        <button class="btn-save">+ Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spin Again Button -->
+        <div style="text-align: center; margin-top: 32px;">
+            <button class="spin-button" style="padding: 16px 48px; font-size: 18px;">
+                🔄 Surprise Me Again
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p><strong>Great Reads Now!</strong> • eBooks from <a href="https://apps.npr.org/best-books/">NPR Books We Love</a> • Audiobooks from <a href="https://www.audiofilemagazine.com/earphones-awards/">AudioFile Earphones Awards</a> • Availability via <a href="https://brooklyn.overdrive.com">Brooklyn Public Library</a></p>
+        </footer>
+
+        <!-- Design Notes -->
+        <div class="design-notes">
+            <h2>Design Notes</h2>
+
+            <div class="note-box">
+                <strong>Key Change:</strong> The three-way mode toggle (Read / Listen / Surprise Me) replaces format as
+                a primary navigation choice. "Surprise Me" shows one ebook + one audiobook side by side.
+            </div>
+
+            <h3>Mode Behaviors</h3>
+            <ul>
+                <li><strong>📖 Read:</strong> Shows 3 ebooks from NPR Books We Love (current behavior)</li>
+                <li><strong>🎧 Listen:</strong> Shows 3 audiobooks from AudioFile Earphones Awards</li>
+                <li><strong>✨ Surprise Me:</strong> Shows 1 ebook + 1 audiobook (best of both worlds)</li>
+            </ul>
+
+            <h3>Visual Distinctions</h3>
+            <ul>
+                <li><strong>Format badges:</strong> Blue "eBook" vs orange "Audiobook"</li>
+                <li><strong>Award badge:</strong> Gold 🏆 for Earphones Award winners</li>
+                <li><strong>Cover backgrounds:</strong> Light gray for ebooks, dark gray for audiobooks</li>
+                <li><strong>Narrator line:</strong> Orange accent showing narrator name</li>
+                <li><strong>Narrator review:</strong> Quoted excerpt from AudioFile about the narration</li>
+            </ul>
+
+            <h3>Settings Toggle Changes</h3>
+            <ul>
+                <li>"Seriously Great Writing only" → "Award Winners only" (applies to both sources)</li>
+                <li>For ebooks: filters to NPR's "Seriously Great Writing" tag</li>
+                <li>For audiobooks: all are award winners by definition</li>
+            </ul>
+
+            <h3>Availability Status</h3>
+            <ul>
+                <li>Shows both counts: "223 ebooks + 47 audiobooks available"</li>
+                <li>Single refresh button updates both</li>
+            </ul>
+
+            <h3>Data Sources</h3>
+            <ul>
+                <li><strong>eBooks:</strong> NPR Books We Love (2020-2025) - existing</li>
+                <li><strong>Audiobooks:</strong> AudioFile Earphones Awards (2020-2025) - new</li>
+                <li>Both checked against Brooklyn Public Library OverDrive</li>
+            </ul>
+
+            <div class="note-box warning">
+                <strong>Implementation Challenge:</strong> AudioFile doesn't have a public API. We'll need to scrape
+                their monthly awards pages (they give ~16 awards per month). The data includes title, author,
+                narrator(s), genre, publisher, and a review excerpt.
+            </div>
+
+            <h3>New Files Needed</h3>
+            <ul>
+                <li><code>scrape-audiofile.js</code> - Scrape Earphones Awards by year/month</li>
+                <li><code>check-audiobook-availability.js</code> - Check BPL audiobook availability</li>
+                <li><code>audiobooks.json</code> - Scraped audiobook data</li>
+                <li><code>available-audiobooks.json</code> - Available audiobooks at BPL</li>
+            </ul>
+
+            <h3>Button Text by Mode</h3>
+            <ul>
+                <li><strong>Read:</strong> "✨ Find Books" → "🔄 Spin Again"</li>
+                <li><strong>Listen:</strong> "🎧 Find Audiobooks" → "🔄 Spin Again"</li>
+                <li><strong>Surprise Me:</strong> "✨ Surprise Me" → "🔄 Surprise Me Again"</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Mode toggle interactivity for the mockup
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const mode = btn.dataset.mode;
+                const spinBtn = document.querySelector('.spin-button');
+                const grid = document.querySelector('.book-grid');
+
+                if (mode === 'read') {
+                    spinBtn.textContent = '✨ Find Books';
+                    grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+                } else if (mode === 'listen') {
+                    spinBtn.textContent = '🎧 Find Audiobooks';
+                    grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+                } else {
+                    spinBtn.textContent = '✨ Surprise Me';
+                    grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
