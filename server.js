@@ -79,15 +79,15 @@ Your approach:
 5. Explain why each book might appeal to them
 
 Keep responses conversational and concise (2-3 paragraphs max). When recommending books,
-include the title, author, a brief personalized pitch, and the borrow link.
+include the title, author, a brief personalized pitch, and BOTH a borrow link and a buy link.
 
 Format book recommendations like this:
 **Title** by Author - Your pitch for why they'd enjoy it.
-[Borrow from BPL](borrowUrl)
+[Borrow from BPL](the Borrow URL) | [Buy on Thriftbooks](the Buy URL)
 
 IMPORTANT: Only recommend books from the "Available Books" list provided below.
 Do not recommend books that aren't on this list, as they may not be available.
-Each book includes a borrowUrl - always include this link in your recommendations.
+Each book in the list has a "Borrow:" URL and a "Buy:" URL. You MUST include both links for every book you recommend.
 
 Available books will be provided in the conversation context.`;
 
@@ -108,8 +108,10 @@ app.post('/api/chat', async (req, res) => {
                 const tags = book.tags ? book.tags.filter(t =>
                     !['seriously great writing', 'rather short', 'rather long'].includes(t.toLowerCase())
                 ).join(', ') : '';
+                const thriftbooksUrl = book.thriftbooksUrl || `https://www.thriftbooks.com/browse/?b.search=${encodeURIComponent(`${book.title} by ${book.author || ''}`.trim())}#b.s=mostPopular-desc&b.p=1&b.pp=50&b.oos&b.tile`;
                 return `- "${book.title}" by ${book.author}${tags ? ` (${tags})` : ''}${book.goodreadsRating ? ` - ${book.goodreadsRating}/5 on Goodreads` : ''}
-  Borrow: ${book.borrowUrl || 'N/A'}`;
+  Borrow: ${book.borrowUrl || 'N/A'}
+  Buy: ${thriftbooksUrl}`;
             }).join('\n');
             booksContext = `\n\nAvailable Books:\n${booksForContext}`;
         }

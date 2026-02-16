@@ -1020,6 +1020,7 @@
             <p>Discover critically acclaimed books you can borrow today</p>
             <p class="header-description">
                 Stop waiting weeks for library holds. We show you NPR's "Books We Love"
+                plus the Modern Library Top 100 (fiction &amp; nonfiction classics)
                 that are available <em>right now</em> at Brooklyn Public Library via Libby/OverDrive.
             </p>
         </header>
@@ -1064,6 +1065,7 @@
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
                             <option value="2020">2020</option>
+                            <option value="modern-library">Modern Library Top 100</option>
                         </select>
                     </div>
                     <div class="selection-group">
@@ -1164,7 +1166,7 @@
         </div>
 
         <footer class="footer">
-            <p><strong>Great Reads Now!</strong> • eBooks from <a href="https://apps.npr.org/best-books/" target="_blank">NPR Books We Love</a> • Audiobooks from <a href="https://www.audiofilemagazine.com/best-audiobooks-2024/" target="_blank">AudioFile Best Audiobooks</a> • Availability via <a href="https://brooklyn.overdrive.com" target="_blank">Brooklyn Public Library</a></p>
+            <p><strong>Great Reads Now!</strong> • eBooks from <a href="https://apps.npr.org/best-books/" target="_blank">NPR Books We Love</a> • Classics from <a href="https://sites.prh.com/modernlibrary100" target="_blank">Modern Library Top 100</a> • Audiobooks from <a href="https://www.audiofilemagazine.com/best-audiobooks-2024/" target="_blank">AudioFile Best Audiobooks</a> • Availability via <a href="https://brooklyn.overdrive.com" target="_blank">Brooklyn Public Library</a></p>
         </footer>
     </div>
 
@@ -1520,9 +1522,19 @@
             }
         }
 
-        // Fetch books for a year from NPR
+        // Fetch books for a year from NPR (or local sources for special lists)
         async function fetchBooksForYear(year) {
             if (allBooks[year]) return allBooks[year];
+
+            // Modern Library Top 100: pull from already-loaded availableBooks
+            if (year === 'modern-library') {
+                const mlBooks = Object.values(availableBooks).filter(book =>
+                    (book.tags || []).some(t => t === 'Modern Library Top 100')
+                );
+                mlBooks.forEach(book => book.year = 'classic');
+                allBooks[year] = mlBooks;
+                return mlBooks;
+            }
 
             try {
                 const response = await fetch(`${API_BASE}/${year}.json`);
@@ -1539,18 +1551,21 @@
 
         // Filter books by criteria
         function filterBooks(books, genre) {
+            const year = document.getElementById('yearSelect').value;
             return books.filter(book => {
                 const tags = (book.tags || []).map(t => t.toLowerCase());
 
-                // Filter by "seriously great writing" if enabled
-                if (seriouslyGreatWriting && !tags.includes('seriously great writing')) return false;
+                // Skip "seriously great writing" filter for non-NPR lists
+                if (seriouslyGreatWriting && year !== 'modern-library' && !tags.includes('seriously great writing')) return false;
 
                 // Must match genre if specified
                 if (genre && !tags.includes(genre.toLowerCase())) return false;
 
-                // Must be available at BPL
-                const key = `${book.title}-${book.author}`.toLowerCase();
-                if (!availableBooks[key]) return false;
+                // Must be available at BPL (Modern Library books already come from availableBooks)
+                if (year !== 'modern-library') {
+                    const key = `${book.title}-${book.author}`.toLowerCase();
+                    if (!availableBooks[key]) return false;
+                }
 
                 return true;
             });
@@ -2275,6 +2290,7 @@
                     <option value="2022">2022</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
+                    <option value="modern-library">Modern Library Top 100</option>
                 `;
             }
         }
@@ -2293,7 +2309,8 @@
                 tags: book.tags || [],
                 goodreadsRating: book.goodreadsRating,
                 description: book.description,
-                borrowUrl: `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(book.title)}`
+                borrowUrl: `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(book.title)}`,
+                thriftbooksUrl: getThriftbooksUrl(book.title, book.author)
             }));
             return books;
         }

@@ -5,7 +5,8 @@
   "main": "check-availability.js",
   "scripts": {
     "check": "node check-availability.js",
-    "serve": "node server.js"
+    "serve": "node server.js",
+    "scrape-modern-library": "node scrape-modern-library.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
