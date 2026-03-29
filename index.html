@@ -209,28 +209,38 @@
             margin-bottom: 8px;
         }
 
-        .selection-group select {
-            width: 100%;
-            padding: 14px 16px;
-            font-size: 17px;
+        .chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip input {
+            display: none;
+        }
+
+        .chip span {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 20px;
             border: 1px solid #d2d2d7;
-            border-radius: 12px;
             background: white;
-            color: #1d1d1f;
-            appearance: none;
+            color: #86868b;
             cursor: pointer;
             transition: all 0.2s ease;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2386868b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
+            user-select: none;
         }
 
-        .selection-group select:hover {
+        .chip span:hover {
             border-color: #0071e3;
+            color: #1d1d1f;
         }
 
-        .selection-group select:focus {
-            outline: none;
+        .chip input:checked + span {
+            background: #0071e3;
+            color: white;
             border-color: #0071e3;
             box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
         }
@@ -286,6 +296,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
+            margin-bottom: 48px;
         }
 
         @media (max-width: 900px) {
@@ -297,12 +308,6 @@
         @media (max-width: 600px) {
             .book-grid {
                 grid-template-columns: 1fr;
-            }
-            .selection-row {
-                flex-direction: column;
-            }
-            .spin-button {
-                width: 100%;
             }
             .header h1 {
                 font-size: 32px;
@@ -1054,42 +1059,55 @@
                 </button>
             </div>
 
+            <div class="recommendation-banner" id="recommendationBanner">
+                <h3>✨ Personalized for you</h3>
+                <p id="recommendationReason">Based on your reading list preferences</p>
+            </div>
+
+            <div id="statusMessage" class="status-message">
+                Loading books...
+            </div>
+
+            <div class="book-grid" id="bookGrid"></div>
+
+            <div style="text-align: center; margin-bottom: 32px;">
+                <button class="spin-button" id="spinButton">
+                    ✨ Find Books
+                </button>
+            </div>
+
             <div class="selection-panel">
-                <div class="selection-row">
-                    <div class="selection-group">
-                        <label>Year</label>
-                        <select id="yearSelect">
-                            <option value="2025">2025</option>
-                            <option value="2024">2024</option>
-                            <option value="2023">2023</option>
-                            <option value="2022">2022</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="modern-library">Modern Library Top 100</option>
-                        </select>
+                <div class="selection-group">
+                    <label>Year</label>
+                    <div class="chip-group" id="yearGroup">
+                        <label class="chip"><input type="checkbox" name="year" value="all" checked><span>All</span></label>
+                        <label class="chip"><input type="checkbox" name="year" value="2025"><span>2025</span></label>
+                        <label class="chip"><input type="checkbox" name="year" value="2024"><span>2024</span></label>
+                        <label class="chip"><input type="checkbox" name="year" value="2023"><span>2023</span></label>
+                        <label class="chip"><input type="checkbox" name="year" value="2022"><span>2022</span></label>
+                        <label class="chip"><input type="checkbox" name="year" value="2021"><span>2021</span></label>
+                        <label class="chip"><input type="checkbox" name="year" value="2020"><span>2020</span></label>
+                        <label class="chip"><input type="checkbox" name="year" value="modern-library"><span>Modern Library Top 100</span></label>
                     </div>
-                    <div class="selection-group">
-                        <label>Genre</label>
-                        <select id="genreSelect">
-                            <option value="">All Genres</option>
-                            <option value="fiction">Fiction</option>
-                            <option value="nonfiction">Nonfiction</option>
-                            <option value="biography & memoir">Biography & Memoir</option>
-                            <option value="historical fiction">Historical Fiction</option>
-                            <option value="mysteries & thrillers">Mysteries & Thrillers</option>
-                            <option value="sci fi, fantasy & speculative fiction">Sci-Fi & Fantasy</option>
-                            <option value="love & romance">Romance</option>
-                            <option value="short stories, essays & poetry">Short Stories & Poetry</option>
-                        </select>
+                </div>
+                <div class="selection-group">
+                    <label>Genre</label>
+                    <div class="chip-group" id="genreGroup">
+                        <label class="chip"><input type="checkbox" name="genre" value="" checked><span>All Genres</span></label>
+                        <label class="chip"><input type="checkbox" name="genre" value="fiction"><span>Fiction</span></label>
+                        <label class="chip"><input type="checkbox" name="genre" value="nonfiction"><span>Nonfiction</span></label>
+                        <label class="chip"><input type="checkbox" name="genre" value="biography & memoir"><span>Biography & Memoir</span></label>
+                        <label class="chip"><input type="checkbox" name="genre" value="historical fiction"><span>Historical Fiction</span></label>
+                        <label class="chip"><input type="checkbox" name="genre" value="mysteries & thrillers"><span>Mysteries & Thrillers</span></label>
+                        <label class="chip"><input type="checkbox" name="genre" value="sci fi, fantasy & speculative fiction"><span>Sci-Fi & Fantasy</span></label>
+                        <label class="chip"><input type="checkbox" name="genre" value="love & romance"><span>Romance</span></label>
+                        <label class="chip"><input type="checkbox" name="genre" value="short stories, essays & poetry"><span>Short Stories & Poetry</span></label>
                     </div>
-                    <button class="spin-button" id="spinButton">
-                        ✨ Find Books
-                    </button>
                 </div>
                 <div class="settings-row">
                     <div class="toggle-group">
                         <label class="toggle-switch">
-                            <input type="checkbox" id="seriouslyGreatWriting" checked>
+                            <input type="checkbox" id="seriouslyGreatWriting">
                             <span class="toggle-slider"></span>
                         </label>
                         <label for="seriouslyGreatWriting">Seriously Great Writing only</label>
@@ -1118,17 +1136,6 @@
                 </span>
                 <button class="refresh-btn" id="refreshBtn" onclick="refreshAvailability()">Refresh</button>
             </div>
-
-            <div class="recommendation-banner" id="recommendationBanner">
-                <h3>✨ Personalized for you</h3>
-                <p id="recommendationReason">Based on your reading list preferences</p>
-            </div>
-
-            <div id="statusMessage" class="status-message">
-                Select your preferences and click "Find Books" to discover your next great read.
-            </div>
-
-            <div class="book-grid" id="bookGrid"></div>
         </div>
 
         <!-- Reading List Tab -->
@@ -1187,7 +1194,7 @@
         let currentMode = 'read'; // 'read' or 'listen'
         let showRatings = true;
         let personalizedMode = false;
-        let seriouslyGreatWriting = true;
+        let seriouslyGreatWriting = false;
 
         // Load reading list from localStorage
         function loadReadingList() {
@@ -1345,6 +1352,11 @@
             } catch (e) {
                 console.log('No audiobooks file');
                 availableAudiobooks = [];
+            }
+
+            // Auto-spin on load so users see books immediately
+            if (Object.keys(availableBooks).length > 0) {
+                spin();
             }
         }
 
@@ -1526,6 +1538,13 @@
         async function fetchBooksForYear(year) {
             if (allBooks[year]) return allBooks[year];
 
+            // All years: return everything from availableBooks
+            if (year === 'all') {
+                const books = Object.values(availableBooks);
+                allBooks[year] = books;
+                return books;
+            }
+
             // Modern Library Top 100: pull from already-loaded availableBooks
             if (year === 'modern-library') {
                 const mlBooks = Object.values(availableBooks).filter(book =>
@@ -1549,20 +1568,55 @@
             }
         }
 
+        // Get selected checkbox values from a chip group
+        function getSelectedYears() {
+            const checked = document.querySelectorAll('#yearGroup input:checked');
+            return Array.from(checked).map(cb => cb.value);
+        }
+
+        function getSelectedGenres() {
+            const checked = document.querySelectorAll('#genreGroup input:checked');
+            return Array.from(checked).map(cb => cb.value);
+        }
+
+        // "All" toggle logic for chip groups
+        function setupChipToggle(groupId, allValue) {
+            const group = document.getElementById(groupId);
+            if (!group) return;
+            group.addEventListener('change', (e) => {
+                const checkboxes = group.querySelectorAll('input');
+                const allCheckbox = group.querySelector(`input[value="${allValue}"]`);
+                if (e.target.value === allValue) {
+                    // Clicked "All" — uncheck everything else
+                    checkboxes.forEach(cb => { if (cb !== allCheckbox) cb.checked = false; });
+                    allCheckbox.checked = true;
+                } else {
+                    // Clicked a specific — uncheck "All"
+                    allCheckbox.checked = false;
+                    // If nothing is checked, re-check "All"
+                    const anyChecked = Array.from(checkboxes).some(cb => cb !== allCheckbox && cb.checked);
+                    if (!anyChecked) allCheckbox.checked = true;
+                }
+            });
+        }
+
         // Filter books by criteria
-        function filterBooks(books, genre) {
-            const year = document.getElementById('yearSelect').value;
+        function filterBooks(books, genres, years) {
             return books.filter(book => {
                 const tags = (book.tags || []).map(t => t.toLowerCase());
 
                 // Skip "seriously great writing" filter for non-NPR lists
-                if (seriouslyGreatWriting && year !== 'modern-library' && !tags.includes('seriously great writing')) return false;
+                const skipNprFilters = years.includes('all') || years.includes('modern-library');
+                if (seriouslyGreatWriting && !skipNprFilters && !tags.includes('seriously great writing')) return false;
 
-                // Must match genre if specified
-                if (genre && !tags.includes(genre.toLowerCase())) return false;
+                // Must match at least one selected genre (skip if "All Genres" selected)
+                if (!genres.includes('')) {
+                    const matchesGenre = genres.some(g => tags.includes(g.toLowerCase()));
+                    if (!matchesGenre) return false;
+                }
 
-                // Must be available at BPL (Modern Library books already come from availableBooks)
-                if (year !== 'modern-library') {
+                // Must be available at BPL (all/modern-library books already come from availableBooks)
+                if (!skipNprFilters) {
                     const key = `${book.title}-${book.author}`.toLowerCase();
                     if (!availableBooks[key]) return false;
                 }
@@ -2017,8 +2071,8 @@
         async function spin() {
             const button = document.getElementById('spinButton');
             const status = document.getElementById('statusMessage');
-            const year = document.getElementById('yearSelect').value;
-            const genre = document.getElementById('genreSelect').value;
+            const years = getSelectedYears();
+            const genres = getSelectedGenres();
             const isPersonalized = personalizedMode && (readingList.length + readBooks.length) >= 2;
 
             if (isLoading) return;
@@ -2026,6 +2080,79 @@
 
             button.disabled = true;
             button.textContent = 'Finding...';
+
+            // Handle surprise mode - random pick from books AND audiobooks
+            if (currentMode === 'surprise') {
+                status.textContent = 'Finding something special...';
+                status.className = 'status-message loading';
+                status.style.display = 'block';
+                document.getElementById('bookGrid').innerHTML = '';
+                document.getElementById('recommendationBanner').classList.remove('show');
+
+                try {
+                    await new Promise(r => setTimeout(r, 600));
+
+                    // Gather all available books from all years
+                    const allYears = ['2025', '2024', '2023', '2022', '2021', '2020'];
+                    const bookPool = [];
+                    for (const y of allYears) {
+                        try {
+                            const books = await fetchBooksForYear(y);
+                            books.forEach(book => {
+                                const key = `${book.title}-${book.author}`.toLowerCase();
+                                if (availableBooks[key] &&
+                                    !isInReadingList(book.title, book.author) &&
+                                    !hasBeenRead(book.title, book.author)) {
+                                    bookPool.push({ type: 'book', data: book });
+                                }
+                            });
+                        } catch (e) { /* skip year */ }
+                    }
+
+                    // Add audiobooks to the pool
+                    availableAudiobooks.forEach(ab => {
+                        const title = ab.bplTitle || ab.title;
+                        const author = ab.bplAuthor || ab.author;
+                        if (!listenedBooks.some(b => b.title === title && b.author === author)) {
+                            bookPool.push({ type: 'audiobook', data: ab });
+                        }
+                    });
+
+                    // Shuffle and pick 3
+                    const shuffled = [...bookPool].sort(() => Math.random() - 0.5);
+                    const picks = shuffled.slice(0, 3);
+
+                    if (picks.length === 0) {
+                        status.innerHTML = `
+                            <div class="empty-state">
+                                <h3>No surprises left!</h3>
+                                <p>You've seen everything. Try clearing your read/listened lists.</p>
+                            </div>
+                        `;
+                        status.style.display = 'block';
+                    } else {
+                        status.style.display = 'none';
+                        const grid = document.getElementById('bookGrid');
+                        grid.innerHTML = picks.map(pick => {
+                            if (pick.type === 'audiobook') {
+                                return createAudiobookCard(pick.data);
+                            } else {
+                                return createBookCard(pick.data);
+                            }
+                        }).join('');
+                    }
+
+                    button.textContent = '✨ Surprise Me!';
+                } catch (e) {
+                    status.textContent = 'Something went wrong. Please try again.';
+                    status.className = 'status-message';
+                    button.textContent = '✨ Surprise Me!';
+                }
+
+                button.disabled = false;
+                isLoading = false;
+                return;
+            }
 
             // Handle audiobook mode
             if (currentMode === 'listen') {
@@ -2038,10 +2165,10 @@
                 try {
                     // Filter audiobooks by year and genre
                     let filtered = availableAudiobooks.filter(book => {
-                        // Filter by year
-                        if (year && year !== 'all' && book.year != year) return false;
-                        // Filter by genre
-                        if (genre && book.genre !== genre) return false;
+                        // Filter by year (skip if "all" is selected)
+                        if (!years.includes('all') && !years.includes(String(book.year))) return false;
+                        // Filter by genre (skip if "All Genres" selected)
+                        if (!genres.includes('') && !genres.some(g => book.genre === g)) return false;
                         // Exclude already listened
                         if (listenedBooks.some(b => b.title === (book.bplTitle || book.title) && b.author === (book.bplAuthor || book.author))) return false;
                         return true;
@@ -2079,8 +2206,13 @@
             document.getElementById('recommendationBanner').classList.remove('show');
 
             try {
-                const books = await fetchBooksForYear(year);
-                const filtered = filterBooks(books, genre);
+                // Fetch books for all selected years and merge
+                const allBooksForYears = [];
+                for (const y of years) {
+                    const books = await fetchBooksForYear(y);
+                    allBooksForYears.push(...books);
+                }
+                const filtered = filterBooks(allBooksForYears, genres, years);
                 const selection = getRandomBooks(filtered, 3, isPersonalized);
 
                 // Small delay for effect
@@ -2156,7 +2288,7 @@
 
                 showRatings = savedShowRatings !== 'false'; // default true
                 personalizedMode = savedPersonalized === 'true'; // default false
-                seriouslyGreatWriting = savedSGW !== 'false'; // default true
+                seriouslyGreatWriting = savedSGW === 'true'; // default false
 
                 document.getElementById('showRatings').checked = showRatings;
                 document.getElementById('personalizedMode').checked = personalizedMode;
@@ -2222,76 +2354,67 @@
 
                 // Clear current results
                 document.getElementById('bookGrid').innerHTML = '';
-                document.getElementById('statusMessage').textContent = mode === 'listen'
-                    ? 'Click "Find Audiobooks" to discover award-winning listens!'
-                    : 'Select your preferences and click "Find Books" to discover your next great read.';
+                const modeMessages = {
+                    read: 'Select your preferences and click "Find Books" to discover your next great read.',
+                    listen: 'Click "Find Audiobooks" to discover award-winning listens!',
+                    surprise: 'Click "Surprise Me!" for a random pick across all books and audiobooks!'
+                };
+                document.getElementById('statusMessage').textContent = modeMessages[mode] || modeMessages.read;
                 document.getElementById('statusMessage').style.display = 'block';
                 document.getElementById('recommendationBanner').classList.remove('show');
+
+                // In surprise mode, auto-spin immediately
+                if (mode === 'surprise') {
+                    spin();
+                }
             });
         });
 
         // Update UI based on current mode
         function updateModeUI() {
             const spinBtn = document.getElementById('spinButton');
-            const selectionPanel = document.querySelector('.selection-panel');
-            const yearSelect = document.getElementById('yearSelect');
-            const genreSelect = document.getElementById('genreSelect');
+            const yearGroup = document.getElementById('yearGroup');
+            const genreGroup = document.getElementById('genreGroup');
             const seriouslyGreatToggle = document.getElementById('seriouslyGreatWriting');
-            const personalizedToggle = document.getElementById('personalizedMode');
 
-            if (currentMode === 'listen') {
+            if (currentMode === 'surprise') {
+                spinBtn.textContent = '✨ Surprise Me!';
+                // Hide all filters - surprise picks from everything
+                document.querySelector('.selection-panel').style.display = 'none';
+                document.querySelector('.availability-status').style.display = 'none';
+            } else if (currentMode === 'listen') {
                 spinBtn.textContent = '🎧 Find Audiobooks';
-                // Hide book-specific controls for audiobooks
-                if (seriouslyGreatToggle) seriouslyGreatToggle.closest('.toggle-group')?.style.setProperty('display', 'none');
-                // Update genre options for audiobooks
-                genreSelect.innerHTML = `
-                    <option value="">All Genres</option>
-                    <option value="Fiction">Fiction</option>
-                    <option value="Biography & Memoir">Biography & Memoir</option>
-                    <option value="Mystery & Suspense">Mystery & Suspense</option>
-                    <option value="Science Fiction & Fantasy">Sci-Fi & Fantasy</option>
-                    <option value="Romance">Romance</option>
-                    <option value="Young Adult">Young Adult</option>
-                    <option value="Children & Family">Children</option>
-                    <option value="Nonfiction & Culture">Nonfiction</option>
-                `;
-                // Update year options for audiobooks (2022-2024)
-                yearSelect.innerHTML = `
-                    <option value="all">All Years</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                `;
+                // Hide pickers for audiobooks — just show all
+                document.querySelector('.selection-panel').style.display = 'none';
+                document.querySelector('.availability-status').style.display = 'none';
             } else {
+                document.querySelector('.selection-panel').style.display = '';
+                document.querySelector('.availability-status').style.display = '';
                 spinBtn.textContent = '✨ Find Books';
-                // Show book-specific controls
                 if (seriouslyGreatToggle) seriouslyGreatToggle.closest('.toggle-group')?.style.setProperty('display', 'flex');
-                // Restore genre options for books
-                genreSelect.innerHTML = `
-                    <option value="">All Genres</option>
-                    <option value="memoir">Memoir</option>
-                    <option value="essays">Essays</option>
-                    <option value="true crime">True Crime</option>
-                    <option value="biography">Biography</option>
-                    <option value="thrillers">Thrillers</option>
-                    <option value="historical fiction">Historical Fiction</option>
-                    <option value="mystery">Mystery</option>
-                    <option value="sci-fi + fantasy">Sci-Fi & Fantasy</option>
-                    <option value="romance + erotica">Romance</option>
-                    <option value="poetry">Poetry</option>
-                    <option value="science + health">Science</option>
-                    <option value="short stories">Short Stories</option>
+                genreGroup.innerHTML = `
+                    <label class="chip"><input type="checkbox" name="genre" value="" checked><span>All Genres</span></label>
+                    <label class="chip"><input type="checkbox" name="genre" value="fiction"><span>Fiction</span></label>
+                    <label class="chip"><input type="checkbox" name="genre" value="nonfiction"><span>Nonfiction</span></label>
+                    <label class="chip"><input type="checkbox" name="genre" value="biography & memoir"><span>Biography & Memoir</span></label>
+                    <label class="chip"><input type="checkbox" name="genre" value="historical fiction"><span>Historical Fiction</span></label>
+                    <label class="chip"><input type="checkbox" name="genre" value="mysteries & thrillers"><span>Mysteries & Thrillers</span></label>
+                    <label class="chip"><input type="checkbox" name="genre" value="sci fi, fantasy & speculative fiction"><span>Sci-Fi & Fantasy</span></label>
+                    <label class="chip"><input type="checkbox" name="genre" value="love & romance"><span>Romance</span></label>
+                    <label class="chip"><input type="checkbox" name="genre" value="short stories, essays & poetry"><span>Short Stories & Poetry</span></label>
                 `;
-                // Restore year options for books
-                yearSelect.innerHTML = `
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="modern-library">Modern Library Top 100</option>
+                yearGroup.innerHTML = `
+                    <label class="chip"><input type="checkbox" name="year" value="all" checked><span>All</span></label>
+                    <label class="chip"><input type="checkbox" name="year" value="2025"><span>2025</span></label>
+                    <label class="chip"><input type="checkbox" name="year" value="2024"><span>2024</span></label>
+                    <label class="chip"><input type="checkbox" name="year" value="2023"><span>2023</span></label>
+                    <label class="chip"><input type="checkbox" name="year" value="2022"><span>2022</span></label>
+                    <label class="chip"><input type="checkbox" name="year" value="2021"><span>2021</span></label>
+                    <label class="chip"><input type="checkbox" name="year" value="2020"><span>2020</span></label>
+                    <label class="chip"><input type="checkbox" name="year" value="modern-library"><span>Modern Library Top 100</span></label>
                 `;
+                setupChipToggle('yearGroup', 'all');
+                setupChipToggle('genreGroup', '');
             }
         }
 
@@ -2315,15 +2438,20 @@
             return books;
         }
 
-        // Convert markdown to HTML for chat messages
+        // Escape HTML special characters to prevent XSS
+        function escapeHtml(str) {
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+        }
+
+        // Convert markdown to HTML for chat messages (escapes first, then applies formatting)
         function formatChatMessage(content) {
-            return content
+            return escapeHtml(content)
                 // Bold: **text**
                 .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
                 // Italic: *text*
                 .replace(/\*(.+?)\*/g, '<em>$1</em>')
-                // Links: [text](url)
-                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+                // Links: [text](url) - only allow http/https URLs
+                .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
                 // Line breaks
                 .replace(/\n/g, '<br>');
         }
@@ -2331,11 +2459,17 @@
         // Render chat messages
         function renderChatMessages() {
             const container = document.getElementById('chatMessages');
-            container.innerHTML = chatMessages.map(msg => `
-                <div class="chat-message ${msg.role}">
-                    ${msg.role === 'assistant' ? formatChatMessage(msg.content) : msg.content}
-                </div>
-            `).join('');
+            container.innerHTML = '';
+            chatMessages.forEach(msg => {
+                const div = document.createElement('div');
+                div.className = `chat-message ${msg.role}`;
+                if (msg.role === 'assistant') {
+                    div.innerHTML = formatChatMessage(msg.content);
+                } else {
+                    div.textContent = msg.content;
+                }
+                container.appendChild(div);
+            });
 
             // Scroll to bottom
             container.scrollTop = container.scrollHeight;
@@ -2414,7 +2548,7 @@
                 // Show error message
                 chatMessages.push({
                     role: 'assistant',
-                    content: `Sorry, I encountered an error: ${error.message}. Please make sure the server is running with a valid ANTHROPIC_API_KEY.`
+                    content: `Sorry, I encountered an error: ${error.message || 'Unknown error'}. Please make sure the server is running with a valid ANTHROPIC_API_KEY.`
                 });
                 renderChatMessages();
             }
@@ -2498,6 +2632,8 @@
 
         // Initialize
         document.getElementById('spinButton').addEventListener('click', spin);
+        setupChipToggle('yearGroup', 'all');
+        setupChipToggle('genreGroup', '');
         loadReadingList();
         loadReadBooks();
         loadListenedBooks();
