@@ -1,11 +1,11 @@
 {
-  "checkedAt": "2026-11-14T20:09:34.707Z",
+  "checkedAt": "2026-11-14T21:11:11.235Z",
   "summary": {
     "total": 844,
-    "available": 319,
-    "unavailable": 525,
-    "errors": 0,
-    "withEbook": 319,
+    "available": 309,
+    "unavailable": 530,
+    "errors": 5,
+    "withEbook": 309,
     "withPrint": 0,
     "withBoth": 0
   },
@@ -27,6 +27,7 @@
       "nprId": 127,
       "bplTitle": "I'll Tell You When I'm Home",
       "bplAuthor": "Hala Alyan",
+      "overdriveId": "11216887",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -64,6 +65,7 @@
       "nprId": 304,
       "bplTitle": "The Rest of Our Lives",
       "bplAuthor": "Ben Markovits",
+      "overdriveId": "12206685",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -98,6 +100,7 @@
       "nprId": 268,
       "bplTitle": "The Harder I Fight the More I Love You",
       "bplAuthor": "Neko Case",
+      "overdriveId": "10823085",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -133,6 +136,7 @@
       "nprId": 128,
       "bplTitle": "If You Love It, Let It Kill You",
       "bplAuthor": "Hannah Pittard",
+      "overdriveId": "11091272",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -169,6 +173,7 @@
       "nprId": 24,
       "bplTitle": "Archipelago of the Sun",
       "bplAuthor": "Yoko Tawada",
+      "overdriveId": "11880767",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -207,6 +212,7 @@
       "nprId": 25,
       "bplTitle": "Atavists",
       "bplAuthor": "Lydia Millet",
+      "overdriveId": "10998319",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -243,6 +249,7 @@
       "nprId": 95,
       "bplTitle": "Flesh",
       "bplAuthor": "David Szalay",
+      "overdriveId": "10824173",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -280,6 +287,7 @@
       "nprId": 297,
       "bplTitle": "The Pelican Child",
       "bplAuthor": "Joy Williams",
+      "overdriveId": "11667037",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -301,43 +309,6 @@
       ]
     },
     {
-      "title": "The Buffalo Hunter Hunter",
-      "author": "Stephen Graham Jones",
-      "isbn": "1668075083",
-      "year": "2025",
-      "tags": [
-        "staff picks",
-        "identity & culture",
-        "seriously great writing",
-        "the dark side",
-        "mysteries & thrillers",
-        "rather long",
-        "fiction"
-      ],
-      "nprId": 246,
-      "bplTitle": "The Buffalo Hunter Hunter",
-      "bplAuthor": "Stephen Graham Jones",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 1,
-      "ebookTotal": 1,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 1,
-      "ownedCopies": 1,
-      "description": "»Ich bin der Indianer, der nicht sterben kann.\nIch bin Amerikas schlimmster Albtraum.«\n1870 ermordet die US-Kavallerie schlafende Frauen, Kinder und Alte der Blackfeet im historisch verbürgten Massaker am Marias River. Was wäre, wenn für dieses...",
-      "subjects": [
-        "Fiction",
-        "Western",
-        "Historical Fiction"
-      ]
-    },
-    {
       "title": "Happy Land",
       "author": "Dolen Perkins-Valdez",
       "isbn": "0593337727",
@@ -355,6 +326,7 @@
       "nprId": 112,
       "bplTitle": "Happy Land",
       "bplAuthor": "Dolen Perkins-Valdez",
+      "overdriveId": "11011791",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -395,6 +367,7 @@
       "nprId": 114,
       "bplTitle": "Heart Lamp",
       "bplAuthor": "Banu Mushtaq",
+      "overdriveId": "11637391",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -429,6 +402,7 @@
       "nprId": 146,
       "bplTitle": "Lay Your Armor Down",
       "bplAuthor": "Michael Farris Smith",
+      "overdriveId": "11126103",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -464,6 +438,7 @@
       "nprId": 385,
       "bplTitle": "Your Steps on the Stairs",
       "bplAuthor": "Antonio Muñoz Molina",
+      "overdriveId": "11012216",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -503,6 +478,7 @@
       "nprId": 96,
       "bplTitle": "Florenzer",
       "bplAuthor": "Phil Melanson",
+      "overdriveId": "11272260",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -540,6 +516,7 @@
       "nprId": 9,
       "bplTitle": "A Truce That Is Not Peace",
       "bplAuthor": "Miriam Toews",
+      "overdriveId": "11810066",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -576,6 +553,7 @@
       "nprId": 263,
       "bplTitle": "The Ferryman and His Wife",
       "bplAuthor": "Frode Grytten",
+      "overdriveId": "11688273",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -610,6 +588,7 @@
       "nprId": 210,
       "bplTitle": "Save Me, Stranger",
       "bplAuthor": "Erika Krouse",
+      "overdriveId": "10624722",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -647,6 +626,7 @@
       "nprId": 265,
       "bplTitle": "The Garden",
       "bplAuthor": "Nick Newman",
+      "overdriveId": "10768686",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -682,6 +662,7 @@
       "nprId": 118,
       "bplTitle": "Hemlock & Silver",
       "bplAuthor": "T. Kingfisher",
+      "overdriveId": "11091259",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -719,6 +700,7 @@
       "nprId": 151,
       "bplTitle": "Looking at Women Looking at War",
       "bplAuthor": "Victoria Amelina",
+      "overdriveId": "10663736",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -755,6 +737,7 @@
       "nprId": 91,
       "bplTitle": "Fireblooms",
       "bplAuthor": "Alexandra Villasante",
+      "overdriveId": "11493173",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -791,6 +774,7 @@
       "nprId": 6,
       "bplTitle": "A New New Me",
       "bplAuthor": "Helen Oyeyemi",
+      "overdriveId": "11435628",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -828,6 +812,7 @@
       "nprId": 197,
       "bplTitle": "Perfect Victims",
       "bplAuthor": "Mohammed El-Kurd",
+      "overdriveId": "11382257",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -866,6 +851,7 @@
       "nprId": 193,
       "bplTitle": "Paradise Logic",
       "bplAuthor": "Sophie Kemp",
+      "overdriveId": "10824409",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -903,6 +889,7 @@
       "nprId": 320,
       "bplTitle": "The Tokyo Suite",
       "bplAuthor": "Giovana Madalosso",
+      "overdriveId": "10823097",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -938,6 +925,7 @@
       "nprId": 225,
       "bplTitle": "Stag Dance",
       "bplAuthor": "Torrey Peters",
+      "overdriveId": "10967854",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -960,42 +948,6 @@
       ]
     },
     {
-      "title": "The True True Story of Raja the Gullible (and His Mother)",
-      "author": "Rabih Alameddine",
-      "isbn": "0802166474",
-      "year": "2025",
-      "tags": [
-        "fiction",
-        "staff picks",
-        "book club ideas",
-        "family matters",
-        "seriously great writing",
-        "tales from around the world"
-      ],
-      "nprId": 323,
-      "bplTitle": "The True True Story of Raja the Gullible (and His Mother)",
-      "bplAuthor": "Rabih Alameddine",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 1,
-      "ebookTotal": 13,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 1,
-      "ownedCopies": 13,
-      "description": "<p><b>WINNER OF THE NATIONAL BOOK AWARD</b></p><p><b>\"Alameddine is a writer with a boundless imagination.\"&#8212;NPR</b></p><p><b>From the winner of the PEN/Faulkner Award for Fiction comes a tragicomic love story set in Lebanon, a modern saga...",
-      "subjects": [
-        "Fiction",
-        "Literature",
-        "LGBTQIA+ (Fiction)"
-      ]
-    },
-    {
       "title": "Casanova 20: Or, Hot World",
       "author": "Davey Davis",
       "isbn": "1646222830",
@@ -1009,6 +961,7 @@
       "nprId": 52,
       "bplTitle": "Casanova 20",
       "bplAuthor": "Davey Davis",
+      "overdriveId": "11710851",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1045,6 +998,7 @@
       "nprId": 273,
       "bplTitle": "The Imagined Life",
       "bplAuthor": "Andrew Porter",
+      "overdriveId": "11025349",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1081,6 +1035,7 @@
       "nprId": 311,
       "bplTitle": "The Slip",
       "bplAuthor": "Lucas Schaefer",
+      "overdriveId": "11217131",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1116,6 +1071,7 @@
       "nprId": 379,
       "bplTitle": "Wolf Bells",
       "bplAuthor": "Leni Zumas",
+      "overdriveId": "11493548",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1151,6 +1107,7 @@
       "nprId": 386,
       "bplTitle": "Helm",
       "bplAuthor": "Sarah Hall",
+      "overdriveId": "11614274",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1189,6 +1146,7 @@
       "nprId": 141,
       "bplTitle": "Killing Stella",
       "bplAuthor": "Marlen Haushofer",
+      "overdriveId": "11880788",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1223,6 +1181,7 @@
       "nprId": 364,
       "bplTitle": "We Computers",
       "bplAuthor": "Hamid Ismailov",
+      "overdriveId": "12087833",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1260,6 +1219,7 @@
       "nprId": 312,
       "bplTitle": "The South",
       "bplAuthor": "Tash Aw",
+      "overdriveId": "11091397",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1298,6 +1258,7 @@
       "nprId": 27,
       "bplTitle": "Attachments",
       "bplAuthor": "Lucas Mann",
+      "overdriveId": "10604501",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1336,6 +1297,7 @@
       "nprId": 32,
       "bplTitle": "Behind You Is the Sea",
       "bplAuthor": "Susan Muaddi Darraj",
+      "overdriveId": "9791529",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1374,6 +1336,7 @@
       "nprId": 41,
       "bplTitle": "Blue Lard",
       "bplAuthor": "Vladimir Sorokin",
+      "overdriveId": "9868621",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1412,6 +1375,7 @@
       "nprId": 57,
       "bplTitle": "Creation Lake",
       "bplAuthor": "Rachel Kushner",
+      "overdriveId": "10480407",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1446,6 +1410,7 @@
       "nprId": 70,
       "bplTitle": "Enlightenment",
       "bplAuthor": "Sarah Perry",
+      "overdriveId": "10059645",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1486,6 +1451,7 @@
       "nprId": 72,
       "bplTitle": "Everything We Never Had",
       "bplAuthor": "Randy Ribay",
+      "overdriveId": "10317270",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1523,6 +1489,7 @@
       "nprId": 76,
       "bplTitle": "First Love",
       "bplAuthor": "Lilly Dancyger",
+      "overdriveId": "10057173",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1560,6 +1527,7 @@
       "nprId": 85,
       "bplTitle": "Getting to Know Death",
       "bplAuthor": "Gail Godwin",
+      "overdriveId": "10268602",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1598,6 +1566,7 @@
       "nprId": 97,
       "bplTitle": "Hard by a Great Forest",
       "bplAuthor": "Leo Vardiashvili",
+      "overdriveId": "9818854",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1632,6 +1601,7 @@
       "nprId": 103,
       "bplTitle": "Henry Henry",
       "bplAuthor": "Allen Bratton",
+      "overdriveId": "10278873",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1669,6 +1639,7 @@
       "nprId": 104,
       "bplTitle": "Here After",
       "bplAuthor": "Amy Lin",
+      "overdriveId": "10108088",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1703,6 +1674,7 @@
       "nprId": 119,
       "bplTitle": "I Love You So Much It's Killing Us Both",
       "bplAuthor": "Mariah Stovall",
+      "overdriveId": "9971004",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1724,41 +1696,6 @@
       ]
     },
     {
-      "title": "Intermezzo",
-      "author": "Sally Rooney",
-      "isbn": "0374602638",
-      "year": "2024",
-      "tags": [
-        "fiction",
-        "staff picks",
-        "book club ideas",
-        "family matters",
-        "identity & culture",
-        "seriously great writing"
-      ],
-      "nprId": 125,
-      "bplTitle": "Intermezzo",
-      "bplAuthor": "Sally Rooney",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 2,
-      "ebookTotal": 2,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 2,
-      "ownedCopies": 2,
-      "description": "EL LIBRO MÁS ESPERADO DEL AÑO.\nLa nueva novela de Sally Rooney, la aclamada autora de Gente normal.\nEn la lista de los mejores libros del año según Babelia.\nA pesar de ser hermanos, Peter e Ivan Koubek tienen poco en común.\nPeter, de treinta y...",
-      "subjects": [
-        "Fiction",
-        "Literature"
-      ]
-    },
-    {
       "title": "Knife: Meditations After an Attempted Murder",
       "author": "Salman Rushdie",
       "isbn": "0593730240",
@@ -1774,6 +1711,7 @@
       "nprId": 131,
       "bplTitle": "Knife",
       "bplAuthor": "Salman Rushdie",
+      "overdriveId": "10194706",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1810,6 +1748,7 @@
       "nprId": 132,
       "bplTitle": "Last Date in El Zapotal",
       "bplAuthor": "Mateo García Elizondo",
+      "overdriveId": "9988207",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1844,6 +1783,7 @@
       "nprId": 138,
       "bplTitle": "Lilith",
       "bplAuthor": "Eric Rickstad",
+      "overdriveId": "10248397",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1865,42 +1805,6 @@
       ]
     },
     {
-      "title": "Long Island",
-      "author": "Colm Tóibín",
-      "isbn": "8419960152",
-      "year": "2024",
-      "tags": [
-        "historical fiction",
-        "staff picks",
-        "book club ideas",
-        "family matters",
-        "identity & culture",
-        "seriously great writing",
-        "fiction"
-      ],
-      "nprId": 141,
-      "bplTitle": "Long Island",
-      "bplAuthor": "Colm Tóibín",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 2,
-      "ebookTotal": 2,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 2,
-      "ownedCopies": 2,
-      "description": "<strong>Prix spécial du jury Femina pour l'ensemble de son œuvre.</strong><br />Une inoubliable passion amoureuse, après le chef-d'œuvre du Magicien, par un des maîtres de la fiction contemporaine.<br />Tout bascule lorsqu'un inconnu à l'accent...",
-      "subjects": [
-        "Fiction",
-        "Literature"
-      ]
-    },
-    {
       "title": "Madwoman",
       "author": "Chelsea Bieker",
       "isbn": "0316573299",
@@ -1916,6 +1820,7 @@
       "nprId": 146,
       "bplTitle": "Madwoman",
       "bplAuthor": "Chelsea Bieker",
+      "overdriveId": "10382368",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1952,6 +1857,7 @@
       "nprId": 166,
       "bplTitle": "New Testaments",
       "bplAuthor": "Dagoberto Gilb",
+      "overdriveId": "10911440",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -1987,6 +1893,7 @@
       "nprId": 176,
       "bplTitle": "Old King",
       "bplAuthor": "Maxim Loskutoff",
+      "overdriveId": "10180843",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2023,6 +1930,7 @@
       "nprId": 185,
       "bplTitle": "Pink Slime",
       "bplAuthor": "Fernanda Trías",
+      "overdriveId": "9629621",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2061,18 +1969,19 @@
       "nprId": 187,
       "bplTitle": "Playground",
       "bplAuthor": "Richard Powers",
+      "overdriveId": "10480327",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
         "print": false
       },
       "ebookAvailable": true,
-      "ebookCopies": 6,
+      "ebookCopies": 5,
       "ebookTotal": 19,
       "printAvailable": false,
       "printCopies": 0,
       "printTotal": 0,
-      "availableCopies": 6,
+      "availableCopies": 5,
       "ownedCopies": 19,
       "description": "<p><strong>New York Times Bestseller<br/>\n<br/>\nFinalist for the 2024 Kirkus Prize<br/>\nLonglisted for the 2024 Booker Prize<br/>\n<br/>\nAs Seen on CBS Saturday Morning &#8226; A New York Times Book Review Editors' Choice &#8226; One of the Ten...",
       "subjects": [
@@ -2098,6 +2007,7 @@
       "nprId": 198,
       "bplTitle": "Reservoir Bitches",
       "bplAuthor": "Dahlia de la Cerda",
+      "overdriveId": "10436224",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2133,6 +2043,7 @@
       "nprId": 203,
       "bplTitle": "Service",
       "bplAuthor": "Sarah Gilmartin",
+      "overdriveId": "10110662",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2165,6 +2076,7 @@
       "nprId": 209,
       "bplTitle": "Small Rain",
       "bplAuthor": "Garth Greenwell",
+      "overdriveId": "10392830",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2203,6 +2115,7 @@
       "nprId": 219,
       "bplTitle": "Swift River",
       "bplAuthor": "Essie Chambers",
+      "overdriveId": "10217050",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2224,42 +2137,6 @@
       ]
     },
     {
-      "title": "The Letters of Emily Dickinson",
-      "author": "Emily Dickinson, edited by Cristanne Miller and Domhnall Mitchell",
-      "isbn": "0674982975",
-      "year": "2024",
-      "tags": [
-        "nonfiction",
-        "biography & memoir",
-        "staff picks",
-        "for history lovers",
-        "seriously great writing",
-        "short stories, essays & poetry",
-        "rather long"
-      ],
-      "nprId": 262,
-      "bplTitle": "The Letters of Emily Dickinson",
-      "bplAuthor": "Emily Dickinson",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 1,
-      "ebookTotal": 1,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 1,
-      "ownedCopies": 1,
-      "description": "<p><b>One of the Top 10 \"Books We Love\" &#8212;<i>Fresh Air</i></b><br><b>The definitive edition of Emily Dickinson's correspondence, expanded and revised for the first time in over sixty years.</b><br>Emily Dickinson was a letter writer before...",
-      "subjects": [
-        "Fiction",
-        "Literary Anthologies"
-      ]
-    },
-    {
       "title": "The Mesmerist",
       "author": "Caroline Woods",
       "isbn": "0385550162",
@@ -2274,6 +2151,7 @@
       "nprId": 267,
       "bplTitle": "The Mesmerist",
       "bplAuthor": "Caroline Woods",
+      "overdriveId": "10334175",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2311,6 +2189,7 @@
       "nprId": 272,
       "bplTitle": "The Most",
       "bplAuthor": "Jessica Anthony",
+      "overdriveId": "10263608",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2345,6 +2224,7 @@
       "nprId": 280,
       "bplTitle": "The Physics of Sorrow",
       "bplAuthor": "Georgi Gospodinov",
+      "overdriveId": "2189077",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2383,6 +2263,7 @@
       "nprId": 306,
       "bplTitle": "Thyme Travellers",
       "bplAuthor": "Sonia Sulaiman",
+      "overdriveId": "11073710",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2419,6 +2300,7 @@
       "nprId": 308,
       "bplTitle": "Traveling",
       "bplAuthor": "Ann Powers",
+      "overdriveId": "9922923",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2457,6 +2339,7 @@
       "nprId": 309,
       "bplTitle": "Twenty-Four Seconds from Now",
       "bplAuthor": "Jason Reynolds",
+      "overdriveId": "10480805",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2493,6 +2376,7 @@
       "nprId": 310,
       "bplTitle": "Unshrinking",
       "bplAuthor": "Kate Manne",
+      "overdriveId": "9772902",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2529,6 +2413,7 @@
       "nprId": 312,
       "bplTitle": "Us Fools",
       "bplAuthor": "Nora Lange",
+      "overdriveId": "11151303",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2565,6 +2450,7 @@
       "nprId": 318,
       "bplTitle": "We're Alone",
       "bplAuthor": "Edwidge Danticat",
+      "overdriveId": "11012313",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2601,6 +2487,7 @@
       "nprId": 329,
       "bplTitle": "Woo Woo",
       "bplAuthor": "Ella Baxter",
+      "overdriveId": "10554419",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2638,6 +2525,7 @@
       "nprId": 347,
       "bplTitle": "The Burning Earth",
       "bplAuthor": "Sunil Amrith",
+      "overdriveId": "10480341",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2677,6 +2565,7 @@
       "nprId": 254,
       "bplTitle": "The Covenant of Water",
       "bplAuthor": "Abraham Verghese",
+      "overdriveId": "9325615",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2715,6 +2604,7 @@
       "nprId": 258,
       "bplTitle": "The End of Drum-Time",
       "bplAuthor": "Hanna Pylväinen",
+      "overdriveId": "8884262",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2754,6 +2644,7 @@
       "nprId": 364,
       "bplTitle": "When Crack Was King",
       "bplAuthor": "Donovan X. Ramsey",
+      "overdriveId": "9311343",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2793,6 +2684,7 @@
       "nprId": 354,
       "bplTitle": "We Could Have Been Friends, My Father and I",
       "bplAuthor": "Raja Shehadeh",
+      "overdriveId": "9030655",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2829,6 +2721,7 @@
       "nprId": 386,
       "bplTitle": "The Rediscovery of America",
       "bplAuthor": "Ned Blackhawk",
+      "overdriveId": "9671423",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2863,6 +2756,7 @@
       "nprId": 24,
       "bplTitle": "A Walk in the Woods",
       "bplAuthor": "Nikki Grimes",
+      "overdriveId": "9675409",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2897,6 +2791,7 @@
       "nprId": 57,
       "bplTitle": "Brooklyn Crime Novel",
       "bplAuthor": "Jonathan Lethem",
+      "overdriveId": "9551913",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2933,6 +2828,7 @@
       "nprId": 246,
       "bplTitle": "The Beast You Are",
       "bplAuthor": "Paul Tremblay",
+      "overdriveId": "9314121",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -2969,6 +2865,7 @@
       "nprId": 120,
       "bplTitle": "The House of Doors",
       "bplAuthor": "Tan Twan Eng",
+      "overdriveId": "9664602",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3006,6 +2903,7 @@
       "nprId": 43,
       "bplTitle": "Bellies",
       "bplAuthor": "Nicola Dinan",
+      "overdriveId": "9311075",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3042,6 +2940,7 @@
       "nprId": 93,
       "bplTitle": "Glassworks",
       "bplAuthor": "Olivia Wolfgang-Smith",
+      "overdriveId": "9315290",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3079,6 +2978,7 @@
       "nprId": 281,
       "bplTitle": "The Last Animal",
       "bplAuthor": "Ramona Ausubel",
+      "overdriveId": "9129613",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3115,6 +3015,7 @@
       "nprId": 23,
       "bplTitle": "A Study in Drowning",
       "bplAuthor": "Ava Reid",
+      "overdriveId": "9511740",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3151,6 +3052,7 @@
       "nprId": 166,
       "bplTitle": "Mobility",
       "bplAuthor": "Lydia Kiesling",
+      "overdriveId": "9153141",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3184,6 +3086,7 @@
       "nprId": 272,
       "bplTitle": "The Guest Lecture",
       "bplAuthor": "Martin Riker",
+      "overdriveId": "9086503",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3219,6 +3122,7 @@
       "nprId": 204,
       "bplTitle": "Prophet Song",
       "bplAuthor": "Paul Lynch",
+      "overdriveId": "10251263",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3255,6 +3159,7 @@
       "nprId": 335,
       "bplTitle": "To Name the Bigger Lie",
       "bplAuthor": "Sarah Viren",
+      "overdriveId": "9313772",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3291,6 +3196,7 @@
       "nprId": 75,
       "bplTitle": "Disruptions",
       "bplAuthor": "Steven Millhauser",
+      "overdriveId": "9383328",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3331,6 +3237,7 @@
       "nprId": 352,
       "bplTitle": "We Are a Haunting",
       "bplAuthor": "Tyriek White",
+      "overdriveId": "9142319",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3368,6 +3275,7 @@
       "nprId": 162,
       "bplTitle": "Mater 2–10",
       "bplAuthor": "Hwang Sok-yong",
+      "overdriveId": "9305071",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3403,6 +3311,7 @@
       "nprId": 9,
       "bplTitle": "On a Woman's Madness",
       "bplAuthor": "Astrid Roemer",
+      "overdriveId": "9663199",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3439,6 +3348,7 @@
       "nprId": 145,
       "bplTitle": "Landscapes",
       "bplAuthor": "Christine Lai",
+      "overdriveId": "9819058",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3474,6 +3384,7 @@
       "nprId": 250,
       "bplTitle": "The Boy from Kyiv",
       "bplAuthor": "Marina Harss",
+      "overdriveId": "9496861",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3509,6 +3420,7 @@
       "nprId": 283,
       "bplTitle": "The Laughter",
       "bplAuthor": "Sonora Jha",
+      "overdriveId": "8999168",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3545,6 +3457,7 @@
       "nprId": 292,
       "bplTitle": "The New Earth",
       "bplAuthor": "Jess Row",
+      "overdriveId": "9080878",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3581,6 +3494,7 @@
       "nprId": 95,
       "bplTitle": "Gone to the Wolves",
       "bplAuthor": "John Wray",
+      "overdriveId": "9191324",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3595,40 +3509,6 @@
       "availableCopies": 1,
       "ownedCopies": 1,
       "description": "<p><b>\"A hair-raising, head-banging, meet-the-Devil epic tale of love, youth, and rock 'n' roll.\" </b><b>&#8212;</b><b>Andrew Sean Greer, Pulitzer Prize&#8211;winning author of <i>Less Is Lost</i></b><br>Kip, Leslie, and Kira are...",
-      "subjects": [
-        "Fiction",
-        "Literature"
-      ]
-    },
-    {
-      "title": "Day",
-      "author": "Michael Cunningham",
-      "isbn": "0399591346",
-      "year": "2023",
-      "tags": [
-        "fiction",
-        "staff picks",
-        "book club ideas",
-        "seriously great writing",
-        "family matters"
-      ],
-      "nprId": 382,
-      "bplTitle": "Day",
-      "bplAuthor": "Michael Cunningham",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 1,
-      "ebookTotal": 1,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 1,
-      "ownedCopies": 1,
-      "description": "<p>5 aprile 2019. In un'accogliente casa in mattoni di Brooklyn, la patina di felicità domestica di Dan e Isabel comincia a incrinarsi. Marito e moglie si stanno lentamente allontanando, attratti entrambi, a quanto pare, da Robbie, il fratello...",
       "subjects": [
         "Fiction",
         "Literature"
@@ -3652,6 +3532,7 @@
       "nprId": 81,
       "bplTitle": "Empty Theatre",
       "bplAuthor": "Jac Jemc",
+      "overdriveId": "8918342",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3691,6 +3572,7 @@
       "nprId": 19,
       "bplTitle": "A Man of Two Faces",
       "bplAuthor": "Viet Thanh Nguyen",
+      "overdriveId": "9761729",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3727,6 +3609,7 @@
       "nprId": 372,
       "bplTitle": "Y/N",
       "bplAuthor": "Esther Yi",
+      "overdriveId": "8999318",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3763,6 +3646,7 @@
       "nprId": 29,
       "bplTitle": "Yonder",
       "bplAuthor": "Jabari Asim",
+      "overdriveId": "6383340",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3799,6 +3683,7 @@
       "nprId": 45,
       "bplTitle": "Goliath",
       "bplAuthor": "Tochi Onyebuchi",
+      "overdriveId": "6261592",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3834,6 +3719,7 @@
       "nprId": 51,
       "bplTitle": "Constructing a Nervous System",
       "bplAuthor": "Margo Jefferson",
+      "overdriveId": "6286844",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3871,6 +3757,7 @@
       "nprId": 78,
       "bplTitle": "In Love",
       "bplAuthor": "Amy Bloom",
+      "overdriveId": "6331835",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3911,6 +3798,7 @@
       "nprId": 83,
       "bplTitle": "To Paradise",
       "bplAuthor": "Hanya Yanagihara",
+      "overdriveId": "6197159",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3949,6 +3837,7 @@
       "nprId": 91,
       "bplTitle": "Red Paint",
       "bplAuthor": "Sasha LaPointe",
+      "overdriveId": "6398450",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -3986,6 +3875,7 @@
       "nprId": 93,
       "bplTitle": "Mother Ocean Father Nation",
       "bplAuthor": "Nishant Batsha",
+      "overdriveId": "6663958",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4024,6 +3914,7 @@
       "nprId": 104,
       "bplTitle": "Heartbroke",
       "bplAuthor": "Chelsea Bieker",
+      "overdriveId": "6384620",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4060,6 +3951,7 @@
       "nprId": 106,
       "bplTitle": "Very Cold People",
       "bplAuthor": "Sarah Manguso",
+      "overdriveId": "6262648",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4094,6 +3986,7 @@
       "nprId": 108,
       "bplTitle": "Monarch",
       "bplAuthor": "Candice Wuehle",
+      "overdriveId": "6347397",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4129,6 +4022,7 @@
       "nprId": 111,
       "bplTitle": "A Tiny Upward Shove",
       "bplAuthor": "Melissa Chadburn",
+      "overdriveId": "6211507",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4165,6 +4059,7 @@
       "nprId": 114,
       "bplTitle": "The Novelist",
       "bplAuthor": "Jordan Castro",
+      "overdriveId": "6887494",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4205,6 +4100,7 @@
       "nprId": 116,
       "bplTitle": "Nuclear Family",
       "bplAuthor": "Joseph Han",
+      "overdriveId": "6769226",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4242,6 +4138,7 @@
       "nprId": 117,
       "bplTitle": "Rainbow Rainbow",
       "bplAuthor": "Lydi Conklin",
+      "overdriveId": "6701338",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4280,6 +4177,7 @@
       "nprId": 118,
       "bplTitle": "Thank You, Mr. Nixon",
       "bplAuthor": "Gish Jen",
+      "overdriveId": "6225841",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4315,6 +4213,7 @@
       "nprId": 119,
       "bplTitle": "Violets",
       "bplAuthor": "Kyung-Sook Shin",
+      "overdriveId": "8043814",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4351,6 +4250,7 @@
       "nprId": 142,
       "bplTitle": "Joan Is Okay",
       "bplAuthor": "Weike Wang",
+      "overdriveId": "5728445",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4386,6 +4286,7 @@
       "nprId": 145,
       "bplTitle": "Customs",
       "bplAuthor": "Solmaz Sharif",
+      "overdriveId": "6272335",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4421,6 +4322,7 @@
       "nprId": 152,
       "bplTitle": "Mecca",
       "bplAuthor": "Susan Straight",
+      "overdriveId": "6211567",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4458,6 +4360,7 @@
       "nprId": 184,
       "bplTitle": "The Trayvon Generation",
       "bplAuthor": "Elizabeth Alexander",
+      "overdriveId": "6492837",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4492,6 +4395,7 @@
       "nprId": 193,
       "bplTitle": "Lessons",
       "bplAuthor": "Ian McEwan",
+      "overdriveId": "8722512",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4513,80 +4417,6 @@
       ]
     },
     {
-      "title": "All My Rage",
-      "author": "Sabaa Tahir",
-      "isbn": "0593202341",
-      "year": "2022",
-      "tags": [
-        "family matters",
-        "young adult",
-        "identity & culture",
-        "fiction",
-        "the states we’re in",
-        "seriously great writing",
-        "book club ideas"
-      ],
-      "nprId": 219,
-      "bplTitle": "All My Rage",
-      "bplAuthor": "Sabaa Tahir",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 1,
-      "ebookTotal": 1,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 1,
-      "ownedCopies": 1,
-      "description": "<p><strong>Lahore, Pakistan. Autrefois.</strong></p><p>Misbah, rêveuse et conteuse, vient d'épouser Toufiq dans le cadre d'un mariage arrangé. Frappé par la tragédie, le jeune couple part s'installer aux États-Unis où il ouvre le Clouds' Rest Inn...",
-      "subjects": [
-        "Fiction",
-        "Literature"
-      ]
-    },
-    {
-      "title": "Solito: A Memoir",
-      "author": "Javier Zamora",
-      "isbn": "0593498062",
-      "year": "2022",
-      "tags": [
-        "nonfiction",
-        "biography & memoir",
-        "book club ideas",
-        "tales from around the world",
-        "the states we’re in",
-        "seriously great writing",
-        "eye-opening reads",
-        "staff picks",
-        "young adult"
-      ],
-      "nprId": 221,
-      "bplTitle": "Solito",
-      "bplAuthor": "Javier Zamora",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 1,
-      "ebookTotal": 1,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 1,
-      "ownedCopies": 1,
-      "description": "Du haut de ses neuf ans, Javier quitte ses grands-parents, ses copains d'école et son pays d'origine, El Salvador, pour retrouver ses parents déjà installés clandestinement aux États-Unis. Seul, il part pour un périple de 3 000 kilomètres à...",
-      "subjects": [
-        "Fiction",
-        "Literature"
-      ]
-    },
-    {
       "title": "The Newlyweds: Rearranging Marriage in Modern India",
       "author": "Mansi Choksi",
       "isbn": "1982134445",
@@ -4604,6 +4434,7 @@
       "nprId": 222,
       "bplTitle": "The Newlyweds",
       "bplAuthor": "Mansi Choksi",
+      "overdriveId": "8975181",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4640,6 +4471,7 @@
       "nprId": 241,
       "bplTitle": "Stories from the Tenants Downstairs",
       "bplAuthor": "Sidik Fofana",
+      "overdriveId": "7455006",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4680,6 +4512,7 @@
       "nprId": 267,
       "bplTitle": "A Map for the Missing",
       "bplAuthor": "Belinda Huijuan Tang",
+      "overdriveId": "7767017",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4716,6 +4549,7 @@
       "nprId": 268,
       "bplTitle": "The Chaos Machine",
       "bplAuthor": "Max Fisher",
+      "overdriveId": "8839128",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4754,6 +4588,7 @@
       "nprId": 279,
       "bplTitle": "Shutter",
       "bplAuthor": "Ramona Emerson",
+      "overdriveId": "7721961",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4789,6 +4624,7 @@
       "nprId": 287,
       "bplTitle": "The World Keeps Ending, and the World Goes On",
       "bplAuthor": "Franny Choi",
+      "overdriveId": "8673135",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4825,6 +4661,7 @@
       "nprId": 288,
       "bplTitle": "Your Emergency Contact Has Experienced an Emergency",
       "bplAuthor": "Chen Chen",
+      "overdriveId": "9136415",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4858,6 +4695,7 @@
       "nprId": 289,
       "bplTitle": "Still Life",
       "bplAuthor": "Jay Hopler",
+      "overdriveId": "9479971",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4891,6 +4729,7 @@
       "nprId": 401,
       "bplTitle": "Stella Maris",
       "bplAuthor": "Cormac McCarthy",
+      "overdriveId": "8809057",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4923,6 +4762,7 @@
       "nprId": 302,
       "bplTitle": "Alive at the End of the World",
       "bplAuthor": "Saeed Jones",
+      "overdriveId": "9097368",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4959,6 +4799,7 @@
       "nprId": 311,
       "bplTitle": "When We Were Sisters",
       "bplAuthor": "Fatimah Asghar",
+      "overdriveId": "8742782",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -4994,6 +4835,7 @@
       "nprId": 312,
       "bplTitle": "Meet Us by the Roaring Sea",
       "bplAuthor": "Akil Kumarasamy",
+      "overdriveId": "6510260",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5030,6 +4872,7 @@
       "nprId": 315,
       "bplTitle": "The Wild Hunt",
       "bplAuthor": "Emma Seckel",
+      "overdriveId": "8855272",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5065,6 +4908,7 @@
       "nprId": 321,
       "bplTitle": "Maybe We'll Make It: a Memoir",
       "bplAuthor": "Margo Price",
+      "overdriveId": "9164437",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5099,6 +4943,7 @@
       "nprId": 323,
       "bplTitle": "Aesthetica",
       "bplAuthor": "Allie Rowbottom",
+      "overdriveId": "8767989",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5134,6 +4979,7 @@
       "nprId": 328,
       "bplTitle": "Sinking Bell",
       "bplAuthor": "Bojan Louis",
+      "overdriveId": "9204044",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5170,6 +5016,7 @@
       "nprId": 329,
       "bplTitle": "The Consequences",
       "bplAuthor": "Manuel Muñoz",
+      "overdriveId": "9259998",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5205,6 +5052,7 @@
       "nprId": 330,
       "bplTitle": "Reward System",
       "bplAuthor": "Jem Calder",
+      "overdriveId": "6492991",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5241,6 +5089,7 @@
       "nprId": 372,
       "bplTitle": "Before All the World",
       "bplAuthor": "Moriel Rothman-Zecher",
+      "overdriveId": "8328345",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5278,6 +5127,7 @@
       "nprId": 392,
       "bplTitle": "Mr. B",
       "bplAuthor": "Jennifer Homans",
+      "overdriveId": "8770585",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5316,6 +5166,7 @@
       "nprId": 66,
       "bplTitle": "Creatures of Passage",
       "bplAuthor": "Morowa Yejidé",
+      "overdriveId": "5435087",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5352,6 +5203,7 @@
       "nprId": 8,
       "bplTitle": "A Most Remarkable Creature",
       "bplAuthor": "Jonathan Meiburg",
+      "overdriveId": "5605193",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5374,41 +5226,6 @@
       ]
     },
     {
-      "title": "Matrix: A Novel",
-      "author": "Lauren Groff",
-      "isbn": "1594634491",
-      "year": "2021",
-      "tags": [
-        "historical fiction",
-        "seriously great writing",
-        "staff picks",
-        "book club ideas",
-        "fiction"
-      ],
-      "nprId": 162,
-      "bplTitle": "Matrix",
-      "bplAuthor": "Lauren Groff",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 1,
-      "ebookTotal": 1,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 1,
-      "ownedCopies": 1,
-      "description": "Marie de France est la première femme de lettres à écrire en français. Pourtant, sa vie reste un mystère. Matrix lève le voile sur ce destin hors du commun, et sur une figure moderne et frondeuse qui incarne la pureté et l'émancipation.\nExpulsée...",
-      "subjects": [
-        "Fiction",
-        "Literature",
-        "Historical Fiction"
-      ]
-    },
-    {
       "title": "Pastoral Song: A Farmer's Journey",
       "author": "James Rebanks",
       "isbn": "0063073277",
@@ -5425,6 +5242,7 @@
       "nprId": 199,
       "bplTitle": "Pastoral Song",
       "bplAuthor": "James Rebanks",
+      "overdriveId": "5678003",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5463,6 +5281,7 @@
       "nprId": 213,
       "bplTitle": "Real Estate",
       "bplAuthor": "Deborah Levy",
+      "overdriveId": "6038902",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5499,6 +5318,7 @@
       "nprId": 224,
       "bplTitle": "Sea Loves Me",
       "bplAuthor": "Mia Couto",
+      "overdriveId": "5343450",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5537,6 +5357,7 @@
       "nprId": 265,
       "bplTitle": "The Cruelty Is the Point",
       "bplAuthor": "Adam Serwer",
+      "overdriveId": "5951647",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5559,42 +5380,6 @@
       ]
     },
     {
-      "title": "Detransition Baby: A Novel",
-      "author": "Torrey Peters",
-      "isbn": "0593133374",
-      "year": "2021",
-      "tags": [
-        "staff picks",
-        "book club ideas",
-        "eye-opening reads",
-        "identity & culture",
-        "let’s talk about sex",
-        "seriously great writing",
-        "family matters"
-      ],
-      "nprId": 76,
-      "bplTitle": "Detransition, Baby",
-      "bplAuthor": "Torrey Peters",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 1,
-      "ebookTotal": 1,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 1,
-      "ownedCopies": 1,
-      "description": "»Einer der gefeiertsten Romane des Jahres.« Time\nReese und Amy sind ein glückliches Paar, zwei trans Frauen in New York, mit dem Traum von einer Familie. Doch dann entscheidet sich Amy, wieder als Mann zu leben, und die Liebe zerbricht. Als drei...",
-      "subjects": [
-        "Fiction",
-        "Literature"
-      ]
-    },
-    {
       "title": "The Chosen and the Beautiful",
       "author": "Nghi Vo",
       "isbn": "1250784786",
@@ -5608,6 +5393,7 @@
       "nprId": 259,
       "bplTitle": "The Chosen and the Beautiful",
       "bplAuthor": "Nghi Vo",
+      "overdriveId": "5716409",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5645,6 +5431,7 @@
       "nprId": 2,
       "bplTitle": "A Calling for Charlie Barnes",
       "bplAuthor": "Joshua Ferris",
+      "overdriveId": "5997061",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5678,6 +5465,7 @@
       "nprId": 89,
       "bplTitle": "Fight Night",
       "bplAuthor": "Miriam Toews",
+      "overdriveId": "6216054",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5715,6 +5503,7 @@
       "nprId": 93,
       "bplTitle": "Firebreak",
       "bplAuthor": "Nicole Kornher-Stace",
+      "overdriveId": "5807952",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5737,43 +5526,6 @@
       ]
     },
     {
-      "title": "Last Night at the Telegraph Club",
-      "author": "Malinda Lo",
-      "isbn": "0525555250",
-      "year": "2021",
-      "tags": [
-        "fiction",
-        "young adult",
-        "book club ideas",
-        "family matters",
-        "identity & culture",
-        "love & romance",
-        "the states we’re in",
-        "seriously great writing"
-      ],
-      "nprId": 149,
-      "bplTitle": "Last Night at the Telegraph Club",
-      "bplAuthor": "Malinda Lo",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 1,
-      "ebookTotal": 1,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 1,
-      "ownedCopies": 1,
-      "description": "Was, wenn deine Liebe verboten ist?\nDie siebzehnjährige Lily wächst Mitte der 50er Jahre in der chinesischen Community von San Francisco auf. Als sie bei einem Schulprojekt Kathleen kennenlernt, wird ihr klar, dass sie anders ist – und anders...",
-      "subjects": [
-        "Young Adult Fiction",
-        "Young Adult Literature"
-      ]
-    },
-    {
       "title": "Night Came With Many Stars: A Novel",
       "author": "Simon Van Booy",
       "isbn": "1567927033",
@@ -5787,6 +5539,7 @@
       "nprId": 179,
       "bplTitle": "Night Came with Many Stars",
       "bplAuthor": "Simon Van Booy",
+      "overdriveId": "6116741",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5825,6 +5578,7 @@
       "nprId": 191,
       "bplTitle": "On Fragile Waves",
       "bplAuthor": "E. Lily Yu",
+      "overdriveId": "9478433",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5860,6 +5614,7 @@
       "nprId": 214,
       "bplTitle": "Red Island House",
       "bplAuthor": "Andrea Lee",
+      "overdriveId": "5588649",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5896,6 +5651,7 @@
       "nprId": 240,
       "bplTitle": "Sorrowland",
       "bplAuthor": "Rivers Solomon",
+      "overdriveId": "5665208",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5932,6 +5688,7 @@
       "nprId": 22,
       "bplTitle": "Against Silence",
       "bplAuthor": "Frank Bidart",
+      "overdriveId": "5982040",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -5966,6 +5723,7 @@
       "nprId": 23,
       "bplTitle": "Against White Feminism",
       "bplAuthor": "Rafia Zakaria",
+      "overdriveId": "5799543",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6002,6 +5760,7 @@
       "nprId": 70,
       "bplTitle": "CURB",
       "bplAuthor": "Divya Victor",
+      "overdriveId": "6173306",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6034,6 +5793,7 @@
       "nprId": 73,
       "bplTitle": "Dear Miss Metropolitan",
       "bplAuthor": "Carolyn Ferrell",
+      "overdriveId": "5696964",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6070,6 +5830,7 @@
       "nprId": 144,
       "bplTitle": "Land of Big Numbers",
       "bplAuthor": "Te-Ping Chen",
+      "overdriveId": "5253968",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6107,6 +5868,7 @@
       "nprId": 150,
       "bplTitle": "Leaving Isn't the Hardest Thing",
       "bplAuthor": "Lauren Hough",
+      "overdriveId": "5640084",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6146,6 +5908,7 @@
       "nprId": 176,
       "bplTitle": "Names for Light",
       "bplAuthor": "Thirii Myo Kyaw Myint",
+      "overdriveId": "6261709",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6183,6 +5946,7 @@
       "nprId": 237,
       "bplTitle": "Somebody's Daughter",
       "bplAuthor": "Ashley C. Ford",
+      "overdriveId": "5665205",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6223,6 +5987,7 @@
       "nprId": 252,
       "bplTitle": "Tastes Like War",
       "bplAuthor": "Grace M. Cho",
+      "overdriveId": "6219663",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6260,6 +6025,7 @@
       "nprId": 279,
       "bplTitle": "The Good Girls",
       "bplAuthor": "Sonia Faleiro",
+      "overdriveId": "5583754",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6295,6 +6061,7 @@
       "nprId": 282,
       "bplTitle": "The Haunting of Alma Fielding",
       "bplAuthor": "Kate Summerscale",
+      "overdriveId": "5654383",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6330,6 +6097,7 @@
       "nprId": 307,
       "bplTitle": "The Raconteur's Commonplace Book",
       "bplAuthor": "Kate Milford",
+      "overdriveId": "5294310",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6368,6 +6136,7 @@
       "nprId": 319,
       "bplTitle": "The Sweetness of Water",
       "bplAuthor": "Nathan Harris",
+      "overdriveId": "5989193",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6403,6 +6172,7 @@
       "nprId": 341,
       "bplTitle": "The Uncollected Stories of Allan Gurganus",
       "bplAuthor": "Allan Gurganus",
+      "overdriveId": "5626001",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6439,6 +6209,7 @@
       "nprId": 344,
       "bplTitle": "Unspeakable",
       "bplAuthor": "Carole Boston Weatherford",
+      "overdriveId": "7053663",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6475,6 +6246,7 @@
       "nprId": 350,
       "bplTitle": "Walking on Cowrie Shells",
       "bplAuthor": "Nana Nkweti",
+      "overdriveId": "6272670",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6510,6 +6282,7 @@
       "nprId": 360,
       "bplTitle": "What Strange Paradise",
       "bplAuthor": "Omar El Akkad",
+      "overdriveId": "5811070",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6545,6 +6318,7 @@
       "nprId": 17,
       "bplTitle": "Abundance",
       "bplAuthor": "Jakob Guanzon",
+      "overdriveId": "6046184",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6580,6 +6354,7 @@
       "nprId": 100,
       "bplTitle": "Folklorn",
       "bplAuthor": "Angela Mi Young Hur",
+      "overdriveId": "5697084",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6618,6 +6393,7 @@
       "nprId": 261,
       "bplTitle": "The Committed",
       "bplAuthor": "Viet Thanh Nguyen",
+      "overdriveId": "5333590",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6656,6 +6432,7 @@
       "nprId": 218,
       "bplTitle": "Revolution in Our Time",
       "bplAuthor": "Kekla Magoon",
+      "overdriveId": "6349485",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6693,6 +6470,7 @@
       "nprId": 96,
       "bplTitle": "Five Tuesdays in Winter",
       "bplAuthor": "Lily King",
+      "overdriveId": "6219442",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6730,6 +6508,7 @@
       "nprId": 192,
       "bplTitle": "On Freedom",
       "bplAuthor": "Maggie Nelson",
+      "overdriveId": "6261712",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6769,6 +6548,7 @@
       "nprId": 198,
       "bplTitle": "Palmares",
       "bplAuthor": "Gayl Jones",
+      "overdriveId": "5979351",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6806,6 +6586,7 @@
       "nprId": 274,
       "bplTitle": "The Five Wounds",
       "bplAuthor": "Kirstin Valdez Quade",
+      "overdriveId": "5570931",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6838,6 +6619,7 @@
       "nprId": 318,
       "bplTitle": "The Sunflower Cast a Spell to Save Us From the Void",
       "bplAuthor": "Jackie Wang",
+      "overdriveId": "6175355",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6875,6 +6657,7 @@
       "nprId": 376,
       "bplTitle": "Zorrie",
       "bplAuthor": "Laird Hunt",
+      "overdriveId": "5778049",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6912,6 +6695,7 @@
       "nprId": 8,
       "bplTitle": "A Children's Bible",
       "bplAuthor": "Lydia Millet",
+      "overdriveId": "5077157",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6947,6 +6731,7 @@
       "nprId": 23,
       "bplTitle": "Burnt Sugar",
       "bplAuthor": "Avni Doshi",
+      "overdriveId": "5744370",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -6981,6 +6766,7 @@
       "nprId": 29,
       "bplTitle": "Music for the Dead and Resurrected",
       "bplAuthor": "Valzhyna Mort",
+      "overdriveId": "5273900",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7015,6 +6801,7 @@
       "nprId": 31,
       "bplTitle": "Runaway",
       "bplAuthor": "Heather Graham",
+      "overdriveId": "2507031",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7050,6 +6837,7 @@
       "nprId": 32,
       "bplTitle": "Seeing the Body",
       "bplAuthor": "Rachel Eliza Griffiths",
+      "overdriveId": "5077194",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7085,6 +6873,7 @@
       "nprId": 33,
       "bplTitle": "Apple",
       "bplAuthor": "Eric Gansworth",
+      "overdriveId": "5575186",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7122,6 +6911,7 @@
       "nprId": 45,
       "bplTitle": "Apsara Engine",
       "bplAuthor": "Bishakh Som",
+      "overdriveId": "6808232",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7158,6 +6948,7 @@
       "nprId": 47,
       "bplTitle": "Glass Town",
       "bplAuthor": "Isabel Greenberg",
+      "overdriveId": "5216458",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7194,6 +6985,7 @@
       "nprId": 54,
       "bplTitle": "The Boatman's Daughter",
       "bplAuthor": "Andy Davidson",
+      "overdriveId": "4739605",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7233,6 +7025,7 @@
       "nprId": 56,
       "bplTitle": "The Dead Are Arising",
       "bplAuthor": "Les Payne",
+      "overdriveId": "5342813",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7268,6 +7061,7 @@
       "nprId": 60,
       "bplTitle": "King and the Dragonflies",
       "bplAuthor": "Kacen Callender",
+      "overdriveId": "5180863",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7304,6 +7098,7 @@
       "nprId": 67,
       "bplTitle": "Memorial Drive",
       "bplAuthor": "Natasha Trethewey",
+      "overdriveId": "5067469",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7341,6 +7136,7 @@
       "nprId": 71,
       "bplTitle": "Flyaway",
       "bplAuthor": "Kathleen Jennings",
+      "overdriveId": "4908372",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7377,6 +7173,7 @@
       "nprId": 87,
       "bplTitle": "This Is One Way to Dance",
       "bplAuthor": "Sejal Shah",
+      "overdriveId": "5333757",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7414,6 +7211,7 @@
       "nprId": 107,
       "bplTitle": "The Mountains Sing",
       "bplAuthor": "Que Mai Phan Nguyen",
+      "overdriveId": "4906046",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7451,6 +7249,7 @@
       "nprId": 108,
       "bplTitle": "Vesper Flights",
       "bplAuthor": "Helen Macdonald",
+      "overdriveId": "5068840",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7487,6 +7286,7 @@
       "nprId": 130,
       "bplTitle": "The Redshirt",
       "bplAuthor": "Corey Sobel",
+      "overdriveId": "5616353",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7523,6 +7323,7 @@
       "nprId": 133,
       "bplTitle": "The Voyage of the Morning Light",
       "bplAuthor": "Marina Endicott",
+      "overdriveId": "5373599",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7560,6 +7361,7 @@
       "nprId": 134,
       "bplTitle": "Shuggie Bain",
       "bplAuthor": "Douglas Stuart",
+      "overdriveId": "4874634",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7595,6 +7397,7 @@
       "nprId": 144,
       "bplTitle": "Piranesi",
       "bplAuthor": "Susanna Clarke",
+      "overdriveId": "5387639",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7633,6 +7436,7 @@
       "nprId": 153,
       "bplTitle": "How Much of These Hills Is Gold",
       "bplAuthor": "C Pam Zhang",
+      "overdriveId": "4849272",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7672,6 +7476,7 @@
       "nprId": 170,
       "bplTitle": "World of Wonders",
       "bplAuthor": "Aimee Nezhukumatathil",
+      "overdriveId": "5565848",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7709,6 +7514,7 @@
       "nprId": 182,
       "bplTitle": "Thin Places",
       "bplAuthor": "Jordan Kisner",
+      "overdriveId": "4739621",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7746,6 +7552,7 @@
       "nprId": 187,
       "bplTitle": "The Care and Feeding of Waspish Widows",
       "bplAuthor": "Olivia Waite",
+      "overdriveId": "4948063",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -7781,6 +7588,7 @@
       "nprId": 225,
       "bplTitle": "The Midnight Bargain",
       "bplAuthor": "C.L. Polk",
+      "overdriveId": "5294395",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7816,6 +7624,7 @@
       "nprId": 243,
       "bplTitle": "And I Do Not Forgive You",
       "bplAuthor": "Amber Sparks",
+      "overdriveId": "4824801",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7853,6 +7662,7 @@
       "nprId": 245,
       "bplTitle": "Crooked Hallelujah",
       "bplAuthor": "Kelli Jo Ford",
+      "overdriveId": "5068718",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7886,6 +7696,7 @@
       "nprId": 246,
       "bplTitle": "High as the Waters Rise",
       "bplAuthor": "Anja Kampmann",
+      "overdriveId": "5190111",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7924,6 +7735,7 @@
       "nprId": 248,
       "bplTitle": "Lakewood",
       "bplAuthor": "Megan Giddings",
+      "overdriveId": "4814906",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7962,6 +7774,7 @@
       "nprId": 251,
       "bplTitle": "Yellow Bird",
       "bplAuthor": "Sierra Crane Murdoch",
+      "overdriveId": "4907132",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -7997,6 +7810,7 @@
       "nprId": 257,
       "bplTitle": "The Heap",
       "bplAuthor": "Sean Adams",
+      "overdriveId": "4754255",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8033,6 +7847,7 @@
       "nprId": 259,
       "bplTitle": "The Lost Book of Adana Moreau",
       "bplAuthor": "Michael Zapata",
+      "overdriveId": "4729940",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8070,6 +7885,7 @@
       "nprId": 266,
       "bplTitle": "Cleanness",
       "bplAuthor": "Garth Greenwell",
+      "overdriveId": "4739563",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8106,6 +7922,7 @@
       "nprId": 267,
       "bplTitle": "Godshot",
       "bplAuthor": "Chelsea Bieker",
+      "overdriveId": "4882470",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8140,6 +7957,7 @@
       "nprId": 286,
       "bplTitle": "Counterpoint",
       "bplAuthor": "Philip Kennicott",
+      "overdriveId": "4966021",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8179,6 +7997,7 @@
       "nprId": 304,
       "bplTitle": "The Malevolent Volume",
       "bplAuthor": "Justin Phillip Reed",
+      "overdriveId": "5068815",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8215,6 +8034,7 @@
       "nprId": 322,
       "bplTitle": "Memorial",
       "bplAuthor": "Bryan Washington",
+      "overdriveId": "5256089",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8251,6 +8071,7 @@
       "nprId": 341,
       "bplTitle": "Tokyo Ueno Station",
       "bplAuthor": "Yu Miri",
+      "overdriveId": "4620479",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8286,6 +8107,7 @@
       "nprId": 343,
       "bplTitle": "You Want More",
       "bplAuthor": "George Singleton",
+      "overdriveId": "5300461",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8323,6 +8145,7 @@
       "nprId": 348,
       "bplTitle": "The Faithless Hawk",
       "bplAuthor": "Margaret Owen",
+      "overdriveId": "4868037",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8357,6 +8180,7 @@
       "nprId": 365,
       "bplTitle": "The Lying Life of Adults",
       "bplAuthor": "Elena Ferrante",
+      "overdriveId": "5080398",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8389,6 +8213,7 @@
       "nprId": 376,
       "bplTitle": "One Night Two Souls Went Walking",
       "bplAuthor": "Ellen Cooney",
+      "overdriveId": "5759683",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8423,6 +8248,7 @@
       "nprId": 377,
       "bplTitle": "Creatures",
       "bplAuthor": "Crissy Van Meter",
+      "overdriveId": "4581114",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8454,6 +8280,7 @@
       ],
       "bplTitle": "The Wildes",
       "bplAuthor": "Louis Bayard",
+      "overdriveId": "10555654",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8487,6 +8314,7 @@
       ],
       "bplTitle": "54 Miles",
       "bplAuthor": "Leonard Pitts",
+      "overdriveId": "10434474",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8519,6 +8347,7 @@
       ],
       "bplTitle": "Familiaris (Oprah's Book Club)",
       "bplAuthor": "David Wroblewski",
+      "overdriveId": "10231915",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8552,6 +8381,7 @@
       ],
       "bplTitle": "Ghostroots",
       "bplAuthor": "'Pemi Aguda",
+      "overdriveId": "10159063",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8584,6 +8414,7 @@
       ],
       "bplTitle": "The Extinction of Irena Rey",
       "bplAuthor": "Jennifer Croft",
+      "overdriveId": "10197839",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8617,6 +8448,7 @@
       ],
       "bplTitle": "Honey",
       "bplAuthor": "Victor Lodato",
+      "overdriveId": "10034466",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8650,6 +8482,7 @@
       ],
       "bplTitle": "The Wharton Plot",
       "bplAuthor": "Mariah Fredericks",
+      "overdriveId": "9768911",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8682,6 +8515,7 @@
       ],
       "bplTitle": "The Women of Artemis",
       "bplAuthor": "Hannah Lynn",
+      "overdriveId": "11841074",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8714,6 +8548,7 @@
       ],
       "bplTitle": "Knife",
       "bplAuthor": "Salman Rushdie",
+      "overdriveId": "10194706",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8747,6 +8582,7 @@
       "rank": 1,
       "bplTitle": "Ulysses",
       "bplAuthor": "James Joyce",
+      "overdriveId": "785228",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -8779,6 +8615,7 @@
       "rank": 2,
       "bplTitle": "The Great Gatsby",
       "bplAuthor": "F. Scott Fitzgerald",
+      "overdriveId": "5642906",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8813,6 +8650,7 @@
       "rank": 3,
       "bplTitle": "A Portrait of the Artist as a Young Man",
       "bplAuthor": "James Joyce",
+      "overdriveId": "56574",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8844,6 +8682,7 @@
       "rank": 5,
       "bplTitle": "Brave New World",
       "bplAuthor": "Aldous Huxley",
+      "overdriveId": "6345783",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8878,6 +8717,7 @@
       "rank": 9,
       "bplTitle": "Sons and Lovers",
       "bplAuthor": "D. H. Lawrence",
+      "overdriveId": "786630",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -8910,6 +8750,7 @@
       "rank": 12,
       "bplTitle": "The Way of All Flesh",
       "bplAuthor": "Samuel Butler",
+      "overdriveId": "58189",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8941,6 +8782,7 @@
       "rank": 13,
       "bplTitle": "1984",
       "bplAuthor": "George Orwell",
+      "overdriveId": "7566173",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -8973,6 +8815,7 @@
       "rank": 16,
       "bplTitle": "An American Tragedy",
       "bplAuthor": "Theodore Dreiser",
+      "overdriveId": "55877",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9004,6 +8847,7 @@
       "rank": 20,
       "bplTitle": "Native Son",
       "bplAuthor": "Richard Wright",
+      "overdriveId": "247619",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9038,6 +8882,7 @@
       "rank": 24,
       "bplTitle": "Winesburg, Ohio",
       "bplAuthor": "Sherwood Anderson",
+      "overdriveId": "785254",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9071,6 +8916,7 @@
       "rank": 26,
       "bplTitle": "The Wings of the Dove",
       "bplAuthor": "Henry James",
+      "overdriveId": "787007",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9103,6 +8949,7 @@
       "rank": 27,
       "bplTitle": "The Ambassadors",
       "bplAuthor": "Henry James",
+      "overdriveId": "784872",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9135,6 +8982,7 @@
       "rank": 30,
       "bplTitle": "The Good Soldier",
       "bplAuthor": "Ford Madox Ford",
+      "overdriveId": "784951",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9167,6 +9015,7 @@
       "rank": 32,
       "bplTitle": "The Golden Bowl",
       "bplAuthor": "Henry James",
+      "overdriveId": "786781",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9199,6 +9048,7 @@
       "rank": 33,
       "bplTitle": "Sister Carrie",
       "bplAuthor": "Theodore Dreiser",
+      "overdriveId": "784838",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9231,6 +9081,7 @@
       "rank": 38,
       "bplTitle": "Howards End",
       "bplAuthor": "E. M. Forster",
+      "overdriveId": "55964",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9251,6 +9102,40 @@
       ]
     },
     {
+      "title": "The Heart of the Matter",
+      "author": "Graham Greene",
+      "isbn": "",
+      "year": "classic",
+      "tags": [
+        "fiction",
+        "Modern Library Top 100"
+      ],
+      "source": "Modern Library Top 100 Novels",
+      "rank": 40,
+      "bplTitle": "The Heart of the Matter",
+      "bplAuthor": "Graham Greene",
+      "overdriveId": "3946766",
+      "alwaysAvailable": false,
+      "formats": {
+        "ebook": true,
+        "print": false
+      },
+      "ebookAvailable": true,
+      "ebookCopies": 2,
+      "ebookTotal": 2,
+      "printAvailable": false,
+      "printCopies": 0,
+      "printTotal": 0,
+      "availableCopies": 2,
+      "ownedCopies": 2,
+      "description": "\"From first page to last . . . an engrossing novel\" of betrayal and espionage at a colonial outpost during World War II (The New York Times).\nIn a British colony in West Africa, Henry Scobie is a pious and righteous man of modest means enlisted...",
+      "subjects": [
+        "Fiction",
+        "Literature",
+        "Historical Fiction"
+      ]
+    },
+    {
       "title": "Deliverance",
       "author": "James Dickey",
       "isbn": "",
@@ -9263,6 +9148,7 @@
       "rank": 42,
       "bplTitle": "Deliverance",
       "bplAuthor": "James Dickey",
+      "overdriveId": "205424",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9297,6 +9183,7 @@
       "rank": 43,
       "bplTitle": "A Dance to the Music of Time, Book 2",
       "bplAuthor": "Anthony Powell",
+      "overdriveId": "3746333",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9329,6 +9216,7 @@
       "rank": 45,
       "bplTitle": "The Sun Also Rises",
       "bplAuthor": "Ernest Hemingway",
+      "overdriveId": "9945131",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9361,6 +9249,7 @@
       "rank": 46,
       "bplTitle": "The Secret Agent",
       "bplAuthor": "Joseph Conrad",
+      "overdriveId": "785091",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9393,6 +9282,7 @@
       "rank": 47,
       "bplTitle": "Nostromo",
       "bplAuthor": "Joseph Conrad",
+      "overdriveId": "54717",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9412,6 +9302,39 @@
       ]
     },
     {
+      "title": "The Rainbow",
+      "author": "D.H. Lawrence",
+      "isbn": "",
+      "year": "classic",
+      "tags": [
+        "fiction",
+        "Modern Library Top 100"
+      ],
+      "source": "Modern Library Top 100 Novels",
+      "rank": 48,
+      "bplTitle": "The Rainbow",
+      "bplAuthor": "D. H. Lawrence",
+      "overdriveId": "786939",
+      "alwaysAvailable": true,
+      "formats": {
+        "ebook": true,
+        "print": false
+      },
+      "ebookAvailable": true,
+      "ebookCopies": 0,
+      "ebookTotal": 0,
+      "printAvailable": false,
+      "printCopies": 0,
+      "printTotal": 0,
+      "availableCopies": 0,
+      "ownedCopies": 0,
+      "description": "<p>The works of British author D.H. Lawrence were often considered to be shocking because of their frank treatment of subjects such as sexuality and desire, and novels such as <i>Sons and Lovers, Women in Love</i> and <i>Lady Chatterley's...",
+      "subjects": [
+        "Classic Literature",
+        "Fiction"
+      ]
+    },
+    {
       "title": "Women in Love",
       "author": "D.H. Lawrence",
       "isbn": "",
@@ -9424,6 +9347,7 @@
       "rank": 49,
       "bplTitle": "Women in Love",
       "bplAuthor": "D. H. Lawrence",
+      "overdriveId": "787074",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9456,6 +9380,7 @@
       "rank": 52,
       "bplTitle": "Portnoy's Complaint",
       "bplAuthor": "Philip Roth",
+      "overdriveId": "457163",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9488,6 +9413,7 @@
       "rank": 56,
       "bplTitle": "The Maltese Falcon",
       "bplAuthor": "Dashiell Hammett",
+      "overdriveId": "12137224",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9521,6 +9447,7 @@
       "rank": 58,
       "bplTitle": "The Age of Innocence",
       "bplAuthor": "Edith Wharton",
+      "overdriveId": "786661",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9553,6 +9480,7 @@
       "rank": 59,
       "bplTitle": "Zuleika Dobson",
       "bplAuthor": "Max Beerbohm",
+      "overdriveId": "787078",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9586,6 +9514,7 @@
       "rank": 66,
       "bplTitle": "Of Human Bondage",
       "bplAuthor": "W. Somerset Maugham",
+      "overdriveId": "784735",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9618,6 +9547,7 @@
       "rank": 67,
       "bplTitle": "Heart of Darkness",
       "bplAuthor": "Joseph Conrad",
+      "overdriveId": "784597",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9650,6 +9580,7 @@
       "rank": 68,
       "bplTitle": "Main Street",
       "bplAuthor": "Sinclair Lewis",
+      "overdriveId": "58110",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9681,6 +9612,7 @@
       "rank": 69,
       "bplTitle": "The House of Mirth",
       "bplAuthor": "Edith Wharton",
+      "overdriveId": "786818",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9713,6 +9645,7 @@
       "rank": 70,
       "bplTitle": "The Alexandria Quartet",
       "bplAuthor": "Lawrence Durrell",
+      "overdriveId": "965056",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9746,6 +9679,7 @@
       "rank": 72,
       "bplTitle": "A House for Mr. Biswas",
       "bplAuthor": "V. S. Naipaul",
+      "overdriveId": "468665",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9778,6 +9712,7 @@
       "rank": 73,
       "bplTitle": "The Day of the Locust",
       "bplAuthor": "Nathanael West",
+      "overdriveId": "2309605",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9810,6 +9745,7 @@
       "rank": 78,
       "bplTitle": "Kim",
       "bplAuthor": "Rudyard Kipling",
+      "overdriveId": "54947",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9841,6 +9777,7 @@
       "rank": 79,
       "bplTitle": "A Room with a View",
       "bplAuthor": "E. M. Forster",
+      "overdriveId": "784352",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -9873,6 +9810,7 @@
       "rank": 83,
       "bplTitle": "A Bend in the River",
       "bplAuthor": "V. S. Naipaul",
+      "overdriveId": "468664",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9906,6 +9844,7 @@
       "rank": 85,
       "bplTitle": "Lord Jim",
       "bplAuthor": "Joseph Conrad",
+      "overdriveId": "54719",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9937,6 +9876,7 @@
       "rank": 86,
       "bplTitle": "Ragtime",
       "bplAuthor": "E.L. Doctorow",
+      "overdriveId": "480827",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -9970,6 +9910,7 @@
       "rank": 87,
       "bplTitle": "The Old Wives' Tale",
       "bplAuthor": "Arnold Bennett",
+      "overdriveId": "785036",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -10002,6 +9943,7 @@
       "rank": 88,
       "bplTitle": "The Call of the Wild",
       "bplAuthor": "Jack London",
+      "overdriveId": "784906",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -10034,6 +9976,7 @@
       "rank": 89,
       "bplTitle": "Loving",
       "bplAuthor": "Henry Green",
+      "overdriveId": "2671244",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10067,6 +10010,7 @@
       "rank": 90,
       "bplTitle": "Salman Rushdie's Midnight's Children",
       "bplAuthor": "Salman Rushdie",
+      "overdriveId": "226963",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10099,6 +10043,7 @@
       "rank": 99,
       "bplTitle": "The Ginger Man",
       "bplAuthor": "J. P. Donleavy",
+      "overdriveId": "1273594",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10132,6 +10077,7 @@
       "rank": 100,
       "bplTitle": "The Magnificent Ambersons",
       "bplAuthor": "Booth Tarkington",
+      "overdriveId": "786877",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -10164,6 +10110,7 @@
       "rank": 1,
       "bplTitle": "The Education of Henry Adams",
       "bplAuthor": "Henry Adams",
+      "overdriveId": "2317",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10198,6 +10145,7 @@
       "rank": 2,
       "bplTitle": "The Varieties of Religious Experience",
       "bplAuthor": "William James",
+      "overdriveId": "258600",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10231,6 +10179,7 @@
       "rank": 3,
       "bplTitle": "Up from Slavery",
       "bplAuthor": "Booker T. Washington",
+      "overdriveId": "613650",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10265,6 +10214,7 @@
       "rank": 4,
       "bplTitle": "A Room of One's Own",
       "bplAuthor": "Virginia Woolf",
+      "overdriveId": "16149",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10297,6 +10247,7 @@
       "rank": 5,
       "bplTitle": "Silent Spring",
       "bplAuthor": "Rachel Carson",
+      "overdriveId": "574189",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10331,6 +10282,7 @@
       "rank": 6,
       "bplTitle": "Selected Essays",
       "bplAuthor": "T. S. Eliot",
+      "overdriveId": "3640434",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10364,6 +10316,7 @@
       "rank": 7,
       "bplTitle": "The Double Helix",
       "bplAuthor": "James D. Watson",
+      "overdriveId": "626251",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10397,6 +10350,7 @@
       "rank": 9,
       "bplTitle": "American Language",
       "bplAuthor": "H.L. Mencken",
+      "overdriveId": "686163",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10431,6 +10385,7 @@
       "rank": 10,
       "bplTitle": "The Elements of Style",
       "bplAuthor": "William Strunk",
+      "overdriveId": "1348352",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10465,6 +10420,7 @@
       "rank": 20,
       "bplTitle": "The Souls of Black Folk",
       "bplAuthor": "W. E. B. Du Bois",
+      "overdriveId": "786970",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -10498,6 +10454,7 @@
       "rank": 27,
       "bplTitle": "Black Lamb and Grey Falcon",
       "bplAuthor": "Rebecca West",
+      "overdriveId": "238463",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10531,6 +10488,7 @@
       "rank": 30,
       "bplTitle": "Goodbye to All That",
       "bplAuthor": "Robert Graves",
+      "overdriveId": "11521404",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10564,6 +10522,7 @@
       "rank": 32,
       "bplTitle": "The Autobiography of Mark Twain",
       "bplAuthor": "Mark Twain",
+      "overdriveId": "521863",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10597,6 +10556,7 @@
       "rank": 34,
       "bplTitle": "A Study of History",
       "bplAuthor": "Arnold J. Toynbee",
+      "overdriveId": "4961534",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10629,6 +10589,7 @@
       "rank": 39,
       "bplTitle": "Darkness Visible",
       "bplAuthor": "William Styron",
+      "overdriveId": "492918",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10661,6 +10622,7 @@
       "rank": 42,
       "bplTitle": "Out of Africa",
       "bplAuthor": "Isak Dinesen",
+      "overdriveId": "571631",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10694,6 +10656,7 @@
       "rank": 50,
       "bplTitle": "Religion and the Rise of Capitalism",
       "bplAuthor": "R. H. Tawney",
+      "overdriveId": "1228886",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10728,6 +10691,7 @@
       "rank": 59,
       "bplTitle": "Life on the Mississippi",
       "bplAuthor": "Mark Twain",
+      "overdriveId": "480511",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10761,6 +10725,7 @@
       "rank": 63,
       "bplTitle": "Lives of a Cell",
       "bplAuthor": "Lewis Thomas",
+      "overdriveId": "3566237",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10794,6 +10759,7 @@
       "rank": 64,
       "bplTitle": "The Frontier in American History",
       "bplAuthor": "Frederick Jackson Turner",
+      "overdriveId": "1771497",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -10815,38 +10781,6 @@
       ]
     },
     {
-      "title": "Black Boy",
-      "author": "Richard Wright",
-      "isbn": "",
-      "year": "classic",
-      "tags": [
-        "nonfiction",
-        "Modern Library Top 100"
-      ],
-      "source": "Modern Library Top 100 Nonfiction",
-      "rank": 65,
-      "bplTitle": "Black Boy",
-      "bplAuthor": "Richard Wright",
-      "alwaysAvailable": false,
-      "formats": {
-        "ebook": true,
-        "print": false
-      },
-      "ebookAvailable": true,
-      "ebookCopies": 1,
-      "ebookTotal": 1,
-      "printAvailable": false,
-      "printCopies": 0,
-      "printTotal": 0,
-      "availableCopies": 1,
-      "ownedCopies": 1,
-      "description": "<p><i>Black Boy</i> es la primera parte de la autobiografía de Richard Wright, considerado uno de los mejores <i>memoir</i> del siglo XX. El relato comienza en los años de la segregación racial, cuando Wright tiene tan sólo cuatro años y le...",
-      "subjects": [
-        "Literary Criticism",
-        "Nonfiction"
-      ]
-    },
-    {
       "title": "Aspects of the Novel",
       "author": "E.M. Forster",
       "isbn": "",
@@ -10859,6 +10793,7 @@
       "rank": 66,
       "bplTitle": "Aspects of the Novel",
       "bplAuthor": "E. M. Forster",
+      "overdriveId": "14042",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10891,6 +10826,7 @@
       "rank": 67,
       "bplTitle": "The Civil War: A Narrative, Volume 1",
       "bplAuthor": "Shelby Foote",
+      "overdriveId": "481109",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10925,6 +10861,7 @@
       "rank": 69,
       "bplTitle": "The Proper Study of Mankind",
       "bplAuthor": "Isaiah Berlin",
+      "overdriveId": "980430",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10959,6 +10896,7 @@
       "rank": 73,
       "bplTitle": "The Economy of Cities",
       "bplAuthor": "Jane Jacobs",
+      "overdriveId": "2841672",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -10993,6 +10931,7 @@
       "rank": 77,
       "bplTitle": "Democracy in America",
       "bplAuthor": "Alexis de Tocqueville",
+      "overdriveId": "784504",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -11026,6 +10965,7 @@
       "rank": 79,
       "bplTitle": "The Rise of Theodore Roosevelt",
       "bplAuthor": "Edmund Morris",
+      "overdriveId": "484990",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -11060,6 +11000,7 @@
       "rank": 81,
       "bplTitle": "The American Political Tradition",
       "bplAuthor": "Richard Hofstadter",
+      "overdriveId": "677387",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -11093,6 +11034,7 @@
       "rank": 84,
       "bplTitle": "The Strange Career of Jim Crow",
       "bplAuthor": "The late C. Vann Woodward",
+      "overdriveId": "4979712",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -11127,6 +11069,7 @@
       "rank": 87,
       "bplTitle": "West with the Night",
       "bplAuthor": "Beryl Markham",
+      "overdriveId": "9079811",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -11159,6 +11102,7 @@
       "rank": 92,
       "bplTitle": "The Golden Bough",
       "bplAuthor": "James George Frazer",
+      "overdriveId": "784950",
       "alwaysAvailable": true,
       "formats": {
         "ebook": true,
@@ -11191,6 +11135,7 @@
       "rank": 93,
       "bplTitle": "Shadow and Act",
       "bplAuthor": "Ralph Ellison",
+      "overdriveId": "570056",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -11224,6 +11169,7 @@
       "rank": 98,
       "bplTitle": "The Tipping Point",
       "bplAuthor": "Malcolm Gladwell",
+      "overdriveId": "117767",
       "alwaysAvailable": false,
       "formats": {
         "ebook": true,
@@ -11530,6 +11476,22 @@
         "staff picks"
       ],
       "nprId": 330
+    },
+    {
+      "title": "The Buffalo Hunter Hunter",
+      "author": "Stephen Graham Jones",
+      "isbn": "1668075083",
+      "year": "2025",
+      "tags": [
+        "staff picks",
+        "identity & culture",
+        "seriously great writing",
+        "the dark side",
+        "mysteries & thrillers",
+        "rather long",
+        "fiction"
+      ],
+      "nprId": 246
     },
     {
       "title": "After Life",
@@ -11918,6 +11880,21 @@
         "rather short"
       ],
       "nprId": 187
+    },
+    {
+      "title": "The True True Story of Raja the Gullible (and His Mother)",
+      "author": "Rabih Alameddine",
+      "isbn": "0802166474",
+      "year": "2025",
+      "tags": [
+        "fiction",
+        "staff picks",
+        "book club ideas",
+        "family matters",
+        "seriously great writing",
+        "tales from around the world"
+      ],
+      "nprId": 323
     },
     {
       "title": "Dream State",
@@ -12443,6 +12420,21 @@
       "nprId": 107
     },
     {
+      "title": "Intermezzo",
+      "author": "Sally Rooney",
+      "isbn": "0374602638",
+      "year": "2024",
+      "tags": [
+        "fiction",
+        "staff picks",
+        "book club ideas",
+        "family matters",
+        "identity & culture",
+        "seriously great writing"
+      ],
+      "nprId": 125
+    },
+    {
       "title": "James",
       "author": "Percival Everett",
       "isbn": "0385550367",
@@ -12469,6 +12461,22 @@
         "tales from around the world"
       ],
       "nprId": 140
+    },
+    {
+      "title": "Long Island",
+      "author": "Colm Tóibín",
+      "isbn": "8419960152",
+      "year": "2024",
+      "tags": [
+        "historical fiction",
+        "staff picks",
+        "book club ideas",
+        "family matters",
+        "identity & culture",
+        "seriously great writing",
+        "fiction"
+      ],
+      "nprId": 141
     },
     {
       "title": "Magical/Realism: Essays on Music, Memory, Fantasy, and Borders",
@@ -12530,21 +12538,6 @@
         "rather long"
       ],
       "nprId": 162
-    },
-    {
-      "title": "No Country for Love",
-      "author": "Yaroslav Trofimov",
-      "isbn": "0349145318",
-      "year": "2024",
-      "tags": [
-        "historical fiction",
-        "staff picks",
-        "eye-opening reads",
-        "seriously great writing",
-        "tales from around the world",
-        "fiction"
-      ],
-      "nprId": 169
     },
     {
       "title": "Not a Speck of Light",
@@ -13382,23 +13375,6 @@
       "nprId": 146
     },
     {
-      "title": "Birnam Wood",
-      "author": "Eleanor Catton",
-      "isbn": "0374110336",
-      "year": "2023",
-      "tags": [
-        "fiction",
-        "mysteries & thrillers",
-        "staff picks",
-        "book club ideas",
-        "seriously great writing",
-        "the dark side",
-        "tales from around the world",
-        "rather long"
-      ],
-      "nprId": 50
-    },
-    {
       "title": "Cousins",
       "author": "Aurora Venturini, translated by Kit Maude",
       "isbn": "1593767293",
@@ -13823,23 +13799,6 @@
       "nprId": 153
     },
     {
-      "title": "Western Lane",
-      "author": "Chetna Maroo",
-      "isbn": "0374607494",
-      "year": "2023",
-      "tags": [
-        "fiction",
-        "staff picks",
-        "family matters",
-        "for sports lovers",
-        "identity & culture",
-        "tales from around the world",
-        "seriously great writing",
-        "rather short"
-      ],
-      "nprId": 360
-    },
-    {
       "title": "Fire Weather: A True Story From a Hotter World",
       "author": "John Vaillant",
       "isbn": "1524732850",
@@ -13870,6 +13829,20 @@
         "for history lovers"
       ],
       "nprId": 211
+    },
+    {
+      "title": "Day",
+      "author": "Michael Cunningham",
+      "isbn": "0399591346",
+      "year": "2023",
+      "tags": [
+        "fiction",
+        "staff picks",
+        "book club ideas",
+        "seriously great writing",
+        "family matters"
+      ],
+      "nprId": 382
     },
     {
       "title": "The Wren, the Wren",
@@ -14043,19 +14016,6 @@
         "fiction"
       ],
       "nprId": 41
-    },
-    {
-      "title": "Moon Witch, Spider King (The Dark Star Trilogy)",
-      "author": "Marlon James",
-      "isbn": "0735220204",
-      "year": "2022",
-      "tags": [
-        "sci fi, fantasy & speculative fiction",
-        "seriously great writing",
-        "rather long",
-        "fiction"
-      ],
-      "nprId": 42
     },
     {
       "title": "Siren Queen",
@@ -14503,6 +14463,40 @@
         "seriously great writing"
       ],
       "nprId": 200
+    },
+    {
+      "title": "All My Rage",
+      "author": "Sabaa Tahir",
+      "isbn": "0593202341",
+      "year": "2022",
+      "tags": [
+        "family matters",
+        "young adult",
+        "identity & culture",
+        "fiction",
+        "the states we’re in",
+        "seriously great writing",
+        "book club ideas"
+      ],
+      "nprId": 219
+    },
+    {
+      "title": "Solito: A Memoir",
+      "author": "Javier Zamora",
+      "isbn": "0593498062",
+      "year": "2022",
+      "tags": [
+        "nonfiction",
+        "biography & memoir",
+        "book club ideas",
+        "tales from around the world",
+        "the states we’re in",
+        "seriously great writing",
+        "eye-opening reads",
+        "staff picks",
+        "young adult"
+      ],
+      "nprId": 221
     },
     {
       "title": "Liberation Day: Stories",
@@ -15196,6 +15190,20 @@
       "nprId": 160
     },
     {
+      "title": "Matrix: A Novel",
+      "author": "Lauren Groff",
+      "isbn": "1594634491",
+      "year": "2021",
+      "tags": [
+        "historical fiction",
+        "seriously great writing",
+        "staff picks",
+        "book club ideas",
+        "fiction"
+      ],
+      "nprId": 162
+    },
+    {
       "title": "Oh William!: A Novel",
       "author": "Elizabeth Strout",
       "isbn": "0812989430",
@@ -15303,6 +15311,22 @@
       "nprId": 335
     },
     {
+      "title": "Detransition Baby: A Novel",
+      "author": "Torrey Peters",
+      "isbn": "0593133374",
+      "year": "2021",
+      "tags": [
+        "staff picks",
+        "book club ideas",
+        "eye-opening reads",
+        "identity & culture",
+        "let’s talk about sex",
+        "seriously great writing",
+        "family matters"
+      ],
+      "nprId": 76
+    },
+    {
       "title": "A Swim in a Pond in the Rain: In Which Four Russians Give a Master Class on Writing, Reading, and Life",
       "author": "George Saunders",
       "isbn": "1984856022",
@@ -15345,6 +15369,23 @@
         "seriously great writing"
       ],
       "nprId": 127
+    },
+    {
+      "title": "Last Night at the Telegraph Club",
+      "author": "Malinda Lo",
+      "isbn": "0525555250",
+      "year": "2021",
+      "tags": [
+        "fiction",
+        "young adult",
+        "book club ideas",
+        "family matters",
+        "identity & culture",
+        "love & romance",
+        "the states we’re in",
+        "seriously great writing"
+      ],
+      "nprId": 149
     },
     {
       "title": "Notes From the Burning Age",
@@ -17586,18 +17627,6 @@
       "rank": 39
     },
     {
-      "title": "The Heart of the Matter",
-      "author": "Graham Greene",
-      "isbn": "",
-      "year": "classic",
-      "tags": [
-        "fiction",
-        "Modern Library Top 100"
-      ],
-      "source": "Modern Library Top 100 Novels",
-      "rank": 40
-    },
-    {
       "title": "Lord of the Flies",
       "author": "William Golding",
       "isbn": "",
@@ -17620,18 +17649,6 @@
       ],
       "source": "Modern Library Top 100 Novels",
       "rank": 44
-    },
-    {
-      "title": "The Rainbow",
-      "author": "D.H. Lawrence",
-      "isbn": "",
-      "year": "classic",
-      "tags": [
-        "fiction",
-        "Modern Library Top 100"
-      ],
-      "source": "Modern Library Top 100 Novels",
-      "rank": 48
     },
     {
       "title": "Tropic of Cancer",
@@ -18510,6 +18527,18 @@
       "rank": 62
     },
     {
+      "title": "Black Boy",
+      "author": "Richard Wright",
+      "isbn": "",
+      "year": "classic",
+      "tags": [
+        "nonfiction",
+        "Modern Library Top 100"
+      ],
+      "source": "Modern Library Top 100 Nonfiction",
+      "rank": 65
+    },
+    {
       "title": "The Gulag Archipelago",
       "author": "Aleksandr Solzhenitsyn",
       "isbn": "",
@@ -18786,5 +18815,99 @@
       "rank": 100
     }
   ],
-  "errors": []
+  "errors": [
+    {
+      "book": {
+        "title": "No Country for Love",
+        "author": "Yaroslav Trofimov",
+        "isbn": "0349145318",
+        "year": "2024",
+        "tags": [
+          "historical fiction",
+          "staff picks",
+          "eye-opening reads",
+          "seriously great writing",
+          "tales from around the world",
+          "fiction"
+        ],
+        "nprId": 169
+      },
+      "error": "read ECONNRESET"
+    },
+    {
+      "book": {
+        "title": "The Letters of Emily Dickinson",
+        "author": "Emily Dickinson, edited by Cristanne Miller and Domhnall Mitchell",
+        "isbn": "0674982975",
+        "year": "2024",
+        "tags": [
+          "nonfiction",
+          "biography & memoir",
+          "staff picks",
+          "for history lovers",
+          "seriously great writing",
+          "short stories, essays & poetry",
+          "rather long"
+        ],
+        "nprId": 262
+      },
+      "error": "read ECONNRESET"
+    },
+    {
+      "book": {
+        "title": "Birnam Wood",
+        "author": "Eleanor Catton",
+        "isbn": "0374110336",
+        "year": "2023",
+        "tags": [
+          "fiction",
+          "mysteries & thrillers",
+          "staff picks",
+          "book club ideas",
+          "seriously great writing",
+          "the dark side",
+          "tales from around the world",
+          "rather long"
+        ],
+        "nprId": 50
+      },
+      "error": "read ETIMEDOUT"
+    },
+    {
+      "book": {
+        "title": "Western Lane",
+        "author": "Chetna Maroo",
+        "isbn": "0374607494",
+        "year": "2023",
+        "tags": [
+          "fiction",
+          "staff picks",
+          "family matters",
+          "for sports lovers",
+          "identity & culture",
+          "tales from around the world",
+          "seriously great writing",
+          "rather short"
+        ],
+        "nprId": 360
+      },
+      "error": "read ECONNRESET"
+    },
+    {
+      "book": {
+        "title": "Moon Witch, Spider King (The Dark Star Trilogy)",
+        "author": "Marlon James",
+        "isbn": "0735220204",
+        "year": "2022",
+        "tags": [
+          "sci fi, fantasy & speculative fiction",
+          "seriously great writing",
+          "rather long",
+          "fiction"
+        ],
+        "nprId": 42
+      },
+      "error": "read ECONNRESET"
+    }
+  ]
 }
