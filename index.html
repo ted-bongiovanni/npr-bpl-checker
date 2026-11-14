@@ -412,6 +412,15 @@
             border-radius: 50%;
         }
 
+        .book-availability.unavailable {
+            background: #f2f2f4;
+            color: #6e6e73;
+        }
+
+        .book-availability.unavailable::before {
+            background: #aeaeb2;
+        }
+
         .book-description {
             font-size: 14px;
             color: #515154;
@@ -1726,10 +1735,14 @@
         // Create book card HTML
         function createBookCard(book, showRemove = false, isPersonalized = false) {
             const key = `${book.title}-${book.author}`.toLowerCase();
+            // Saved (reading list) books may no longer be available, so check the latest data
+            const isAvailableNow = !!availableBooks[key];
             const availableData = availableBooks[key] || {};
-            const copies = availableData.availableCopies
-                ? `${availableData.availableCopies} of ${availableData.ownedCopies} copies`
-                : 'Available';
+            const copies = !isAvailableNow ? 'Not available right now'
+                : availableData.alwaysAvailable ? 'Always available'
+                : availableData.availableCopies
+                    ? `${availableData.availableCopies} of ${availableData.ownedCopies} copies`
+                    : 'Available';
 
             // Get description - prefer enriched, fall back to OverDrive, then book data
             const isbn = book.cover || book.isbn;
@@ -1767,10 +1780,11 @@
                                 <span class="rating-source">Goodreads</span>
                             </div>
                         ` : ''}
-                        <div class="book-availability">${copies}</div>
+                        <div class="book-availability${isAvailableNow ? '' : ' unavailable'}">${copies}</div>
+                        ${isAvailableNow ? `
                         <div class="format-badges">
                             <span class="format-badge ebook">📱 eBook Available</span>
-                        </div>
+                        </div>` : ''}
                         <p class="book-description" id="desc-${bookId}">${description || 'Loading description...'}</p>
                         ${displayTags.length > 0 ? `
                             <div class="book-tags">

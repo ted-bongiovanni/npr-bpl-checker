@@ -121,16 +121,24 @@ app.post('/api/chat', async (req, res) => {
 
         // Call Claude API
         const response = await anthropic.messages.create({
-            model: 'claude-sonnet-4-20250514',
-            max_tokens: 1024,
+            model: 'claude-sonnet-5-5',
+            // Room for the model's thinking plus a full answer with links; 1024 clipped replies
+            max_tokens: 4096,
             system: fullSystemPrompt,
             messages: messages
         });
 
         // Extract the text response
-        const assistantMessage = response.content[0].type === 'text'
-            ? response.content[0].text
-            : '';
+        // Newer models may return thinking blocks before the text, so collect all text blocks
+        const assistantMessage = response.content
+            .filter(block => block.type === 'text')
+            .map(block => block.text)
+            .join('\n')
+            .trim();
+
+        if (response.stop_reason === 'max_tokens') {
+            console.warn('Chat reply hit max_tokens and was cut off');
+        }
 
         res.json({
             message: assistantMessage,

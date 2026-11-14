@@ -613,7 +613,9 @@
             const formats = [];
             if (book.formats?.ebook || book.ebookAvailable) {
                 const copies = book.ebookCopies || book.availableCopies || 0;
-                formats.push({ type: 'ebook', label: copies > 0 ? `eBook · ${copies} available` : 'eBook' });
+                const label = book.alwaysAvailable ? 'eBook · always available'
+                    : copies > 0 ? `eBook · ${copies} available` : 'eBook';
+                formats.push({ type: 'ebook', label });
             }
             if (book.formats?.print || book.printAvailable) {
                 const copies = book.printCopies || 0;

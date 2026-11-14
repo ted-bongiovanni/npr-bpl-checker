@@ -45,10 +45,11 @@ Full UI with chat: `http://localhost:3000/index.html`
 ## Key Patterns
 
 - **JSON extraction from HTML**: `extractJsonObject()` in check-availability.js counts braces while respecting string escaping to extract embedded JSON
-- **Fuzzy title matching**: Normalizes, removes stop words, requires 80%+ word match
+- **Fuzzy title matching**: Normalizes, removes stop words, requires 80%+ word match. OverDrive is searched by title (before any colon) + primary author's last name, and a match also requires that last name among the item's creators (`primaryAuthorLastNames()` ignores translators/editors). Without this, same-titled books by other authors were matched. The list's `author` is kept; the library's is stored as `bplAuthor`
+- **Always-available eBooks**: OverDrive `availabilityType: 'always'` titles have no copy count; stored as `alwaysAvailable: true`
 - **Compression handling**: scrape-npr.js detects and handles gzip/deflate/brotli
 - **Cover images**: NPR-hosted via ISBN, with SVG placeholder fallback
-- **Chat model**: `claude-sonnet-4-20250514`, limited to first 100 books for context
+- **Chat model**: `claude-sonnet-5-5`, limited to first 100 books for context
 
 ## Adapting for Other Libraries
 
@@ -60,4 +61,5 @@ Update URLs in `check-availability.js`:
 
 - Availability checks are slow (~15 min) - sequential HTTPS with rate limiting to avoid IP bans
 - HTML scraping is fragile - website changes break parsers
+- As of Nov 2026, `brooklyn.bibliocommons.com` returns 410 "Site Disabled", so the print check always finds nothing. BPL's catalog moved to `discover.bklynlibrary.org`; the print parser needs rewriting for it
 - All scrapers use Chrome user-agent strings to avoid blocks

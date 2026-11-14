@@ -73,8 +73,36 @@ function normalizeTitle(t) {
     return (t || '').toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
 }
 
+// Strip accents and punctuation so "Muñoz" matches "Munoz"
+function normalizeName(s) {
+    return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .toLowerCase().replace(/[^a-z\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+// Last names of a book's primary authors, ignoring translators/editors/illustrators.
+// e.g. "Yoko Tawada, translated by Margaret Mitsutani" -> ['tawada']
+function primaryAuthorLastNames(author) {
+    if (!author) return [];
+    const main = author.split(/,?\s*\b(translated|edited|illustrated|introduction|foreword|with)\b/i)[0];
+    const suffixes = new Set(['jr', 'sr', 'ii', 'iii', 'iv', 'phd', 'md']);
+    return main.split(/\s*(?:,|;|&|\band\b)\s*/i)
+        .map(name => normalizeName(name).split(' ').filter(w => w && !suffixes.has(w)))
+        .filter(parts => parts.length > 0)
+        .map(parts => parts[parts.length - 1])
+        .filter(last => last.length >= 2);
+}
+
+// Does an OverDrive item list one of the book's primary authors?
+function authorMatches(item, authorLastNames) {
+    if (authorLastNames.length === 0) return true; // no author to check against
+    const names = [item.firstCreatorName, ...(item.creators || []).map(c => c.name)]
+        .map(normalizeName).join(' ');
+    const words = new Set(names.split(/[\s-]+/));
+    return authorLastNames.some(last => words.has(last) || last.split('-').every(p => words.has(p)));
+}
+
 // Parse OverDrive data from HTML (for eBooks)
-function parseOverDriveData(html, searchTitle) {
+function parseOverDriveData(html, searchTitle, searchAuthor) {
     if (html.includes("We couldn't find any matches") || html.includes("couldn't find any matches")) {
         return { found: false, available: false, reason: 'no_results' };
     }
@@ -95,26 +123,32 @@ function parseOverDriveData(html, searchTitle) {
         const searchWords = normalizedSearch.split(/\s+/)
             .filter(w => w.length >= 4 && !stopWords.includes(w));
 
+        const authorLastNames = primaryAuthorLastNames(searchAuthor);
         let bestMatch = null;
+
+        const toResult = (item) => ({
+            found: true,
+            available: true,
+            title: item.title,
+            author: item.firstCreatorName || 'Unknown',
+            alwaysAvailable: item.availabilityType === 'always',
+            availableCopies: item.availableCopies || 0,
+            ownedCopies: item.ownedCopies || 0,
+            description: item.description || item.shortDescription || null,
+            subjects: item.subjects ? item.subjects.map(s => s.name) : [],
+            format: 'ebook'
+        });
 
         for (const key in mediaItems) {
             const item = mediaItems[key];
             if (!item.isAvailable || !item.type || item.type.id !== 'ebook') continue;
+            // A same-titled book by someone else is not a match
+            if (!authorMatches(item, authorLastNames)) continue;
 
             const normalizedItem = normalizeTitle(item.title || '');
 
             if (normalizedItem === normalizedSearch) {
-                return {
-                    found: true,
-                    available: true,
-                    title: item.title,
-                    author: item.firstCreatorName || 'Unknown',
-                    availableCopies: item.availableCopies || 0,
-                    ownedCopies: item.ownedCopies || 0,
-                    description: item.description || item.shortDescription || null,
-                    subjects: item.subjects ? item.subjects.map(s => s.name) : [],
-                    format: 'ebook'
-                };
+                return toResult(item);
             }
 
             if (normalizedItem.startsWith(normalizedSearch + ' ') ||
@@ -133,17 +167,7 @@ function parseOverDriveData(html, searchTitle) {
         }
 
         if (bestMatch) {
-            return {
-                found: true,
-                available: true,
-                title: bestMatch.title,
-                author: bestMatch.firstCreatorName || 'Unknown',
-                availableCopies: bestMatch.availableCopies || 0,
-                ownedCopies: bestMatch.ownedCopies || 0,
-                description: bestMatch.description || bestMatch.shortDescription || null,
-                subjects: bestMatch.subjects ? bestMatch.subjects.map(s => s.name) : [],
-                format: 'ebook'
-            };
+            return toResult(bestMatch);
         }
 
         return { found: false, available: false, reason: 'no_matching_available' };
@@ -247,9 +271,12 @@ async function checkAvailability() {
             let printResult = { available: false };
 
             // Check OverDrive for eBooks
-            const overdriveUrl = `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(book.title)}&showOnlyAvailable=true&format=ebook-overdrive`;
+            // Search by title plus the primary author's last name so the real book ranks first
+            const lastNames = primaryAuthorLastNames(book.author);
+            const query = [book.title.split(':')[0], lastNames[0]].filter(Boolean).join(' ');
+            const overdriveUrl = `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(query)}&showOnlyAvailable=true&format=ebook-overdrive`;
             const overdriveHtml = await fetchPage(overdriveUrl);
-            ebookResult = parseOverDriveData(overdriveHtml, book.title);
+            ebookResult = parseOverDriveData(overdriveHtml, book.title, book.author);
 
             // Small delay between requests
             await new Promise(resolve => setTimeout(resolve, 150));
@@ -273,7 +300,10 @@ async function checkAvailability() {
                 availableBooks.push({
                     ...book,
                     bplTitle: ebookResult.title || printResult.title || book.title,
-                    author: ebookResult.author || book.author,
+                    // Keep the source list's author; record what the library calls it separately
+                    author: book.author || ebookResult.author,
+                    bplAuthor: ebookResult.author || null,
+                    alwaysAvailable: !!ebookResult.alwaysAvailable,
                     // Format availability
                     formats: {
                         ebook: hasEbook,
