@@ -1,7 +1,7 @@
-const https = require('https');
 const fs = require('fs');
+const { fetchPage, searchUrlFor, findAvailableMatch } = require('./overdrive');
 
-// Check Brooklyn Public Library availability for audiobooks
+// Check library availability for audiobooks
 
 // Load audiobooks from JSON
 let audiobooks;
@@ -10,176 +10,6 @@ try {
 } catch (e) {
     console.error('Error: audiobooks.json not found. Run scrape-audiofile.js first.');
     process.exit(1);
-}
-
-// Function to make HTTPS request
-function fetchPage(url) {
-    return new Promise((resolve, reject) => {
-        const options = {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.5',
-            }
-        };
-
-        https.get(url, options, (res) => {
-            let data = '';
-            res.on('data', chunk => data += chunk);
-            res.on('end', () => resolve(data));
-        }).on('error', reject);
-    });
-}
-
-// Extract JSON object using bracket counting
-function extractJsonObject(html, startMarker) {
-    const startIdx = html.indexOf(startMarker);
-    if (startIdx === -1) return null;
-
-    // Find the opening brace after the marker
-    let braceStart = html.indexOf('{', startIdx + startMarker.length);
-    if (braceStart === -1) return null;
-
-    // Count braces to find matching close
-    let depth = 0;
-    let inString = false;
-    let escapeNext = false;
-
-    for (let i = braceStart; i < html.length; i++) {
-        const char = html[i];
-
-        if (escapeNext) {
-            escapeNext = false;
-            continue;
-        }
-
-        if (char === '\\' && inString) {
-            escapeNext = true;
-            continue;
-        }
-
-        if (char === '"' && !escapeNext) {
-            inString = !inString;
-            continue;
-        }
-
-        if (!inString) {
-            if (char === '{') depth++;
-            if (char === '}') {
-                depth--;
-                if (depth === 0) {
-                    return html.substring(braceStart, i + 1);
-                }
-            }
-        }
-    }
-    return null;
-}
-
-// Parse OverDrive data from HTML - looking for audiobooks
-function parseOverDriveData(html, searchTitle) {
-    // Check if "no results" page
-    if (html.includes("We couldn't find any matches") || html.includes("couldn't find any matches")) {
-        return { found: false, available: false, reason: 'no_results' };
-    }
-
-    // Check if empty results
-    if (html.includes('mediaItems = {}') || html.includes('mediaItems={}')) {
-        return { found: false, available: false, reason: 'no_results' };
-    }
-
-    // Extract mediaItems using bracket counting
-    const mediaItemsStr = extractJsonObject(html, 'mediaItems');
-
-    if (!mediaItemsStr) {
-        return { found: false, available: false, reason: 'parse_error' };
-    }
-
-    try {
-        // Parse the mediaItems JSON
-        const mediaItems = JSON.parse(mediaItemsStr);
-
-        // Normalize the search title for matching
-        const normalizeTitle = (t) => t.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
-        const normalizedSearch = normalizeTitle(searchTitle);
-
-        // Get significant words for fuzzy matching
-        const stopWords = ['the', 'and', 'for', 'with', 'from', 'that', 'this', 'you', 'are', 'was', 'were', 'novel', 'book', 'story', 'audiobook'];
-        const searchWords = normalizedSearch.split(/\s+/)
-            .filter(w => w.length >= 4 && !stopWords.includes(w));
-
-        // Look for audiobook matches - prioritize exact matches
-        let bestMatch = null;
-
-        for (const key in mediaItems) {
-            const item = mediaItems[key];
-
-            // Must be available AND be an audiobook
-            if (!item.isAvailable) continue;
-            if (!item.type || item.type.id !== 'audiobook') continue;
-
-            const itemTitle = (item.title || '').toLowerCase().trim();
-            const normalizedItem = normalizeTitle(item.title || '');
-
-            // Exact match (normalized)
-            if (normalizedItem === normalizedSearch) {
-                return {
-                    found: true,
-                    available: true,
-                    title: item.title,
-                    author: item.firstCreatorName || 'Unknown',
-                    availableCopies: item.availableCopies || 0,
-                    ownedCopies: item.ownedCopies || 0,
-                    description: item.description || item.shortDescription || null,
-                    subjects: item.subjects ? item.subjects.map(s => s.name) : [],
-                    type: 'audiobook',
-                    // OverDrive ratings
-                    starRating: item.starRating || null,
-                    starRatingCount: item.starRatingCount || 0
-                };
-            }
-
-            // Check if item title starts with search title (for subtitles)
-            if (normalizedItem.startsWith(normalizedSearch + ' ') ||
-                normalizedSearch.startsWith(normalizedItem + ' ')) {
-                bestMatch = item;
-            }
-
-            // Fuzzy match: all significant words present AND titles are similar length
-            if (!bestMatch && searchWords.length >= 2) {
-                const itemWords = normalizedItem.split(/\s+/).filter(w => w.length >= 4);
-                const matchingWords = searchWords.filter(w => normalizedItem.includes(w));
-                // Require most words to match AND similar word counts
-                if (matchingWords.length >= searchWords.length * 0.8 &&
-                    Math.abs(itemWords.length - searchWords.length) <= 2) {
-                    bestMatch = item;
-                }
-            }
-        }
-
-        if (bestMatch) {
-            return {
-                found: true,
-                available: true,
-                title: bestMatch.title,
-                author: bestMatch.firstCreatorName || 'Unknown',
-                availableCopies: bestMatch.availableCopies || 0,
-                ownedCopies: bestMatch.ownedCopies || 0,
-                description: bestMatch.description || bestMatch.shortDescription || null,
-                subjects: bestMatch.subjects ? bestMatch.subjects.map(s => s.name) : [],
-                type: 'audiobook',
-                // OverDrive ratings
-                starRating: bestMatch.starRating || null,
-                starRatingCount: bestMatch.starRatingCount || 0
-            };
-        }
-
-        // No matching available audiobook found
-        return { found: false, available: false, reason: 'no_matching_available' };
-
-    } catch (e) {
-        return { found: false, available: false, reason: 'parse_error', error: e.message };
-    }
 }
 
 async function checkAvailability() {
@@ -195,11 +25,14 @@ async function checkAvailability() {
         const progress = `[${i + 1}/${audiobooks.length}]`;
 
         try {
-            // Search on Brooklyn OverDrive with "available now" filter for audiobooks
-            const searchUrl = `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(audiobook.title)}&showOnlyAvailable=true&format=audiobook-overdrive`;
-
-            const html = await fetchPage(searchUrl);
-            const result = parseOverDriveData(html, audiobook.title);
+            // Search OverDrive (title + author's last name, available now, audiobooks only)
+            const html = await fetchPage(searchUrlFor(audiobook, 'audiobook-overdrive'));
+            const result = findAvailableMatch(html, {
+                title: audiobook.title,
+                author: audiobook.author,
+                type: 'audiobook',
+                extraStopWords: ['audiobook']
+            });
 
             if (result.available) {
                 const ratingStr = result.starRating ? ` ⭐${result.starRating.toFixed(1)}` : '';
@@ -208,6 +41,8 @@ async function checkAvailability() {
                     ...audiobook,
                     bplTitle: result.title,
                     bplAuthor: result.author,
+                    // OverDrive title ID: the front end links straight to this edition's page
+                    overdriveId: result.overdriveId || null,
                     availableCopies: result.availableCopies,
                     ownedCopies: result.ownedCopies,
                     bplDescription: result.description,

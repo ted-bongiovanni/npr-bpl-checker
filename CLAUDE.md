@@ -23,7 +23,10 @@ Full UI with chat: `http://localhost:3000/index.html`
 
 ### Core
 - `server.js` - Express server, serves static files, `/api/chat` endpoint (Claude-powered recommendations), auto-refreshes availability if >24h old
+- `library-config.js` - The one place library-specific settings live (name, homepage, OverDrive slug, catalog URLs, language) plus URL builders. Loaded by Node scripts via `require` and by the pages via `<script src="library-config.js">` (sets `window.LIBRARY`)
+- `overdrive.js` - Shared OverDrive fetching and matching used by both checkers (`searchUrlFor()`, `findAvailableMatch()`)
 - `check-availability.js` - Two-step availability checker: OverDrive eBooks then BiblioCommons print. Sequential with rate limiting (150ms/200ms delays)
+- `check-audiobook-availability.js` - Audiobook checker: `audiobooks.json` -> `available-audiobooks.json`
 - `index-simple.html` - Lightweight UI: genre filtering, shuffle, book grid
 - `index.html` - Full UI with integrated chat interface
 
@@ -45,7 +48,8 @@ Full UI with chat: `http://localhost:3000/index.html`
 ## Key Patterns
 
 - **JSON extraction from HTML**: `extractJsonObject()` in check-availability.js counts braces while respecting string escaping to extract embedded JSON
-- **Fuzzy title matching**: Normalizes, removes stop words, requires 80%+ word match. OverDrive is searched by title (before any colon) + primary author's last name, and a match also requires that last name among the item's creators (`primaryAuthorLastNames()` ignores translators/editors). Without this, same-titled books by other authors were matched. The list's `author` is kept; the library's is stored as `bplAuthor`
+- **Fuzzy title matching**: Normalizes, removes stop words, requires 80%+ word match. OverDrive is searched by title (before any colon) + primary author's last name, and a match also requires that last name among the item's creators (`primaryAuthorLastNames()` ignores translators/editors). Without this, same-titled books by other authors were matched. The list's `author` is kept; the library's is stored as `bplAuthor`. Only English-language editions match (`LIBRARY.language`); OverDrive often has Spanish/French editions of the same title
+- **Direct borrow links**: matched records store `overdriveId`; pages link to `LIBRARY.overdriveTitleUrl(id)` (`https://<slug>.overdrive.com/media/<id>`, one specific edition) via `LIBRARY.overdriveBorrowUrl(book)`, falling back to a title search without an ID. Search results don't include a Libby link
 - **Always-available eBooks**: OverDrive `availabilityType: 'always'` titles have no copy count; stored as `alwaysAvailable: true`
 - **Compression handling**: scrape-npr.js detects and handles gzip/deflate/brotli
 - **Cover images**: NPR-hosted via ISBN, with SVG placeholder fallback
@@ -53,9 +57,7 @@ Full UI with chat: `http://localhost:3000/index.html`
 
 ## Adapting for Other Libraries
 
-Update URLs in `check-availability.js`:
-- OverDrive: `https://YOURLIBRARY.overdrive.com`
-- BiblioCommons: `https://YOURLIBRARY.bibliocommons.com`
+Edit `library-config.js` only: `overdriveSlug` (from `https://YOURLIBRARY.overdrive.com`), `name`, `homepage`, `catalogSearchBase`, `bibliocommonsSlug`
 
 ## Gotchas
 

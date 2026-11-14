@@ -537,12 +537,20 @@
 
         <footer>
             <p class="footer-sources">NPR Books We Love &middot; Modern Library &middot; Library Journal &middot; NYT Notable Books</p>
-            <p>Borrow from <a href="https://www.bklynlibrary.org/" target="_blank">Brooklyn Public Library</a> &middot; Buy used on <a href="https://www.thriftbooks.com/" target="_blank">Thriftbooks</a></p>
+            <p>Borrow from <a href="https://www.bklynlibrary.org/" target="_blank" id="libraryLink">Brooklyn Public Library</a> &middot; Buy used on <a href="https://www.thriftbooks.com/" target="_blank">Thriftbooks</a></p>
             <p id="lastChecked"></p>
         </footer>
     </div>
 
+    <script src="library-config.js"></script>
     <script>
+        // Footer library link comes from library-config.js
+        const libraryLink = document.getElementById('libraryLink');
+        if (libraryLink) {
+            libraryLink.href = LIBRARY.homepage;
+            libraryLink.textContent = LIBRARY.name;
+        }
+
         let availableBooks = [];
         let currentBooks = [];
         let seenBooks = new Set();
@@ -661,12 +669,14 @@
             return `https://www.thriftbooks.com/browse/?b.search=${encodeURIComponent(query)}#b.s=mostPopular-desc&b.p=1&b.pp=50&b.oos&b.tile`;
         }
 
+        // eBooks link to the exact OverDrive title page when the record has an overdriveId,
+        // otherwise to a title search
         function getBorrowUrl(book, format = 'ebook') {
             if (format === 'print') {
-                return `https://discover.bklynlibrary.org/?search=${encodeURIComponent(book.title)}&catalog=true`;
+                return LIBRARY.catalogSearchUrl(book.title);
             }
             if (book.borrowUrl) return book.borrowUrl;
-            return `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(book.title)}`;
+            return LIBRARY.overdriveBorrowUrl({ title: book.title, overdriveId: book.overdriveId });
         }
 
         function cleanDescription(desc) {

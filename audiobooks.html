@@ -363,12 +363,20 @@
 
         <footer>
             <p>Data from <a href="https://www.audiofilemagazine.com/" target="_blank">AudioFile Magazine</a> Best Audiobooks</p>
-            <p>Availability checked at <a href="https://www.bklynlibrary.org/" target="_blank">Brooklyn Public Library</a> via Libby/OverDrive</p>
+            <p>Availability checked at <a href="https://www.bklynlibrary.org/" target="_blank" id="libraryLink">Brooklyn Public Library</a> via Libby/OverDrive</p>
             <p id="bookCount" style="margin-top: 8px; font-size: 12px;"></p>
         </footer>
     </div>
 
+    <script src="library-config.js"></script>
     <script>
+        // Footer library link comes from library-config.js
+        const libraryLink = document.getElementById('libraryLink');
+        if (libraryLink) {
+            libraryLink.href = LIBRARY.homepage;
+            libraryLink.textContent = LIBRARY.name;
+        }
+
         let availableBooks = [];
         let currentBooks = [];
         let seenBooks = new Set();
@@ -427,8 +435,9 @@
             return '★'.repeat(full) + (half ? '½' : '');
         }
 
+        // Exact OverDrive title page when the record has an overdriveId, otherwise a title search
         function getBorrowUrl(book) {
-            return `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(book.bplTitle || book.title)}&format=audiobook-overdrive`;
+            return LIBRARY.overdriveBorrowUrl(book, { format: 'audiobook-overdrive' });
         }
 
         function getThriftbooksUrl(book) {

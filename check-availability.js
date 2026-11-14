@@ -1,181 +1,14 @@
-const https = require('https');
 const fs = require('fs');
+const {
+    LIBRARY,
+    fetchPage,
+    normalizeTitle,
+    searchUrlFor,
+    findAvailableMatch
+} = require('./overdrive');
 
 // Load books from JSON
 const books = JSON.parse(fs.readFileSync('books.json', 'utf8'));
-
-// Function to make HTTPS request
-function fetchPage(url) {
-    return new Promise((resolve, reject) => {
-        const options = {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.5',
-            }
-        };
-
-        https.get(url, options, (res) => {
-            let data = '';
-            res.on('data', chunk => data += chunk);
-            res.on('end', () => resolve(data));
-        }).on('error', reject);
-    });
-}
-
-// Extract JSON object using bracket counting
-function extractJsonObject(html, startMarker) {
-    const startIdx = html.indexOf(startMarker);
-    if (startIdx === -1) return null;
-
-    // Find the opening brace after the marker
-    let braceStart = html.indexOf('{', startIdx + startMarker.length);
-    if (braceStart === -1) return null;
-
-    // Count braces to find matching close
-    let depth = 0;
-    let inString = false;
-    let escapeNext = false;
-
-    for (let i = braceStart; i < html.length; i++) {
-        const char = html[i];
-
-        if (escapeNext) {
-            escapeNext = false;
-            continue;
-        }
-
-        if (char === '\\' && inString) {
-            escapeNext = true;
-            continue;
-        }
-
-        if (char === '"' && !escapeNext) {
-            inString = !inString;
-            continue;
-        }
-
-        if (!inString) {
-            if (char === '{') depth++;
-            if (char === '}') {
-                depth--;
-                if (depth === 0) {
-                    return html.substring(braceStart, i + 1);
-                }
-            }
-        }
-    }
-    return null;
-}
-
-// Normalize title for comparison
-function normalizeTitle(t) {
-    return (t || '').toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
-}
-
-// Strip accents and punctuation so "Muñoz" matches "Munoz"
-function normalizeName(s) {
-    return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
-        .toLowerCase().replace(/[^a-z\s-]/g, ' ').replace(/\s+/g, ' ').trim();
-}
-
-// Last names of a book's primary authors, ignoring translators/editors/illustrators.
-// e.g. "Yoko Tawada, translated by Margaret Mitsutani" -> ['tawada']
-function primaryAuthorLastNames(author) {
-    if (!author) return [];
-    const main = author.split(/,?\s*\b(translated|edited|illustrated|introduction|foreword|with)\b/i)[0];
-    const suffixes = new Set(['jr', 'sr', 'ii', 'iii', 'iv', 'phd', 'md']);
-    return main.split(/\s*(?:,|;|&|\band\b)\s*/i)
-        .map(name => normalizeName(name).split(' ').filter(w => w && !suffixes.has(w)))
-        .filter(parts => parts.length > 0)
-        .map(parts => parts[parts.length - 1])
-        .filter(last => last.length >= 2);
-}
-
-// Does an OverDrive item list one of the book's primary authors?
-function authorMatches(item, authorLastNames) {
-    if (authorLastNames.length === 0) return true; // no author to check against
-    const names = [item.firstCreatorName, ...(item.creators || []).map(c => c.name)]
-        .map(normalizeName).join(' ');
-    const words = new Set(names.split(/[\s-]+/));
-    return authorLastNames.some(last => words.has(last) || last.split('-').every(p => words.has(p)));
-}
-
-// Parse OverDrive data from HTML (for eBooks)
-function parseOverDriveData(html, searchTitle, searchAuthor) {
-    if (html.includes("We couldn't find any matches") || html.includes("couldn't find any matches")) {
-        return { found: false, available: false, reason: 'no_results' };
-    }
-
-    if (html.includes('mediaItems = {}') || html.includes('mediaItems={}')) {
-        return { found: false, available: false, reason: 'no_results' };
-    }
-
-    const mediaItemsStr = extractJsonObject(html, 'mediaItems');
-    if (!mediaItemsStr) {
-        return { found: false, available: false, reason: 'parse_error' };
-    }
-
-    try {
-        const mediaItems = JSON.parse(mediaItemsStr);
-        const normalizedSearch = normalizeTitle(searchTitle);
-        const stopWords = ['the', 'and', 'for', 'with', 'from', 'that', 'this', 'you', 'are', 'was', 'were', 'novel', 'book', 'story'];
-        const searchWords = normalizedSearch.split(/\s+/)
-            .filter(w => w.length >= 4 && !stopWords.includes(w));
-
-        const authorLastNames = primaryAuthorLastNames(searchAuthor);
-        let bestMatch = null;
-
-        const toResult = (item) => ({
-            found: true,
-            available: true,
-            title: item.title,
-            author: item.firstCreatorName || 'Unknown',
-            alwaysAvailable: item.availabilityType === 'always',
-            availableCopies: item.availableCopies || 0,
-            ownedCopies: item.ownedCopies || 0,
-            description: item.description || item.shortDescription || null,
-            subjects: item.subjects ? item.subjects.map(s => s.name) : [],
-            format: 'ebook'
-        });
-
-        for (const key in mediaItems) {
-            const item = mediaItems[key];
-            if (!item.isAvailable || !item.type || item.type.id !== 'ebook') continue;
-            // A same-titled book by someone else is not a match
-            if (!authorMatches(item, authorLastNames)) continue;
-
-            const normalizedItem = normalizeTitle(item.title || '');
-
-            if (normalizedItem === normalizedSearch) {
-                return toResult(item);
-            }
-
-            if (normalizedItem.startsWith(normalizedSearch + ' ') ||
-                normalizedSearch.startsWith(normalizedItem + ' ')) {
-                bestMatch = item;
-            }
-
-            if (!bestMatch && searchWords.length >= 2) {
-                const itemWords = normalizedItem.split(/\s+/).filter(w => w.length >= 4);
-                const matchingWords = searchWords.filter(w => normalizedItem.includes(w));
-                if (matchingWords.length >= searchWords.length * 0.8 &&
-                    Math.abs(itemWords.length - searchWords.length) <= 2) {
-                    bestMatch = item;
-                }
-            }
-        }
-
-        if (bestMatch) {
-            return toResult(bestMatch);
-        }
-
-        return { found: false, available: false, reason: 'no_matching_available' };
-
-    } catch (e) {
-        return { found: false, available: false, reason: 'parse_error', error: e.message };
-    }
-}
 
 // Parse BPL BiblioCommons catalog for physical books
 function parseBPLCatalog(html, searchTitle, searchAuthor) {
@@ -272,17 +105,14 @@ async function checkAvailability() {
 
             // Check OverDrive for eBooks
             // Search by title plus the primary author's last name so the real book ranks first
-            const lastNames = primaryAuthorLastNames(book.author);
-            const query = [book.title.split(':')[0], lastNames[0]].filter(Boolean).join(' ');
-            const overdriveUrl = `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(query)}&showOnlyAvailable=true&format=ebook-overdrive`;
-            const overdriveHtml = await fetchPage(overdriveUrl);
-            ebookResult = parseOverDriveData(overdriveHtml, book.title, book.author);
+            const overdriveHtml = await fetchPage(searchUrlFor(book, 'ebook-overdrive'));
+            ebookResult = findAvailableMatch(overdriveHtml, { title: book.title, author: book.author, type: 'ebook' });
 
             // Small delay between requests
             await new Promise(resolve => setTimeout(resolve, 150));
 
             // Check BPL catalog for physical books
-            const bplUrl = `https://brooklyn.bibliocommons.com/v2/search?query=${encodeURIComponent(book.title + ' ' + (book.author || ''))}&searchType=keyword`;
+            const bplUrl = LIBRARY.bibliocommonsSearchUrl(book.title + ' ' + (book.author || ''));
             const bplHtml = await fetchPage(bplUrl);
             printResult = parseBPLCatalog(bplHtml, book.title, book.author);
 
@@ -303,6 +133,8 @@ async function checkAvailability() {
                     // Keep the source list's author; record what the library calls it separately
                     author: book.author || ebookResult.author,
                     bplAuthor: ebookResult.author || null,
+                    // OverDrive title ID: the front end links straight to this edition's page
+                    overdriveId: ebookResult.overdriveId || null,
                     alwaysAvailable: !!ebookResult.alwaysAvailable,
                     // Format availability
                     formats: {

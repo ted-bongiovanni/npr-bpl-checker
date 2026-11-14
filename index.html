@@ -175,16 +175,86 @@
             margin-left: 4px;
         }
 
-        /* Selection Panel */
-        .selection-panel {
+        /* Filter bar: one-line summary above the picks; opens the full filters in place */
+        .filter-bar {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 48px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            margin: 0 auto 24px;
+            max-width: 720px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .filter-bar-toggle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            border-radius: 16px;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+            color: #1d1d1f;
+        }
+
+        .filter-bar-toggle:focus-visible {
+            outline: 2px solid #0071e3;
+            outline-offset: 2px;
+        }
+
+        .filter-bar-label {
+            flex: none;
+            font-size: 13px;
+            font-weight: 600;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .filter-bar-summary {
+            flex: 1;
+            min-width: 0;
+            font-size: 15px;
+            font-weight: 500;
+            /* At most two lines, so the bar stays compact */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .filter-bar-chevron {
+            flex: none;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #86868b;
+            border-bottom: 2px solid #86868b;
+            transform: translateY(-2px) rotate(45deg);
+            transition: transform 0.2s ease;
+        }
+
+        .filter-bar-toggle[aria-expanded="true"] .filter-bar-chevron {
+            transform: translateY(2px) rotate(-135deg);
+        }
+
+        /* The full Year/Genre chips and toggles, shown when the bar is open */
+        .selection-panel {
+            padding: 4px 20px 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .selection-panel[hidden] {
+            display: none;
+        }
+
+        .selection-panel .selection-group {
+            margin-top: 16px;
         }
 
         .selection-row {
@@ -311,6 +381,33 @@
             }
             .header h1 {
                 font-size: 32px;
+            }
+            /* Keep the Read/Listen/Surprise switcher inside a 375px screen */
+            .mode-toggle {
+                max-width: 100%;
+            }
+            .mode-btn {
+                padding: 10px 12px;
+                gap: 6px;
+                font-size: 14px;
+            }
+            .mode-btn .mode-icon {
+                font-size: 16px;
+            }
+            .filter-bar-toggle {
+                padding: 12px 16px;
+            }
+            .selection-panel {
+                padding: 4px 16px 16px;
+            }
+            .selection-group {
+                min-width: 0;
+            }
+            /* Stack the toggles, left-aligned with the chips (more specific than
+               the base .settings-row rule, which comes later in the file) */
+            .selection-panel .settings-row {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
@@ -640,7 +737,8 @@
         /* Settings Toggle */
         .settings-row {
             display: flex;
-            gap: 24px;
+            flex-wrap: wrap;
+            gap: 12px 24px;
             align-items: center;
             margin-top: 16px;
             padding-top: 16px;
@@ -661,6 +759,7 @@
 
         .toggle-switch {
             position: relative;
+            flex: none;
             width: 44px;
             height: 24px;
         }
@@ -1068,6 +1167,67 @@
                 </button>
             </div>
 
+            <!-- Compact filter bar: summary button; tap to show the full Year/Genre chips and toggles -->
+            <div class="filter-bar">
+                <button type="button" class="filter-bar-toggle" id="filterBarToggle" aria-expanded="false" aria-controls="filterPanel">
+                    <span class="filter-bar-label">Filters</span>
+                    <span class="filter-bar-summary" id="filterSummary">All years · All genres</span>
+                    <span class="filter-bar-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="selection-panel" id="filterPanel" hidden>
+                    <div class="selection-group">
+                        <label>Year</label>
+                        <div class="chip-group" id="yearGroup">
+                            <label class="chip"><input type="checkbox" name="year" value="all" checked><span>All</span></label>
+                            <label class="chip"><input type="checkbox" name="year" value="2025"><span>2025</span></label>
+                            <label class="chip"><input type="checkbox" name="year" value="2024"><span>2024</span></label>
+                            <label class="chip"><input type="checkbox" name="year" value="2023"><span>2023</span></label>
+                            <label class="chip"><input type="checkbox" name="year" value="2022"><span>2022</span></label>
+                            <label class="chip"><input type="checkbox" name="year" value="2021"><span>2021</span></label>
+                            <label class="chip"><input type="checkbox" name="year" value="2020"><span>2020</span></label>
+                            <label class="chip"><input type="checkbox" name="year" value="modern-library"><span>Modern Library Top 100</span></label>
+                        </div>
+                    </div>
+                    <div class="selection-group">
+                        <label>Genre</label>
+                        <div class="chip-group" id="genreGroup">
+                            <label class="chip"><input type="checkbox" name="genre" value="" checked><span>All Genres</span></label>
+                            <label class="chip"><input type="checkbox" name="genre" value="fiction"><span>Fiction</span></label>
+                            <label class="chip"><input type="checkbox" name="genre" value="nonfiction"><span>Nonfiction</span></label>
+                            <label class="chip"><input type="checkbox" name="genre" value="biography & memoir"><span>Biography & Memoir</span></label>
+                            <label class="chip"><input type="checkbox" name="genre" value="historical fiction"><span>Historical Fiction</span></label>
+                            <label class="chip"><input type="checkbox" name="genre" value="mysteries & thrillers"><span>Mysteries & Thrillers</span></label>
+                            <label class="chip"><input type="checkbox" name="genre" value="sci fi, fantasy & speculative fiction"><span>Sci-Fi & Fantasy</span></label>
+                            <label class="chip"><input type="checkbox" name="genre" value="love & romance"><span>Romance</span></label>
+                            <label class="chip"><input type="checkbox" name="genre" value="short stories, essays & poetry"><span>Short Stories & Poetry</span></label>
+                        </div>
+                    </div>
+                    <div class="settings-row">
+                        <div class="toggle-group">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="seriouslyGreatWriting">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <label for="seriouslyGreatWriting">Seriously Great Writing only</label>
+                        </div>
+                        <div class="toggle-group">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="showRatings" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <label for="showRatings">Goodreads ratings</label>
+                        </div>
+                        <div class="toggle-group">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="personalizedMode">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <label for="personalizedMode">Personalized</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="recommendation-banner" id="recommendationBanner">
                 <h3>✨ Personalized for you</h3>
                 <p id="recommendationReason">Based on your reading list preferences</p>
@@ -1083,59 +1243,6 @@
                 <button class="spin-button" id="spinButton">
                     ✨ Find Books
                 </button>
-            </div>
-
-            <div class="selection-panel">
-                <div class="selection-group">
-                    <label>Year</label>
-                    <div class="chip-group" id="yearGroup">
-                        <label class="chip"><input type="checkbox" name="year" value="all" checked><span>All</span></label>
-                        <label class="chip"><input type="checkbox" name="year" value="2025"><span>2025</span></label>
-                        <label class="chip"><input type="checkbox" name="year" value="2024"><span>2024</span></label>
-                        <label class="chip"><input type="checkbox" name="year" value="2023"><span>2023</span></label>
-                        <label class="chip"><input type="checkbox" name="year" value="2022"><span>2022</span></label>
-                        <label class="chip"><input type="checkbox" name="year" value="2021"><span>2021</span></label>
-                        <label class="chip"><input type="checkbox" name="year" value="2020"><span>2020</span></label>
-                        <label class="chip"><input type="checkbox" name="year" value="modern-library"><span>Modern Library Top 100</span></label>
-                    </div>
-                </div>
-                <div class="selection-group">
-                    <label>Genre</label>
-                    <div class="chip-group" id="genreGroup">
-                        <label class="chip"><input type="checkbox" name="genre" value="" checked><span>All Genres</span></label>
-                        <label class="chip"><input type="checkbox" name="genre" value="fiction"><span>Fiction</span></label>
-                        <label class="chip"><input type="checkbox" name="genre" value="nonfiction"><span>Nonfiction</span></label>
-                        <label class="chip"><input type="checkbox" name="genre" value="biography & memoir"><span>Biography & Memoir</span></label>
-                        <label class="chip"><input type="checkbox" name="genre" value="historical fiction"><span>Historical Fiction</span></label>
-                        <label class="chip"><input type="checkbox" name="genre" value="mysteries & thrillers"><span>Mysteries & Thrillers</span></label>
-                        <label class="chip"><input type="checkbox" name="genre" value="sci fi, fantasy & speculative fiction"><span>Sci-Fi & Fantasy</span></label>
-                        <label class="chip"><input type="checkbox" name="genre" value="love & romance"><span>Romance</span></label>
-                        <label class="chip"><input type="checkbox" name="genre" value="short stories, essays & poetry"><span>Short Stories & Poetry</span></label>
-                    </div>
-                </div>
-                <div class="settings-row">
-                    <div class="toggle-group">
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="seriouslyGreatWriting">
-                            <span class="toggle-slider"></span>
-                        </label>
-                        <label for="seriouslyGreatWriting">Seriously Great Writing only</label>
-                    </div>
-                    <div class="toggle-group">
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="showRatings" checked>
-                            <span class="toggle-slider"></span>
-                        </label>
-                        <label for="showRatings">Goodreads ratings</label>
-                    </div>
-                    <div class="toggle-group">
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="personalizedMode">
-                            <span class="toggle-slider"></span>
-                        </label>
-                        <label for="personalizedMode">Personalized</label>
-                    </div>
-                </div>
             </div>
 
             <div class="availability-status" id="availabilityStatus">
@@ -1182,14 +1289,22 @@
         </div>
 
         <footer class="footer">
-            <p><strong>Great Reads Now!</strong> • eBooks from <a href="https://apps.npr.org/best-books/" target="_blank">NPR Books We Love</a> • Classics from <a href="https://sites.prh.com/modernlibrary100" target="_blank">Modern Library Top 100</a> • Audiobooks from <a href="https://www.audiofilemagazine.com/best-audiobooks-2024/" target="_blank">AudioFile Best Audiobooks</a> • Availability via <a href="https://brooklyn.overdrive.com" target="_blank">Brooklyn Public Library</a></p>
+            <p><strong>Great Reads Now!</strong> • eBooks from <a href="https://apps.npr.org/best-books/" target="_blank">NPR Books We Love</a> • Classics from <a href="https://sites.prh.com/modernlibrary100" target="_blank">Modern Library Top 100</a> • Audiobooks from <a href="https://www.audiofilemagazine.com/best-audiobooks-2024/" target="_blank">AudioFile Best Audiobooks</a> • Availability via <a href="https://brooklyn.overdrive.com" target="_blank" id="libraryLink">Brooklyn Public Library</a></p>
         </footer>
     </div>
 
     <div class="toast" id="toast"></div>
 
+    <script src="library-config.js"></script>
     <script>
         const API_BASE = 'https://apps.npr.org/best-books';
+
+        // Footer library link comes from library-config.js
+        const libraryLink = document.getElementById('libraryLink');
+        if (libraryLink) {
+            libraryLink.href = LIBRARY.overdriveBase;
+            libraryLink.textContent = LIBRARY.name;
+        }
         const GOOGLE_BOOKS_API = 'https://www.googleapis.com/books/v1/volumes';
         let allBooks = {};
         let availableBooks = {};
@@ -1714,11 +1829,13 @@
         }
 
         // Get borrow URL
-        function getBorrowUrl(title, format = 'ebook') {
+        // eBooks link to the exact OverDrive title page when the record has an overdriveId,
+        // otherwise to a title search
+        function getBorrowUrl(book, format = 'ebook') {
             if (format === 'print') {
-                return `https://discover.bklynlibrary.org/?search=${encodeURIComponent(title)}&catalog=true`;
+                return LIBRARY.catalogSearchUrl(book.title);
             }
-            return `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(title)}`;
+            return LIBRARY.overdriveBorrowUrl(book);
         }
 
         // Get Thriftbooks search URL
@@ -1792,8 +1909,8 @@
                             </div>
                         ` : ''}
                         <div class="book-actions">
-                            <a href="${getBorrowUrl(book.title, 'ebook')}" target="_blank" class="btn-borrow">📱 eBook</a>
-                            <a href="${getBorrowUrl(book.title, 'print')}" target="_blank" class="btn-print">📖 Paper</a>
+                            <a href="${getBorrowUrl({ title: book.title, overdriveId: availableData.overdriveId }, 'ebook')}" target="_blank" class="btn-borrow">📱 eBook</a>
+                            <a href="${getBorrowUrl(book, 'print')}" target="_blank" class="btn-print">📖 Paper</a>
                             <a href="${getThriftbooksUrl(book.title, book.author)}" target="_blank" class="btn-thrift">💚 Buy</a>
                             <a href="${getGoodreadsUrl(book.title, book.author)}" target="_blank" class="btn-goodreads">Reviews</a>
                             ${showRemove ? `
@@ -1837,7 +1954,7 @@
             const isListened = listenedBooks.some(b => b.title === title && b.author === author);
 
             // Borrow URL for audiobooks
-            const borrowUrl = `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(title)}`;
+            const borrowUrl = LIBRARY.overdriveBorrowUrl({ title, overdriveId: audiobook.overdriveId });
 
             return `
                 <div class="book-card audiobook-card" id="audiobook-${bookId}">
@@ -2323,7 +2440,49 @@
         document.getElementById('seriouslyGreatWriting').addEventListener('change', function() {
             seriouslyGreatWriting = this.checked;
             saveSettings();
+            onFiltersChanged();
         });
+
+        // ==================== Filter bar ====================
+        // Short text for the chips checked in a group, e.g. "All years" or "2025, 2024 +1"
+        function summarizeChips(groupId, allValue, allText) {
+            const checked = [...document.querySelectorAll(`#${groupId} input:checked`)];
+            if (checked.length === 0 || checked.some(cb => cb.value === allValue)) return allText;
+            const names = checked.map(cb => cb.nextElementSibling.textContent.trim());
+            return names.length <= 2 ? names.join(', ') : `${names.slice(0, 2).join(', ')} +${names.length - 2}`;
+        }
+
+        function updateFilterSummary() {
+            const parts = [
+                summarizeChips('yearGroup', 'all', 'All years'),
+                summarizeChips('genreGroup', '', 'All genres')
+            ];
+            if (seriouslyGreatWriting) parts.push('Seriously Great Writing');
+            document.getElementById('filterSummary').textContent = parts.join(' · ');
+        }
+
+        // Refresh the summary and the picks after any filter change. Waits a moment so
+        // setupChipToggle's "All" handling has run, and so quick taps cause one refresh.
+        let filterChangeTimer = null;
+        function onFiltersChanged() {
+            clearTimeout(filterChangeTimer);
+            filterChangeTimer = setTimeout(() => {
+                updateFilterSummary();
+                if (currentMode === 'read') spin();
+            }, 250);
+        }
+
+        const filterBarToggle = document.getElementById('filterBarToggle');
+        const filterPanel = document.getElementById('filterPanel');
+        filterBarToggle.addEventListener('click', () => {
+            const open = filterBarToggle.getAttribute('aria-expanded') !== 'true';
+            filterBarToggle.setAttribute('aria-expanded', String(open));
+            filterPanel.hidden = !open;
+        });
+
+        // Delegated on the groups, which persist when updateModeUI rebuilds their chips
+        document.getElementById('yearGroup').addEventListener('change', onFiltersChanged);
+        document.getElementById('genreGroup').addEventListener('change', onFiltersChanged);
 
         document.getElementById('showRatings').addEventListener('change', function() {
             showRatings = this.checked;
@@ -2394,15 +2553,15 @@
             if (currentMode === 'surprise') {
                 spinBtn.textContent = '✨ Surprise Me!';
                 // Hide all filters - surprise picks from everything
-                document.querySelector('.selection-panel').style.display = 'none';
+                document.querySelector('.filter-bar').style.display = 'none';
                 document.querySelector('.availability-status').style.display = 'none';
             } else if (currentMode === 'listen') {
                 spinBtn.textContent = '🎧 Find Audiobooks';
                 // Hide pickers for audiobooks — just show all
-                document.querySelector('.selection-panel').style.display = 'none';
+                document.querySelector('.filter-bar').style.display = 'none';
                 document.querySelector('.availability-status').style.display = 'none';
             } else {
-                document.querySelector('.selection-panel').style.display = '';
+                document.querySelector('.filter-bar').style.display = '';
                 document.querySelector('.availability-status').style.display = '';
                 spinBtn.textContent = '✨ Find Books';
                 if (seriouslyGreatToggle) seriouslyGreatToggle.closest('.toggle-group')?.style.setProperty('display', 'flex');
@@ -2429,6 +2588,7 @@
                 `;
                 setupChipToggle('yearGroup', 'all');
                 setupChipToggle('genreGroup', '');
+                updateFilterSummary();
             }
         }
 
@@ -2446,7 +2606,7 @@
                 tags: book.tags || [],
                 goodreadsRating: book.goodreadsRating,
                 description: book.description,
-                borrowUrl: `https://brooklyn.overdrive.com/search?query=${encodeURIComponent(book.title)}`,
+                borrowUrl: LIBRARY.overdriveBorrowUrl({ title: book.title, overdriveId: book.overdriveId }),
                 thriftbooksUrl: getThriftbooksUrl(book.title, book.author)
             }));
             return books;
@@ -2652,6 +2812,7 @@
         loadReadBooks();
         loadListenedBooks();
         loadSettings();
+        updateFilterSummary();
         loadAvailableBooks();
     </script>
 </body>
